@@ -7,18 +7,18 @@
         return;
     }
 
-    if(!isset($_POST["Nom_utili"]) || !isset($_POST["Pass"]))
+    if(!isset($_POST["Login"]) || !isset($_POST["Pass"]))
     {
         include("index.php");
         return;
     }
 
-    if (strlen($_POST["Nom_utili"])==0 || strlen($_POST["Pass"])==0) {
+    if (strlen($_POST["Login"])==0 || strlen($_POST["Pass"])==0) {
         include("index.php");
         return;
     }
 
-    if (connexion($_POST["Nom_utili"],$_POST["Pass"])==1){
+    if (connexion($_POST["Login"],$_POST["Pass"])==1){
         include("administration.php");
     }
     else 
