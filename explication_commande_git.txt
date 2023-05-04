@@ -1,0 +1,7 @@
+git pull origin main //Récupérer les dernières modifications
+
+git add index2.html //Ajouter un fichier 
+
+git commit -m "index2" index2.html // Enregistrer et mettre à jour 
+
+git push //Envoyer sur le Gitub

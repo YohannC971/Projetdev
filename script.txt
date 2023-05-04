@@ -1,0 +1,77 @@
+DROP TABLE IF EXISTS candidat ;
+CREATE TABLE candidat (idcandidat_candidat INT AUTO_INCREMENT NOT NULL,
+nom_candidat VARCHAR(50),
+prenom_candidat VARCHAR(50),
+genre_candidat TINYINT,
+photo_candidat VARCHAR,
+cv_candidat VARCHAR,
+lettredemotivation_candidat VARCHAR,
+releve_candidat VARCHAR,
+diplome_candidat VARCHAR,
+justificatifpro_candidat VARCHAR,
+dossiervalidation_candidat VARCHAR,
+formulaire_idformulaire_formulaire INT,
+PRIMARY KEY (idcandidat_candidat)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS responsables ;
+CREATE TABLE responsables (idres_responsables INT AUTO_INCREMENT NOT NULL,
+nomres_responsables VARCHAR(50),
+prenomres_responsables VARCHAR(50),
+adressemail_responsables VARCHAR,
+PRIMARY KEY (idres_responsables)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS formulaire ;
+CREATE TABLE formulaire (idformulaire_formulaire INT AUTO_INCREMENT NOT NULL,
+nom_formulaire VARCHAR(50),
+prenom_formulaire VARCHAR(50),
+nomjeunefille_formulaire VARCHAR,
+datenaissance_formulaire DATE,
+lieunaissance_formulaire VARCHAR,
+ville_formulaire VARCHAR,
+codepostal_formulaire VARCHAR,
+email_formulaire VARCHAR,
+telephone_formulaire VARCHAR,
+mobile_formulaire VARCHAR,
+villeparents_formulaire VARCHAR,
+codepostalparents_formulaire VARCHAR,
+emailparents_formulaire VARCHAR,
+telephoneparents_formulaire VARCHAR,
+seriebac_formulaire VARCHAR,
+mentionbac_formulaire VARCHAR,
+anneebac_formulaire YEAR,
+lieubac_formulaire VARCHAR,
+intituleannee1_formulaire VARCHAR,
+annee1_formulaire VARCHAR,
+lieuannee1_formulaire VARCHAR,
+intituleannee2_formulaire VARCHAR,
+annee2_formulaire YEAR,
+lieuannee2_formulaire VARCHAR,
+anneeautre_formulaire YEAR,
+intituleautre_formulaire VARCHAR,
+lieuautre_formulaire VARCHAR,
+autreformation_formulaire BOOL,
+stage_formulaire BOOL,
+contrat_formulaire BOOL,
+candidat_idcandidat_candidat INT,
+idformation_formation **NOT FOUND**,
+PRIMARY KEY (idformulaire_formulaire)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS formation ;
+CREATE TABLE formation (idformation_formation INT AUTO_INCREMENT NOT NULL,
+intitule_formation VARCHAR,
+annee_formation INT,
+nbplaces_formation INT,
+PRIMARY KEY (idformation_formation)) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS accede ;
+CREATE TABLE accede (idformulaire_formulaire **NOT FOUND** AUTO_INCREMENT NOT NULL,
+idres_responsables **NOT FOUND** NOT NULL,
+PRIMARY KEY (idformulaire_formulaire,
+ idres_responsables)) ENGINE=InnoDB;
+
+ALTER TABLE candidat ADD CONSTRAINT FK_candidat_formulaire_idformulaire_formulaire FOREIGN KEY (formulaire_idformulaire_formulaire) REFERENCES formulaire (idformulaire_formulaire);
+
+ALTER TABLE formulaire ADD CONSTRAINT FK_formulaire_candidat_idcandidat_candidat FOREIGN KEY (candidat_idcandidat_candidat) REFERENCES candidat (idcandidat_candidat);
+ALTER TABLE formulaire ADD CONSTRAINT FK_formulaire_idformation_formation FOREIGN KEY (idformation_formation) REFERENCES formation (idformation_formation);
+ALTER TABLE accede ADD CONSTRAINT FK_accede_idformulaire_formulaire FOREIGN KEY (idformulaire_formulaire) REFERENCES formulaire (idformulaire_formulaire);
+ALTER TABLE accede ADD CONSTRAINT FK_accede_idres_responsables FOREIGN KEY (idres_responsables) REFERENCES responsables (idres_responsables);
