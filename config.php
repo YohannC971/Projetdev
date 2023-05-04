@@ -1,5 +1,5 @@
 <?php
-	$Nom_utili = "Yohann";
+	$Login = "Yohann";
 	$Pass = "test";
 	$HOST = "localhost";
 	$LOGINBDD = "user";
