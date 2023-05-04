@@ -29,7 +29,7 @@
                         style="width: 300px;" alt="logo">
                     </div>
     
-                    <form action="controleur2.php" method="POST">
+                    <form action="controleur.php" method="POST">
                       <p>Connecter-vous</p>
     
                       <div class="form-outline mb-4">
@@ -52,7 +52,8 @@
                       <div class="d-flex align-items-center justify-content-center pb-4">
                         <p class="mb-0 me-2">Pas encore de compte?</p>
                         <button type="button" class="btn btn-outline-danger">Créer-en un</button>
-                      </div>     
+                      </div> 
+                    </form>    
                   </div>
                 </div>
               </div>
