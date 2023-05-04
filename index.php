@@ -33,13 +33,13 @@
                       <p>Connecter-vous</p>
     
                       <div class="form-outline mb-4">
-                        <input type="email" id="form2Example11" class="form-control"
-                          placeholder="Nom d'utilisateur" />
+                        <input type="text" id="form2Example11" class="form-control"
+                          placeholder="Nom d'utilisateur" name="Nom_utili" required/>
                         <label class="form-label" for="form2Example11">Nom d'utilisateur</label>
                       </div>
     
                       <div class="form-outline mb-4">
-                        <input type="password" id="form2Example22" class="form-control" />
+                        <input type="password" id="form2Example22" class="form-control" placeholder="Mot de passe" name="Pass"/>
                         <label class="form-label" for="form2Example22">Mot de passe</label>
                       </div>
     
