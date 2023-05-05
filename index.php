@@ -64,6 +64,67 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <!-- Code vérifie la force du mot de passe -->
+  <script>
+function checkPasswordStrength(password) {
+  var strength = 0;
+
+  if (password.length < 8) {
+    return strength;
+  }
+
+  // check if password contains both uppercase and lowercase characters
+  if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+    strength += 1;
+  }
+
+  // check if password has at least one number
+  if (password.match(/([0-9])/)) {
+    strength += 1;
+  }
+
+  // check if password has at least one special character
+  if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+    strength += 1;
+  }
+
+  return strength;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var passwordInput = document.querySelector('input[name="Pass"]');
+  var strengthText = document.createElement('small');
+  strengthText.classList.add('text-muted');
+  strengthText.innerText = '(Force du mot de passe: faible)';
+
+  passwordInput.addEventListener('input', function() {
+    var password = passwordInput.value;
+    var strength = checkPasswordStrength(password);
+
+    if (strength === 0) {
+      strengthText.innerText = '(Force du mot de passe: faible)';
+      strengthText.classList.remove('text-success');
+      strengthText.classList.remove('text-warning');
+      strengthText.classList.add('text-muted');
+    } else if (strength === 1) {
+      strengthText.innerText = '(Force du mot de passe: moyenne)';
+      strengthText.classList.remove('text-success');
+      strengthText.classList.add('text-warning');
+      strengthText.classList.remove('text-muted');
+    } else if (strength === 2) {
+      strengthText.innerText = '(Force du mot de passe: forte)';
+      strengthText.classList.add('text-success');
+      strengthText.classList.remove('text-warning');
+      strengthText.classList.remove('text-muted');
+    }
+  });
+
+  var passwordFormGroup = passwordInput.parentElement;
+  passwordFormGroup.appendChild(strengthText);
+});
+</script>
+
+  
   <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
