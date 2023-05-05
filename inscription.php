@@ -1,6 +1,5 @@
 <?php
 
-
 // Informations de connexion
 $servername = "localhost";
 $username = "user";
@@ -20,18 +19,18 @@ else{
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $email = $_POST['email'];
+$Pass = $_POST['Pass'];
 
 // Requête SQL pour insérer un nouvel utilisateur dans la base de données
-$sql = "INSERT INTO utilisateur (nom, prenom, email) VALUES ('" . $nom . "', '" . $prenom . "', '" . $email . "')";
+$sql = "INSERT INTO utilisateur (nom, prenom, email, Pass) VALUES ('" . $nom . "', '" . $prenom . "', '" . $email . "', '" . $Pass . "')";
 
 if ($conn->query($sql) === TRUE) {
   echo "Nouvel utilisateur créé avec succès";
-  header('Location: index.php');
+  header('Location: inscription_reussi.html');
 } else {
   echo "Erreur: " . $sql . "<br>" . $conn->error;
 }
   echo "Connexion réussie";
-  header('Location: index.php');
 }
 
 ?>
