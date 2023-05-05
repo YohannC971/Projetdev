@@ -30,7 +30,7 @@
                     </div>
     
                     <form action="controleur.php" method="POST">
-                      <p>Connecter-vous</p>
+                      <p><b>Connecter-vous</b></p>
     
                       <div class="form-outline mb-4">
                         <input type="text" id="form2Example11" class="form-control"
@@ -64,9 +64,6 @@
       </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  
-    <!-- Code vérifie la force du mot de passe -->
-    <script src="ForceMotDePasse.js"></script>
   
 
   
