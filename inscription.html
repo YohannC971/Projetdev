@@ -23,7 +23,7 @@
                         style="width: 300px;" alt="logo">
                     </div>
     
-                    <form>
+                    <form action="inscription.php" method="POST">
                       <p><b>Inscrivez-vous</b></p>
                       <br/>
                       
@@ -31,12 +31,12 @@
                       <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example11">Nom</label>
                         <input type="Nom" id="form2Example11" class="form-control"
-                          placeholder="Nom" />
+                          placeholder="Nom" name="nom"/>
                       </div>
     
                       <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example22">Prénom</label>
-                        <input type="Prenom" id="form2Example22" class="form-control" placeholder="Prénom"/>
+                        <input type="Prenom" id="form2Example22" class="form-control" placeholder="Prénom" name="prenom"/>
                       </div>
 
                       <div class="form-outline mb-4">
@@ -45,13 +45,14 @@
                         pattern="[^\s@]+@[^\s@]+\.[^\s@]+" required/>
                       </div>
 
-                      <div class="form-outline mb-4">
+                      <!--<div class="form-outline mb-4">
                         <label class="form-label" for="form2Example22">Mot de passe</label>
                         <input type="password" id="form2Example22" class="form-control" Name="Pass" placeholder="Mot de passe"/>
-                      </div>
+                      </div>-->
     
                       <div class="text-center pt-1 mb-5 pb-1">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Enregistré</button>
+                        <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" value="Enregistré">
+                        <!--<button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Enregistré</button>-->
                       </div>
                     </form>
                   </div>
