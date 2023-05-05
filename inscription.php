@@ -1,13 +1,10 @@
 <?php
 
-// Informations de connexion
-$servername = "localhost";
-$username = "user";
-$password = "root";
-$dbname = "prog_full_stack";
+require 'config.php';
 
 // Connexion à la base de données
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($HOST, $LOGINBDD, $PASSBDD, $BDD);
+
 
 // Vérification de la connexion
 if (!$conn) {
