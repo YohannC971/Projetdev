@@ -15,11 +15,6 @@ function vérifierForceMotDePasse(motDePasse) {
     force += 1;
   }
 
-  // Vérifier si le mot de passe contient au moins un caractère spécial
-  if (motDePasse.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
-    force += 1;
-  }
-
   return force;
 }
 
@@ -39,11 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
       texteForce.classList.remove('text-warning');
       texteForce.classList.add('text-muted');
     } else if (force === 1) {
-      texteForce.innerText = 'Force du mot de passe : moyenne';
-      texteForce.classList.remove('text-success');
-      texteForce.classList.add('text-warning');
-      texteForce.classList.remove('text-muted');
-    } else if (force === 2) {
       texteForce.innerText = 'Force du mot de passe : forte';
       texteForce.classList.add('text-success');
       texteForce.classList.remove('text-warning');
