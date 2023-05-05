@@ -2,7 +2,7 @@
 	$Login = "Yohann";
 	$Pass = "test";
 	$HOST = "localhost";
-	$LOGINBDD = "user";
+	$LOGINBDD = "root";
 	$PASSBDD = "root";
 	$BDD = "prog_full_stack";
 ?>
