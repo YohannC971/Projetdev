@@ -5,3 +5,14 @@ git add index2.html //Ajouter un fichier
 git commit -m "index2" index2.html // Enregistrer et mettre à jour 
 
 git push //Envoyer sur le Gitub
+
+
+Pour suppprimer un fichier :
+git rm monfichier.txt
+git commit -m "Supprimer monfichier.txt"
+git push
+
+Si le processus commit ne fonctionne pas:
+git rm index.lock
+git commit -m "Supprimer monfichier.txt"
+
