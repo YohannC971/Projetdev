@@ -26,7 +26,9 @@ $sql = "INSERT INTO utilisateur (nom, prenom, email, Pass) VALUES ('" . $nom . "
 
 if ($conn->query($sql) === TRUE) {
   echo "Nouvel utilisateur créé avec succès";
+  require 'envoi-email-confirmation.php';
   header('Location: inscription_reussi.html');
+  
 } else {
   echo "Erreur: " . $sql . "<br>" . $conn->error;
 }
