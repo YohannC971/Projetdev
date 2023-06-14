@@ -6,6 +6,7 @@ git commit -m "index2" index2.html // Enregistrer et mettre à jour
 
 git push //Envoyer sur le Gitub
 
+rm ./.git/index.lock // supprimer fichier index.lock
 
 Pour suppprimer un fichier :
 git rm monfichier.txt
