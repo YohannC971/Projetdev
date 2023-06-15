@@ -45,7 +45,7 @@ CSS QUI ETES VOUS
 */
 
 
-.container {
+.B {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ CSS QUI ETES VOUS
 .square {
   width: 400px;
   height: 400px;
-  background-color: rgb(26, 118, 148);
+  background-color: #0B5ED7;
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -63,14 +63,6 @@ CSS QUI ETES VOUS
   align-items: center;
 }
 
-.button {
-  padding: 50px;
-  background-color: rgb(75, 89, 224);
-  border: 2px solid rgb(75, 89, 224);
-  margin-top: 50px;
-  cursor: pointer;
-}
-
-.centre {
+.Align {
     text-align: center;
 }
