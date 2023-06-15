@@ -47,12 +47,16 @@
            class="list-group-item list-group-item-action py-2 ripple"
            ><i class="fas fa-regular fa-graduation-cap fa-fw me-3"></i><span>Master</span></a
           >
-        <a
-           href="#"
-           class="list-group-item list-group-item-action py-2 ripple"
-           >
-           <i class="fas fa-pen fa-fw me-3"></i><span>Candidater</span>
-        </a>
+          <div class="list-group-item list-group-item-action py-2 ripple">
+            <i class="fas fa-pen fa-fw me-3"></i>
+            <span>Candidater</span>
+            <select class="form-select" onchange="location = this.value;">
+              <option selected disabled hidden>Sélectionnez une page</option>
+              <option value="page1.html">Page 1</option>
+              <option value="page2.html">Page 2</option>
+              <option value="page3.html">Page 3</option>
+            </select>
+          </div>
         <a
            href="#"
            class="list-group-item list-group-item-action py-2 ripple"
@@ -144,7 +148,7 @@
 <!--Main layout-->
 <main style="margin-top: 58px">
   <div class="container pt-4">
-
+    
   </div>
 </main>
 <!--Main layout-->
