@@ -19,23 +19,13 @@
 <body>
     <!--Main Navigation-->
     <!--Fonctions-->
-    <script>
-      function toggleNavbar() {
-        navbar = document.getElementById("main-navbar");
-        if(navbar.style.display === "none") {
-            navbar.style.display = "flex";
-        } else {
-            navbar.style.display = "none";
-        }
-      }
-    </script>
+    =
 <header>
   <!-- Sidebar -->
   <nav
        id="sidebarMenu"
        class="collapse d-lg-block sidebar collapse bg-white"
        >
-    <button onclick="toggleNavbar()">Afficher/Cacher la navbar</button>
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
@@ -169,11 +159,11 @@
       <div class="p-2" style="background-color: rgb(79, 79, 255);"><h1>Candidature à la L3 MIAGE</h1></div>
       <div class="d-flex" style="border: 2px solid black;">
         <div class="d-flex align-items-start flex-column mb-3" >
-          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;"><h5> Information du candidat</h5></div>
-          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;"><h5> Baccalauréat</h5></div>
-          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;"><h5> Ier CYCLE</h5></div>
-          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;"><h5> Autre(s) diplôme(s) obtenue(s)</h5></div>
-          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;"><h5> Vie professionnelle</h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Information du candidat</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="bacform.html">Baccalauréat</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Ier CYCLE</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Vie professionnelle</a> </h5></div>
         </div>
         <form action=" generatepdf.php" method="post" target="_blank" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
