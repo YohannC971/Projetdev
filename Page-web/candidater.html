@@ -18,12 +18,24 @@
 </head>
 <body>
     <!--Main Navigation-->
+    <!--Fonctions-->
+    <script>
+      function toggleNavbar() {
+        navbar = document.getElementById("main-navbar");
+        if(navbar.style.display === "none") {
+            navbar.style.display = "flex";
+        } else {
+            navbar.style.display = "none";
+        }
+      }
+    </script>
 <header>
   <!-- Sidebar -->
   <nav
        id="sidebarMenu"
        class="collapse d-lg-block sidebar collapse bg-white"
        >
+    <button onclick="toggleNavbar()">Afficher/Cacher la navbar</button>
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
@@ -96,6 +108,7 @@
        id="main-navbar"
        class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
        >
+    <button onclick="toggleNavbar()">Afficher/Cacher la navbar</button>
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Toggle button -->
@@ -152,12 +165,19 @@
 <main style="margin-top: 58px">
   <div class="container pt-4">
 
+    <div class="d-flex flex-column mb-3">
+      <div class="p-2" style="background-color: blue;">Flex item 1</div>
+      <div class="d-flex">
+        <div class="p-2 flex-grow-2">Flex item</div>
+        <div class="p-2 flex-grow-1" >Flex item</div>
+      </div>
+
+    </div>
+    
   </div>
 </main>
 <!--Main layout-->
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Custom scripts -->
-    <script type="text/javascript" src="js/script.js"></script>
+<script src="js/fonction.js"></script>
 </body>
 </html>
