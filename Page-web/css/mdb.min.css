@@ -7707,7 +7707,7 @@ textarea.form-control-lg {
 }
 
 .flex-column {
-    flex-direction: column!important
+    flex-direction: column!important;
 }
 
 .flex-row-reverse {
@@ -7724,6 +7724,10 @@ textarea.form-control-lg {
 
 .flex-grow-1 {
     flex-grow: 1!important
+}
+
+.flex-grow-2{
+    flex-grow: 0.5!important
 }
 
 .flex-shrink-0 {
