@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+
+</head>
+<body>
+    <!--Main Navigation-->
+    <!--Fonctions-->
+    <script>
+      function toggleNavbar() {
+        navbar = document.getElementById("main-navbar");
+        if(navbar.style.display === "none") {
+            navbar.style.display = "flex";
+        } else {
+            navbar.style.display = "none";
+        }
+      }
+    </script>
+<header>
+  <!-- Sidebar -->
+  <nav
+       id="sidebarMenu"
+       class="collapse d-lg-block sidebar collapse bg-white"
+       >
+    <button onclick="toggleNavbar()">Afficher/Cacher la navbar</button>
+    <div class="position-sticky">
+      <div class="list-group list-group-flush mx-3 mt-4">
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           aria-current="true"
+           >
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i
+            >
+            <i class="fas fa-house-alt fa-fw me-3"></i><span>Accueil</span>
+        </a>
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple active"
+           >
+          <i class="fas fa-chart-area fa-fw me-3"></i
+            ><span>Filière Miage</span>
+        </a>
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-lock fa-fw me-3"></i><span>Licence</span></a
+          >
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-chart-line fa-fw me-3"></i
+          ><span>Master</span></a
+          >
+        <a
+           href="candidater.html"
+           class="list-group-item list-group-item-action py-2 ripple dropdown-toggle">
+          <i class="fas fa-chart-pie fa-fw me-3"></i><span>Candidater</span>
+        </a>
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Apprentissage</span></a
+          >
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-globe fa-fw me-3"></i
+          ><span>Partenaires</span></a
+          >
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-building fa-fw me-3"></i
+          ><span>Contacts</span></a
+          >
+        
+        <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-users fa-fw me-3"></i><span>Mon profil</span></a
+          >
+          <a
+           href="#"
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-users fa-fw me-3"></i><span>Déconnexion</span></a
+          >
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav
+       id="main-navbar"
+       class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+       >
+    <button onclick="toggleNavbar()">Afficher/Cacher la navbar</button>
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+              class="navbar-toggler"
+              type="button"
+              data-mdb-toggle="collapse"
+              data-mdb-target="#sidebarMenu"
+              aria-controls="sidebarMenu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+       
+        <img
+             src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo-300x245.png"
+             style="margin-right: 20px;"
+             height="80"
+             alt=""
+             loading="lazy"
+             />
+        <img
+            src="http://miage-antilles.fr/wp-content/uploads/2014/09/UA_logoCMJN_Corporate.jpg"
+            style="margin-right: 20px;"
+            height="80"
+            alt=""
+            loading="lazy"
+        >
+        <img
+            src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png"
+            style="margin-right: 20px;"
+            height="80"
+            alt=""
+            loading="lazy"
+        >
+      </a>
+
+
+      <!-- Right links -->
+      <ul class="navbar-nav ms-auto d-flex flex-row">
+      </ul>
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+  <div class="container pt-4" style="border-color: black; border-radius: 10px;">
+
+    <div class="d-flex flex-column mb-3">
+      <div class="p-2" style="background-color: rgb(79, 79, 255);"><h1>Candidature à la L3 MIAGE</h1></div>
+      <div class="d-flex" style="border: 2px solid black;">
+        <div class="d-flex align-items-start flex-column mb-3" >
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.html">Information du candidat</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Baccalauréat</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Ier CYCLE</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="#">Vie professionnelle</a> </h5></div>
+          </div>
+        <form action=" generatepdf.php" method="post" target="_blank" enctype="multipart/form-data">
+          <div class="d-flex flex-column mb-3"
+          >
+            <b>
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Baccalauréat</h3></div>
+            <div class="d-flex justify-content-evenly" style="align-items: center;">     
+                <div class="p-2">
+                    <label>Série :</label>
+                    <input type="text" id="serie" name="serie" placeholder="Série">
+                </div>
+                
+                <div class="p-2">
+                    <label>Mention :</label>
+                    <input type="text" id="mention" name="mention" placeholder="Mention">
+                </div>  
+            </div>
+            <div class="d-flex justify-content-evenly" style="align-items: center;">
+                <div class="p-2">
+                    <label>Année :</label>
+                    <input type="text" id="annee" name="annee" placeholder="Année">
+                </div>
+                
+
+                <div class="p-2">
+                    <label>Lieu :</label>
+                    <input type="text" id="lieu" name="lieu" placeholder="Lieu">
+                </div>
+            </div> 
+            </div>
+            </b>
+          </div>
+        </form>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+</main>
+<!--Main layout-->
+    <!-- Custom scripts -->
+<script src="js/fonction.js"></script>
+</body>
+</html>
