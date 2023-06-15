@@ -38,3 +38,39 @@ body {
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+
+
+/*
+CSS QUI ETES VOUS
+*/
+
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.square {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(26, 118, 148);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  padding: 50px;
+  background-color: rgb(75, 89, 224);
+  border: 2px solid rgb(75, 89, 224);
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.centre {
+    text-align: center;
+}
