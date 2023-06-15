@@ -1,6 +1,4 @@
 <?php
-	$Login = "Yohann";
-	$Pass = "test";
 	$HOST = "localhost";
 	$LOGINBDD = "root";
 	$PASSBDD = "root";
