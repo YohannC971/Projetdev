@@ -15,15 +15,23 @@
   </head>
   <body>
 
+  <div class="text-center" style="margin-bottom: 20px;">
+                      <img src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo.png"
+                        style="width: 150px;" alt="logo">
+                        <img src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png"
+                        style="width: 300px;" alt="logo">
+                    </div>
+
   <div class="Align">
+
         <h4>Qui êtes-vous ?</h4>
     </div>
   <div class="B">
-    <div class="square">
+    <div class="C">
       <h2>Etudiant</h2>
       <button type="button" class="btn btn-light">connexion</button>
     </div>
-    <div class="square">
+    <div class="C">
       <h2>Professeur</h2>
       <button type="button" class="btn btn-light">connexion</button>
     </div>

@@ -43,8 +43,6 @@ body {
 /*
 CSS QUI ETES VOUS
 */
-
-
 .B {
   display: flex;
   justify-content: center;
@@ -52,7 +50,7 @@ CSS QUI ETES VOUS
   height: 100vh;
 }
 
-.square {
+.C {
   width: 400px;
   height: 400px;
   background-color: #0B5ED7;
