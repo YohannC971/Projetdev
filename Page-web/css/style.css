@@ -42,17 +42,18 @@ body {
 
 /*
 CSS QUI ETES VOUS
-*/
+
 .B {
-  display: flex;
+  
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-bottom: 10px;
+  z-index: -1;
 }
 
 .C {
-  width: 400px;
-  height: 400px;
+  width: 350px;
+  height: 350px;
   background-color: #0B5ED7;
   margin: 10px;
   display: flex;
@@ -64,3 +65,5 @@ CSS QUI ETES VOUS
 .Align {
     text-align: center;
 }
+
+*/
