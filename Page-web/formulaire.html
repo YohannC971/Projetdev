@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+  <title>Génération de PDF depuis un formulaire HTML</title>
+</head>
+<body>
+  <h1>Génération de PDF depuis un formulaire HTML</h1>
+ <!-----generatepdf.php-------->
+
+  <!---<form action="testenvoidossier.php" method="post" target="_blank" enctype="multipart/form-data">--->
+  <form action=" generatepdf.php" method="post" target="_blank" enctype="multipart/form-data">
+
+
+    <label for="nom">Nom :</label>
+		<input type="text" id="nom" name="nom" maxlength="50" /><br/><br/>
+
+		<label for="prenom">Prénom :</label>
+		<input type="text" id="prenom" name="prenom" maxlength="50" /><br/><br/>
+
+		<label for="nom_jeune_fille">Nom de Jeune Fille :</label>
+		<input type="text" id="nom_jeune_fille" name="nom_jeune_fille" maxlength="50" /><br/><br/>
+
+		<label for="date_naissance">Né(e) le :</label>
+		<input type="date" id="date_naissance" name="date_naissance" /><br/><br/>
+    
+    <label for="lieu_naissance">à :</label>
+    <input type="text" id="lieu_naissance" name="lieu_naissance"><br><br>
+
+    <!----------------------------------------------------------------------------------------------------------->
+
+        <label for="adresse">Adresse de l'étudiant :</label>
+        <input type="text" id="adresse" name="adresse" placeholder="Adresse"><br><br>
+    
+        <label for="ville">Ville :</label>
+        <input type="text" id="ville" name="ville" placeholder="Ville"><br><br>
+    
+        <label for="codePostal">Code Postal :</label>
+        <input type="text" id="codePostal" name="codePostal" placeholder="Code Postal"><br><br>
+    
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder="Email"><br><br>
+    
+        <label for="telephone">Téléphone :</label>
+        <input type="text" id="telephone" name="telephone" placeholder="Téléphone"><br><br>
+    
+        <label for="mobile">Mobile :</label>
+        <input type="text" id="mobile" name="mobile" placeholder="Mobile"><br><br>
+    <!------------------------------------------------------------------------------------------------------------------>
+
+        <h2>Baccalauréat</h2>
+        <label>Série :</label>
+        <input type="text" id="serie" name="serie" placeholder="Série"><br><br>
+    
+        <label>Mention :</label>
+        <input type="text" id="mention" name="mention" placeholder="Mention"><br><br>
+    
+        <label>Année :</label>
+        <input type="text" id="annee" name="annee" placeholder="Année"><br><br>
+    
+        <label>Lieu :</label>
+        <input type="text" id="lieu" name="lieu" placeholder="Lieu"><br><br>
+    <!---------------------------------------------------------------------------------------------------------------------->
+
+
+    
+        <h2>Ier CYCLE : (validé ou en cours de préparation)</h2>
+
+        <label><b>1ère année :</b></label>
+        <input type="text" id="intitule_1ere_annee" name="intitule_1ere_annee">
+
+        <label>Année d’obtention :</label>
+        <input type="text" id="annee_obtention_1ere_annee" name="annee_obtention_1ere_annee">
+
+        <label>Lieu :</label>
+        <input type="text" id="lieu_1ere_annee" name="lieu_1ere_annee">
+
+        <label>Moyenne :</label>
+        <input type="text" id="moyenne_1ere_annee" name="moyenne_1ere_annee"><br><br>
+
+        <label>2ème année :</label>
+        <input type="text" id="intitule_2eme_annee" name="intitule_2eme_annee">
+
+        <label>Année d’obtention :</label>
+        <input type="text" id="annee_obtention_2eme_annee" name="annee_obtention_2eme_annee">
+
+        <label>Lieu :</label>
+        <input type="text" id="lieu_2eme_annee" name="lieu_2eme_annee">
+
+        <label >Moyenne :</label>
+        <input type="text" id="moyenne_2eme_annee" name="moyenne_2eme_annee"><br><br><br>
+
+       
+        <h2>AUTRE(S) DIPLÔME(S) OBTENU(S) :</h2>
+
+        <label>Intitulé :</label>
+        <input type="text" id="autres_diplome_obtenu" name="autres_diplome_obtenu"><br><br><br>
+
+        <label>Année d'obtention :</label>
+        <input type="text" id="annee_autres_diplome" name="annee_autres_diplome"><br><br><br>
+
+        <label>Lieu :</label>
+        <input type="text" id="lieu_autre_diplome" name="lieu_autre_diplome"><br><br><br>
+
+        <label>Moyenne :</label>
+        <input type="text" id="moyenne_autre_diplome" name="moyenne_autre_diplome"><br><br><br>
+
+
+    <!----------------------------------------------------------------------------------------------->
+        <h2>Avez vous candidaté à d’autres formations?</h2>
+        <select id="choix_candidate_a_autres_formations" onchange="afficherChamp_autres_formations()">
+            <option value="non">NON</option>
+            <option value="oui">OUI</option>
+          </select>
+          
+          <div id="champ_autres_formation" style="display: none;">
+            <label>Si oui, lesquelles :</label>
+            <input type="text" id="input_autres_formation">
+          </div><br><br><br>
+    <!-------------------------------------------------------------------------------------------------------->
+
+    <h2>Avez vous effectué des stages en entreprise</h2>
+    <select id="choix_stages_entreprise" onchange="afficherChamp_stages_entreprise()">
+        <option value="non">NON</option>
+        <option value="oui">OUI</option>
+      </select>
+      
+      <div id="champ_quelle_entreprise" style="display: none;">
+        <label>Si oui, quelle(s) entreprise(s) : </label>
+        <input type="text" id="input_quelle_entreprise"><br>
+
+        <label>Sur quel(s) thème(s) : </label>
+        <input type="text" id="theme_entreprise" name="theme_entreprise">
+      </div><br><br><br>
+
+
+      <!------<input type="submit" value="Générer PDF">------->
+ 
+      
+  <!----------<form action="testenvoidossier.php" method="post" enctype="multipart/form-data">------->
+    <!-- Vos autres champs de formulaire ici -->
+    <input type="file" name="fichier[]" multiple>
+    <input type="submit" value="Envoyer">
+
+
+  </form>
+</body>
+
+
+<script>
+    function afficherChamp_autres_formations() {
+      var choix_autres_formation = document.getElementById("choix_candidate_a_autres_formations");
+      var champ_autres_formation= document.getElementById("champ_autres_formation");
+      var input_autres_formation= document.getElementById("input_autres_formation");
+  
+      if (choix_autres_formation.value === "oui") {
+        champ_autres_formation.style.display = "block";
+        input_autres_formation.required = true;
+      } else {
+        champ_autres_formation.style.display = "none";
+        input_autres_formation.required = false;
+      }
+    }
+
+
+    function afficherChamp_stages_entreprise() {
+      var choix_stages_entreprise = document.getElementById("choix_stages_entreprise");
+      var champ_quelle_entreprise = document.getElementById("champ_quelle_entreprise");
+      var inputSuinput_quelle_entreprisepplementaire = document.getElementById("input_quelle_entreprise");
+  
+      if (choix_stages_entreprise.value === "oui") {
+        champ_quelle_entreprise.style.display = "block";
+        input_quelle_entreprise.required = true;
+      } else {
+        champ_quelle_entreprise.style.display = "none";
+        input_quelle_entreprise.required = false;
+      }
+    }
+ 
+    
+  </script>
+  
+  <script src="ajouter-fichiers-supplémentaires.js"></script>
+</html>
