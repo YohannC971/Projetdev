@@ -15,17 +15,17 @@
   </head>
   <body>
 
-  <div class="centre">
+  <div class="Align">
         <h4>Qui êtes-vous ?</h4>
     </div>
-  <div class="container">
+  <div class="B">
     <div class="square">
       <h2>Etudiant</h2>
-      <button class="button"></button>
+      <button type="button" class="btn btn-light">connexion</button>
     </div>
     <div class="square">
       <h2>Professeur</h2>
-      <button class="button"></button>
+      <button type="button" class="btn btn-light">connexion</button>
     </div>
   </div>
     
