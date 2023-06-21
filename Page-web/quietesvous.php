@@ -22,9 +22,12 @@ if (!isset($_SESSION)) {
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            height: 100vh;
         }
 
         .B {
@@ -62,24 +65,27 @@ if (!isset($_SESSION)) {
         <img src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png" style="width: 300px;" alt="logo">
     </div>
 
+    <div class="img">
+    </div>
     <div class="Align">
         <h4>Qui êtes-vous ?</h4>
     </div>
 
-    <div class="img">
         <div class="B">
             <div class="C">
                 <h2>Etudiant</h2>
-                <a href="index.php">
-                    <button type="button" class="btn btn-primary">Démarrer</button>
-                </a>
+                <a href="index.php" class="btn btn-secondary btn-lg active">Link</a>
             </div>
             <div class="C">
                 <h2>Professeur</h2>
                 <button type="button" class="btn btn-primary">connexion</button>
             </div>
         </div>
-    </div>
+    
+
+    <div>
+    <a href="index.php" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
+      </div>
 
 </body>
 
