@@ -174,34 +174,45 @@
         <form action=" generatepdf.php" method="post" target="_blank" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3">
             <b>
-            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>AUTRE(S) DIPLÔME(S) OBTENU(S) :</h3></div>
-            <div class="d-flex justify-content-evenly" style="align-items: center;"> 
-              <div class="p-2">
-                <label>Intitulé :</label>
-                <input type="text" id="autres_diplome_obtenu" name="autres_diplome_obtenu">
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Vie professionnelle</h3></div>
+              <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                <div class="p-2">
+                  Avez vous candidaté à d’autres formations?             
+                    <select id="choix_candidate_a_autres_formations" onchange="afficherChamp_autres_formations()">
+                      <option value="non">NON</option>
+                      <option value="oui">OUI</option>
+                    </select>
+                </div> 
+                <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                  <div class="p-2">
+                    <div id="champ_autres_formation" style="display: none;">
+                      <label>Lesquelles :</label>
+                      <input type="text" id="input_autres_formation">
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="p-2">
+                  Avez vous effectué des stages en entreprise?
+                  <select id="choix_stages_entreprise" onchange="afficherChamp_stages_entreprise()">
+                      <option value="non">NON</option>
+                      <option value="oui">OUI</option>
+                  </select>
+                </div>
+                <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                  <div class="p-2">
+                    <div id="champ_quelle_entreprise" style="display: none;">
+                      <div class="p-2">
+                        <label>Si oui, quelle(s) entreprise(s) : </label>
+                        <input type="text" id="input_quelle_entreprise">
+                      </div>
+                      <div class="p-2">
+                        <label>Sur quel(s) thème(s) : </label>
+                        <input type="text" id="theme_entreprise" name="theme_entreprise">
+                      </div>
+                    </div>
+                  </div>
               </div>
-
-              <div class="p-2">
-                <label>Année d'obtention :</label>
-                <input type="number" min="1990" max="2023" value="2010" id="annee_autres_diplome" name="annee_autres_diplome">
-              </div>
-
-              <div class="p-2">
-                <label>Moyenne :</label>
-                <input type="text" min="0" max="20" style="width: 50px;">/20
-              </div>
-            </div>
-            <div class="d-flex justify-content-evenly" style="align-items: center;"> 
-              <div class="p-2">
-                <label>Lieu :</label>
-                <input type="text" id="lieu_autre_diplome" name="lieu_autre_diplome">
-              </div>
-            
-              <div class="p-2">
-                <label>Etablissement :</label>
-                <input type="text" id="etablissement_autre_diplome" name="etablissement_autre_diplome">
-              </div>
-            </div>
             </div>
             </b>
           </div>
@@ -215,6 +226,36 @@
 </main>
 <!--Main layout-->
     <!-- Custom scripts -->
+<script>
+
+    function afficherChamp_autres_formations() {
+      var choix_autres_formation = document.getElementById("choix_candidate_a_autres_formations");
+      var champ_autres_formation= document.getElementById("champ_autres_formation");
+      var input_autres_formation= document.getElementById("input_autres_formation");
+  
+      if (choix_autres_formation.value === "oui") {
+        champ_autres_formation.style.display = "block";
+        input_autres_formation.required = true;
+      } else {
+        champ_autres_formation.style.display = "none";
+        input_autres_formation.required = false;
+      }
+    }
+
+    function afficherChamp_stages_entreprise() {
+      var choix_stages_entreprise = document.getElementById("choix_stages_entreprise");
+      var champ_quelle_entreprise = document.getElementById("champ_quelle_entreprise");
+      var inputSuinput_quelle_entreprisepplementaire = document.getElementById("input_quelle_entreprise");
+  
+      if (choix_stages_entreprise.value === "oui") {
+        champ_quelle_entreprise.style.display = "block";
+        input_quelle_entreprise.required = true;
+      } else {
+        champ_quelle_entreprise.style.display = "none";
+        input_quelle_entreprise.required = false;
+      }
+    }
+</script>
 <script src="js/fonction.js"></script>
 </body>
 </html>
