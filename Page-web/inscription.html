@@ -27,7 +27,12 @@
                       <p><b>Inscrivez-vous</b></p>
                       <br/>
                       
-    
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example11">Login</label>
+                        <input type="login" id="form2Example11" class="form-control"
+                          placeholder="Login" name="login"required/>
+                      </div>
+
                       <div class="form-outline mb-4">
                         <label class="form-label" for="form2Example11">Nom</label>
                         <input type="Nom" id="form2Example11" class="form-control"
@@ -51,6 +56,12 @@
                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required/>
                         <p style="font-size: 12px; color: red;">Votre mot de passe doit contenir au moins huit caractères, dont au moins une lettre majuscule, une lettre minuscule et un chiffre</p>
                       </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example33">Confirmez le mot de passe</label>
+                        <input type="password" id="form2Example33" class="form-control" name="confirmPass" placeholder="Confirmez le mot de passe" required/>
+                      </div>
+                      
     
                       <div class="text-center pt-1 mb-5 pb-1">
                         <input class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" value="Enregistré">
@@ -70,6 +81,22 @@
 
     <!-- Code vérifie la force du mot de passe -->
     <script src="ForceMotDePasse.js"></script>
+    <script>
+      var passwordInput = document.getElementById("form2Example22");
+      var confirmPasswordInput = document.getElementById("form2Example33");
+    
+      function validatePassword() {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+          confirmPasswordInput.setCustomValidity("Les mots de passe ne correspondent pas.");
+        } else {
+          confirmPasswordInput.setCustomValidity("");
+        }
+      }
+    
+      passwordInput.addEventListener("input", validatePassword);
+      confirmPasswordInput.addEventListener("input", validatePassword);
+    </script>
+    
   
   </body>
 </html>
