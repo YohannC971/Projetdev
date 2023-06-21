@@ -13,14 +13,15 @@ if (!$conn) {
 }
 else{
   // Récupération des données du formulaire d'inscription
+$login = $_POST['login'];
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $email = $_POST['email'];
 $Pass = $_POST['Pass'];
 
 // Requête SQL pour insérer un nouvel utilisateur dans la base de données
-$sql = "INSERT INTO utilisateur (nom, prenom, email, Pass) VALUES ('" . $nom . "', '" . $prenom . "', '" . $email . "', '" . $Pass . "')";
-$sql2 = "INSERT INTO candidats (nom, prenom, email) VALUES ('" . $nom . "', '" . $prenom . "', '" . $email . "')";
+$sql = "INSERT INTO utilisateur (login,nom, prenom, email, Pass) VALUES ('" . $login . "','" . $nom . "', '" . $prenom . "', '" . $email . "', '" . $Pass . "')";
+$sql2 = "INSERT INTO candidats (login,nom, prenom, email) VALUES ('" . $login . "','" . $nom . "', '" . $prenom . "', '" . $email . "')";
 
 if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
   echo "Nouvel utilisateur créé avec succès";
