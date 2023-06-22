@@ -56,6 +56,8 @@ if (!isset($_SESSION)) {
 
         .Align {
             text-align: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
@@ -69,7 +71,7 @@ if (!isset($_SESSION)) {
     <div class="img">
     </div>
     <div class="Align">
-        <h4>Qui êtes-vous ?</h4>
+        <h4>Bienvenue...</h4>
     </div>
 
         <div class="B">
