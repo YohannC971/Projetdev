@@ -34,6 +34,15 @@ CREATE TABLE `Candidat` (
   `dossiervalidation_candidat` VARCHAR(255),
   `Age_candidat` INT,
   `formulaire_idformulaire_formulaire` INT,
+  `nom_parent1` VARCHAR(255),
+  `prennom_parent1` VARCHAR(255),
+  `numero_parent1` INT,
+  `nom_parent2` VARCHAR(255),
+  `prennom_parent2` VARCHAR(255),
+  `numero_parent2` INT,
+  `nom_responsable_legale` VARCHAR(255),
+  `prenom_responsable_legale` VARCHAR(255),
+  `numero_responsable_legale` INT,
   PRIMARY KEY (`idcandidat_candidat`),
   FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB;
