@@ -25,7 +25,7 @@
             z-index: -1;
         }
 
-        ::before.Align {
+        .Align {
             text-align: center;
             color: white;
             font-family: Arial, Helvetica, sans-serif;
