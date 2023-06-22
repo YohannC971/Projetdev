@@ -45,7 +45,7 @@ $stmt->bind_result($nomCandidat, $prenomCandidat, $emailCandidat);
 // Récupérer le premier et unique résultat
 $stmt->fetch();
 
-session_destroy();
+
 ?>
 
 
@@ -225,6 +225,7 @@ session_destroy();
 // Fermer la déclaration, la connexion à la base de données et la session
 $stmt->close();
 $conn->close();
+session_destroy();
 ?>
 
 
