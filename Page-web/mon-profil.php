@@ -9,6 +9,7 @@ if (!isset($_SESSION['login'])) {
     exit();
 }
 
+
 // Récupérer le login de l'utilisateur depuis la session
 $login = $_SESSION['login'];
 
@@ -225,7 +226,6 @@ $stmt->fetch();
 // Fermer la déclaration, la connexion à la base de données et la session
 $stmt->close();
 $conn->close();
-session_destroy();
 ?>
 
 
