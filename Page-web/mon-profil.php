@@ -45,7 +45,7 @@ $stmt->bind_result($nomCandidat, $prenomCandidat, $emailCandidat);
 // Récupérer le premier et unique résultat
 $stmt->fetch();
 
-// Afficher les résultats dans des champs de formulaire HTML
+session_destroy();
 ?>
 
 
