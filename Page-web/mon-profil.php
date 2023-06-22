@@ -79,7 +79,7 @@ $stmt->fetch();
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
            href="accueil.html"
-           class="list-group-item list-group-item-action py-2 ripple active"
+           class="list-group-item list-group-item-action py-2 ripple "
            aria-current="true"
            >
            <i class="fas fa-home fa-fw me-3"></i><span>Accueil</span>
