@@ -1,18 +1,12 @@
-<?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-?>
-
 <!doctype html>
 <html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulaire de connexion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" href="test.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="./favicon/faviconmiage.png"/>
+    <title>Qui êtes-vous ?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="./favicon/faviconmiage.png" />
     <style>
         body {
             background-color: #fbfbfb;
@@ -29,6 +23,12 @@ if (!isset($_SESSION)) {
             width: 100%;
             height: 100%;
             z-index: -1;
+        }
+
+        ::before.Align {
+            text-align: center;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .B {
@@ -53,38 +53,38 @@ if (!isset($_SESSION)) {
             align-items: center;
             flex: 1;
         }
-
-        .Align {
-            text-align: center;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-        }
     </style>
 </head>
 
 <body>
-    <div class="text-center" style="margin-bottom: 20px;">
-        <img src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo.png" style="width: 150px;" alt="logo">
-        <img src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png" style="width: 300px;" alt="logo">
+    <div class="container text-center" style="margin-bottom: 20px;">
+        <img src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo.png" style="max-width: 150px;" alt="logo">
+        <img src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png" style="max-width: 300px;" alt="logo">
     </div>
 
-    <div class="img">
-    </div>
+    <div class="img"></div>
     <div class="Align">
         <h4>Bienvenue...</h4>
     </div>
 
-        <div class="B">
-            <div class="C">
-                <h2>Etudiant</h2>
-                <a href="index.php" class="btn btn-primary btn-lg active">connexion</a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="C">
+                    <h2>Etudiant</h2>
+                    <a href="index.php" class="btn btn-primary btn-lg active">Connexion</a>
+                </div>
             </div>
-            <div class="C">
-                <h2>Professeur</h2>
-                <a href="index.php" class="btn btn-primary btn-lg active">connexion</a>
+            <div class="col-md-6 col-lg-4">
+                <div class="C">
+                    <h2>Professeur</h2>
+                    <a href="index.php" class="btn btn-primary btn-lg active">Connexion</a>
+                </div>
             </div>
         </div>
+    </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
