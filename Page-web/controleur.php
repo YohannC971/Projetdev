@@ -1,29 +1,29 @@
 <?php
-    
-    include("model.php");
-    if(!isset($_POST))
-    {
-        include("index.php");
-        return;
-    }
+session_start();
+include("model.php");
 
-    if(!isset($_POST["Login"]) || !isset($_POST["Pass"]))
-    {
-        include("index.php");
-        return;
-    }
+// Vérification des paramètres envoyés
+if (isset($_POST['Login']) && isset($_POST['Pass'])) {
+    $login = $_POST['Login'];
+    $password = $_POST['Pass'];
 
-    if (strlen($_POST["Login"])==0 || strlen($_POST["Pass"])==0) {
-        include("index.php");
-        return;
-    }
+    // Appel de la fonction de connexion
+    $result = connexion($login, $password);
 
-    if (connexion($_POST["Login"],$_POST["Pass"])==1){
-        include("accueil.html");
+    if ($result == 1) {
+        // Connexion réussie
+        header("Location: accueil.html"); // Rediriger vers la page de tableau de bord après la connexion
+        exit();
+    } else {
+        // Connexion échouée
+        $_SESSION['error'] = "Identifiant ou mot de passe incorrect";
+        header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreur
+        exit();
     }
-    else 
-    {
-        include("index.php");
-    }
-
+} else {
+    // Les paramètres n'ont pas été envoyés
+    $_SESSION['error'] = "Veuillez remplir tous les champs";
+    header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreur
+    exit();
+}
 ?>
