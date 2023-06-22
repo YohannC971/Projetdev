@@ -74,18 +74,13 @@ if (!isset($_SESSION)) {
         <div class="B">
             <div class="C">
                 <h2>Etudiant</h2>
-                <a href="index.php" class="btn btn-secondary btn-lg active">Link</a>
+                <a href="index.php" class="btn btn-primary btn-lg active">connexion</a>
             </div>
             <div class="C">
                 <h2>Professeur</h2>
-                <button type="button" class="btn btn-primary">connexion</button>
+                <a href="index.php" class="btn btn-primary btn-lg active">connexion</a>
             </div>
         </div>
-    
-
-    <div>
-    <a href="index.php" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Link</a>
-      </div>
 
 </body>
 
