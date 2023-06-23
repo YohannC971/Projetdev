@@ -24,7 +24,11 @@ if ($conn->connect_error) {
 }
 
 // Préparer la requête SQL avec un paramètre pour éviter les injections SQL
-$sql = "SELECT nom_candidat, prenom_candidat, email_candidat FROM candidat WHERE login_candidat = ?";
+$sql = "SELECT c.nom_candidat, c.prenom_candidat, f.email_formulaire 
+        FROM utilisateur AS u
+        INNER JOIN candidat AS c ON u.id_utilisateur = c.id_utilisateur
+        INNER JOIN formulaire AS f ON c.idcandidat_candidat = f.candidat_idcandidat_candidat
+        WHERE u.login_utilisateur = ?";
 
 // Préparer la déclaration
 $stmt = $conn->prepare($sql);
