@@ -7,16 +7,12 @@ function connexion($n, $p) {
     $c = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
 
     // Utilisation d'une requête préparée avec des paramètres liés
-    $stmt = $c->prepare("SELECT login_utilisateur, passe_utilisateur FROM utilisateur WHERE `login_utilisateur` = ? AND `passe_utilisateur`= ?");
-    $stmt->bind_param("ss", $n, $p); // Assurez-vous que les types de données des paramètres sont corrects
-    $stmt->execute();
-    $r = $stmt->get_result();
+    $r = $c ->query("SELECT * FROM utilisateur WHERE `login_utilisateur`='$n' and `passe_utilisateur`='$p' ");
 
     if ($r->num_rows == 1) {
-        $donnees = $r->fetch_array(MYSQLI_BOTH);
-        $_SESSION["login"] = $donnees["login_utilisateur"];
-
         setcookie("etat", "1", time() + 60 * 5);
+        $donnees = $r->fetch_array(MYSQLI_BOTH);
+        $_SESSION["role"]= $donnees["role_utilisateur"];   
         $_SESSION["etat"] = 1;
         return 1;
     } else {
@@ -24,6 +20,5 @@ function connexion($n, $p) {
         return 0;
     }
 }
-
 
 ?>

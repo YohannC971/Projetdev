@@ -21,10 +21,23 @@ $Pass = $_POST['Pass'];
 $role = 'etudiant';
 
 // Requête SQL pour insérer un nouvel utilisateur dans la base de données
-$sql = "INSERT INTO utilisateur (login_utilisateur,passe_utilisateur, role_utilisateur) VALUES ('" . $login . "','" . $Pass . "','".$role."')";
-$sql2 = "INSERT INTO candidat (login_candidat,nom_candidat, prenom_candidat, email_candidat) VALUES ('" . $login . "','" . $nom . "', '" . $prenom . "', '" . $email . "')";
+$sql = "
+    INSERT INTO utilisateur (login_utilisateur, passe_utilisateur, role_utilisateur)
+    VALUES ('" . $login . "','" . $Pass . "','".$role."');
 
-if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
+    SET @id_utilisateur = LAST_INSERT_ID();
+
+    INSERT INTO candidat (id_utilisateur, nom_candidat, prenom_candidat)
+    VALUES (@id_utilisateur, '" . $nom . "', '" . $prenom . "');
+
+    SET @id_candidat = LAST_INSERT_ID();
+
+    INSERT INTO formulaire (candidat_idcandidat_candidat, email_formulaire)
+    VALUES (@id_candidat, '" . $email . "');
+";
+
+
+if ($conn->multi_query($sql) === TRUE) {
   echo "Nouvel utilisateur créé avec succès";
 
   header('Location: inscription_reussi.html');
