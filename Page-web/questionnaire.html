@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Questionnaire</title>
+    <style>
+        #signatureCanvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h2>Questionnaire</h2>
+
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br><br>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+
+        <label for="loisir">Quand vous disposez d’un moment de loisir, comment l'occupez-vous ?</label><br>
+        <textarea id="loisir" name="loisir" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="autres-activites">Dans quelle(s) autre(s) activité(s) aimeriez-vous vous investir ?</label><br>
+        <textarea id="autres-activites" name="autres-activites" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="activites-encadrement">Avez-vous pratiqué des activités d’encadrement dans le contexte précédent ou d’autres ? Si oui, lesquelles ?</label><br>
+        <textarea id="activites-encadrement" name="activites-encadrement" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="attentes-miage">Qu’attendez-vous de la MIAGE ?</label><br>
+        <textarea id="attentes-miage" name="attentes-miage" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="pourquoi-miage">Pourquoi la MIAGE des ANTILLES ?</label><br>
+        <textarea id="pourquoi-miage" name="pourquoi-miage" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="influence-choix">L’exemple d’une personne de votre entourage a-t-il pesé sur votre choix ? Si oui dans quelle mesure ?</label><br>
+        <textarea id="influence-choix" name="influence-choix" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="metiers">Citez au moins 3 métiers que vous pourriez exercer dès l’obtention de la Licence MIAGE (Classez-les par ordre de préférence)</label><br>
+        <textarea id="metiers" name="metiers" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="aptitudes">A votre avis, quelles aptitudes personnelles faut-il développer pour exercer ces métiers ?</label><br>
+        <textarea id="aptitudes" name="aptitudes" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="apprehensions">Y aura-t-il dans ce type de professions des aspects que vous appréhendez ? Si oui, pourquoi ?</label><br>
+        <textarea id="apprehensions" name="apprehensions" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="decouvertes">Avez-vous eu l’occasion de découvrir des secteurs d’activités et des métiers cibles de la MIAGE par des visites ou des stages en entreprises ?</label><br>
+        <textarea id="decouvertes" name="decouvertes" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="secteurs">Dans quel(s) secteur(s) d’activités aimeriez-vous travailler ou ne pas travailler ?</label><br>
+        <textarea id="secteurs" name="secteurs" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="autres-questions">Vous pouvez maintenant évoquer tout sujet ou toute question qui vous tient à cœur. (Ne négligez pas ce paragraphe)</label><br>
+        <textarea id="autres-questions" name="autres-questions" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="date">Date :</label>
+	<input type="date" id="date" name="date" required><br><br>
+
+	<h3>Signature :</h3>
+        <canvas id="signatureCanvas" width="400" height="200"></canvas><br><br>
+
+        <input type="button" value="Effacer" onclick="clearSignature()">
+        <input type="hidden" id="signatureData" name="signatureData">
+
+        <br><br>
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <script>
+        var canvas = document.getElementById("signatureCanvas");
+        var ctx = canvas.getContext("2d");
+        var isDrawing = false;
+        var signatureDataInput = document.getElementById("signatureData");
+
+        canvas.addEventListener("mousedown", startDrawing);
+        canvas.addEventListener("mousemove", draw);
+        canvas.addEventListener("mouseup", stopDrawing);
+        canvas.addEventListener("mouseout", stopDrawing);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            ctx.lineTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
+            ctx.stroke();
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+            saveSignature();
+        }
+
+        function saveSignature() {
+            var dataURL = canvas.toDataURL();
+            signatureDataInput.value = dataURL;
+        }
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            signatureDataInput.value = "";
+        }
+    </script>
+</body>
+</html>
