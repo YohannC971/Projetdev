@@ -1,0 +1,4 @@
+<?php
+$anneeActuelle = date("Y");
+echo $anneeActuelle;
+?>
