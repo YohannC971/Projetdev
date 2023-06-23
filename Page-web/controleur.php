@@ -18,6 +18,9 @@ if (strlen($_POST["Login"])==0 || strlen($_POST["Pass"])==0) {
     include("index.php");
     return;
 }
+//Enregistrement des login et mdp des utilisateur connecter.
+$_SESSION["login"]=$_POST['Login'];
+$_SESSION["pass"]=$_POST['Pass'];
 
 // Vérification des paramètres envoyés
 if (isset($_POST['Login']) && isset($_POST['Pass'])) {
@@ -26,15 +29,16 @@ if (isset($_POST['Login']) && isset($_POST['Pass'])) {
 
     // Appel de la fonction de connexion
     $result = connexion($login, $password);
-
-    if ($result == 1) {
+    $role = $_SESSION["role"];
+    //Si l'utilisateur est un etudiant connexion a acceuil.html sinon connexion à acceuilresp.html
+    if ($result == 1 && $role=="etudiant") { 
         // Connexion réussie
         header("Location: accueil.html"); // Rediriger vers la page de tableau de bord après la connexion
         exit();
     } else {
         // Connexion échouée
         $_SESSION['error'] = "Identifiant ou mot de passe incorrect";
-        header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreur
+        header("Location: professeur/affichercandi.php"); // Rediriger vers la page de connexion avec un message d'erreur
         exit();
     }
 }
