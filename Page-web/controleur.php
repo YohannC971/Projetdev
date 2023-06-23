@@ -2,6 +2,23 @@
 session_start();
 include("model.php");
 
+if(!isset($_POST))
+{
+    include("index.php");
+    return;
+}
+
+if(!isset($_POST["Login"]) || !isset($_POST["Pass"]))
+{
+    include("index.php");
+    return;
+}
+
+if (strlen($_POST["Login"])==0 || strlen($_POST["Pass"])==0) {
+    include("index.php");
+    return;
+}
+
 // Vérification des paramètres envoyés
 if (isset($_POST['Login']) && isset($_POST['Pass'])) {
     $login = $_POST['Login'];
@@ -20,10 +37,5 @@ if (isset($_POST['Login']) && isset($_POST['Pass'])) {
         header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreur
         exit();
     }
-} else {
-    // Les paramètres n'ont pas été envoyés
-    $_SESSION['error'] = "Veuillez remplir tous les champs";
-    header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreur
-    exit();
 }
 ?>
