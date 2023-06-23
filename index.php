@@ -30,7 +30,7 @@
                     </div>
     
                     <form action="controleur.php" method="POST">
-                      <p><b>Connecter-vous</b></p>
+                      <p>Connecter-vous</p>
     
                       <div class="form-outline mb-4">
                         <input type="text" id="form2Example11" class="form-control"
