@@ -13,10 +13,15 @@
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
-    
 
 </head>
 <body>
+  <script>
+    // Redirection vers la version mobile
+    if (window.innerWidth <= 768) {
+      window.location.href = "candidaterl3-mobile.html";
+    }
+  </script>
     <!--Main Navigation-->
     <!--Fonctions-->
 <header>
@@ -76,7 +81,7 @@
      >
    <a
       href="../contacts.html"
-      class="list-group-item list-group-item-action py-2 ripple "
+      class="list-group-item list-group-item-action py-2 ripple"
       ><i class="fas fa-address-book fa-fw me-3"></i
      ><span>Contacts</span></a
      >
@@ -161,40 +166,68 @@
       <div class="p-2" style="background-color: rgb(79, 79, 255);"><h1>Candidature à la L3 MIAGE</h1></div>
       <div class="d-flex" style="border: 2px solid black;">
         <div class="d-flex align-items-start flex-column mb-3" >
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.html">Information du candidat</a> </h5></div>
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.html">Responsable Legales</a> </h5></div>
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="bacform.html">Baccalauréat</a> </h5></div>
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="1ercycle.html">Ier CYCLE</a> </h5></div>
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="diplome.html">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="viepro.html">Vie professionnelle</a> </h5></div>         </div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.html">Information du candidat</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.html">Responsable Legales</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="bacform.html">Baccalauréat</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="1ercycle.html">Ier CYCLE</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="diplome.html">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="viepro.html">Vie professionnelle</a> </h5></div>
+        </div>
         <form action=" generatepdf.php" method="post" target="_blank" enctype="multipart/form-data">
-          <div class="d-flex flex-column mb-3"
-          >
+          <div class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
-            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Baccalauréat</h3></div>
-            <div class="d-flex justify-content-evenly" style="align-items: center;">     
-                <div class="p-2">
-                    <label>Série :</label>
-                    <input type="text" id="serie" name="serie" placeholder="Série">
-                </div>
-                
-                <div class="p-2">
-                    <label>Mention :</label>
-                    <input type="text" id="mention" name="mention" placeholder="Mention">
-                </div>  
-            </div>
-            <div class="d-flex justify-content-evenly" style="align-items: center;">
-                <div class="p-2">
-                    <label>Année :</label>
-                    <input type="text" id="annee" name="annee" placeholder="Année">
-                </div>
-                
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Information du candidat</h3></div>
+            <div class="d-flex justify-content-evenly">
+              <div class="p-2">
+                <label for="nom">Nom du parent 1 :</label>
+                <input type="text" id="nomparent1" name="nomparent1" maxlength="50" />
+              </div>
 
-                <div class="p-2">
-                    <label>Lieu :</label>
-                    <input type="text" id="lieu" name="lieu" placeholder="Lieu">
-                </div>
-            </div> 
+              <div class="p-2">
+                <label for="prenom">Prénom du parent 1 :</label>
+                <input type="text" id="prenomparent1" name="prenomparent1" maxlength="50" />
+              </div>
+
+              <div class="p-2">
+                <label for="nom_jeune_fille">Numero du parent 1 :</label>
+                <input type="text" id="numeroparent1" name="numeroparent1" maxlength="50" />
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------->
+            <div class="d-flex justify-content-evenly">
+              <div class="p-2">
+                <label for="nom">Nom du parent 2 :</label>
+                <input type="text" id="nomparent2" name="nomparent2" maxlength="50" />
+              </div>
+
+              <div class="p-2">
+                <label for="prenom">Prénom du parent 2 :</label>
+                <input type="text" id="prenomparent2" name="prenomparent2" maxlength="50" />
+              </div>
+
+              <div class="p-2">
+                <label for="nom_jeune_fille">Numero du parent 2 :</label>
+                <input type="text" id="numeroparent2" name="numeroparent2" maxlength="50" />
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------->
+            <div class="d-flex justify-content-evenly">
+              <div class="p-2">
+                <label for="nom">Nom du responsable légal :</label>
+                <input type="text" id="nomresponsablelegal" name="nomresponsablelegal" maxlength="50" />
+              </div>
+
+              <div class="p-2">
+                <label for="prenom">Prénom du responable légal :</label>
+                <input type="text" id="prenomresponsablelegal" name="prenomresponsablelegal" maxlength="50" />
+              </div>
+
+              <div class="p-2">
+                <label for="nom_jeune_fille">Numero du responsable légal :</label>
+                <input type="text" id="numerorespnsablelegal" name="numerorespnsablelegal" maxlength="50" />
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------->
             </div>
             </b>
           </div>
