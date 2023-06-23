@@ -51,9 +51,9 @@
                       </div>
 
                       <div class="form-outline mb-4">
-                        <label class="form-label" for="form2Example22">Mot de passe</label>
+                        <label class="form-label" for="form2Example23">Mot de passe</label>
                         <input type="password" id="form2Example22" class="form-control" Name="Pass" placeholder="Mot de passe"
-                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required/>
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" required/>
                         <p style="font-size: 12px; color: red;">Votre mot de passe doit contenir au moins huit caractères, dont au moins une lettre majuscule, une lettre minuscule et un chiffre</p>
                       </div>
 
@@ -82,7 +82,7 @@
     <!-- Code vérifie la force du mot de passe -->
     <script src="ForceMotDePasse.js"></script>
     <script>
-      var passwordInput = document.getElementById("form2Example22");
+      var passwordInput = document.getElementById("form2Example23");
       var confirmPasswordInput = document.getElementById("form2Example33");
     
       function validatePassword() {

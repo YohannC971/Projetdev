@@ -1,3 +1,55 @@
+<?php
+// Démarrer la session
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['login'])) {
+    // Rediriger vers la page de connexion ou afficher un message d'erreur
+    header('Location: index.php');
+    exit();
+}
+
+
+// Récupérer le login de l'utilisateur depuis la session
+$login = $_SESSION['login'];
+
+// Effectuer la connexion à la base de données (à adapter selon votre configuration)
+include("config.php");
+
+$conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
+
+// Vérifier si la connexion a échoué
+if ($conn->connect_error) {
+    die("Erreur de connexion à la base de données : " . $conn->connect_error);
+}
+
+// Préparer la requête SQL avec un paramètre pour éviter les injections SQL
+$sql = "SELECT nom_candidat, prenom_candidat, email_candidat FROM candidat WHERE login_candidat = ?";
+
+// Préparer la déclaration
+$stmt = $conn->prepare($sql);
+
+// Vérifier si la préparation a échoué
+if (!$stmt) {
+    die("Erreur de préparation de la requête : " . $conn->error);
+}
+
+// Binder le paramètre à la valeur du login
+$stmt->bind_param("s", $login);
+
+// Exécuter la requête
+$stmt->execute();
+
+// Récupérer les résultats de la requête
+$stmt->bind_result($nomCandidat, $prenomCandidat, $emailCandidat);
+
+// Récupérer le premier et unique résultat
+$stmt->fetch();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,6 +65,7 @@
     <link rel="stylesheet" href="css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="./logo/testfavicon.png"/>
 </head>
 <body>
     <!--Main Navigation-->
@@ -27,11 +80,10 @@
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
            href="accueil.html"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action py-2 ripple "
            aria-current="true"
            >
-          <i class="fas fa-home fa-fw me-3"></i
-            ><span>Accueil</span>
+           <i class="fas fa-home fa-fw me-3"></i><span>Accueil</span>
         </a>
         <a
            href="fillieremiage.html"
@@ -64,13 +116,12 @@
         <a
            href="apprentissage.html"
            class="list-group-item list-group-item-action py-2 ripple"
-           ><i class="fas fa-book-open fa-fw me-3"></i><span>Apprentissage</span></a
+           ><i class="fas fa-book-open fa-fw me-3 "></i><span>Apprentissage</span></a
           >
         <a
            href="Partenaires.html"
-           class="list-group-item list-group-item-action py-2 ripple active"
-           ><i class="fas fa-handshake fa-fw me-3"></i
-          ><span>Partenaires</span></a
+           class="list-group-item list-group-item-action py-2 ripple"
+           ><i class="fas fa-handshake fa-fw me-3 "></i><span>Partenaires</span></a
           >
         <a
            href="contacts.html"
@@ -81,7 +132,7 @@
         
         <a
            href="mon-profil.php"
-           class="list-group-item list-group-item-action py-2 ripple"
+           class="list-group-item list-group-item-action py-2 ripple active"
            ><i class="fas fa-user fa-fw me-3"></i><span>Mon profil</span></a
           >
           <a
@@ -115,7 +166,7 @@
       </button>
 
       <!-- Brand -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" >
        
         <img
              src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo-300x245.png"
@@ -138,10 +189,11 @@
             alt=""
             loading="lazy"
         >
-      </a>
     </div>
     <!-- Container wrapper -->
   </nav>
+  
+
   <!-- Navbar -->
 </header>
 <!--Main Navigation-->
@@ -149,48 +201,31 @@
 <!--Main layout-->
 <main style="margin-top: 58px">
   <div class="container pt-4">
+    <article id="post-10" class="post-10 page type-page status-publish hentry">
+      <header class="entry-header">
+        <div style="margin-top: 20px;"></div>
+        <h1 class="entry-title">Mon profil</h1>
+      </header>
+  
+      <div class="entry-content">
+      
+    <form>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
 
-    <article id="post-431" class="post-431 page type-page status-publish hentry">
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" value="<?php echo $prenomCandidat; ?>" readonly>
 
-        <header class="entry-header">
-          <div style="margin-top: 20px;"></div>
-            <h1 class="entry-title" style="text-align: center;">Partenaires</h1>
-        </header>
-    
-        <div class="entry-content">
-            
-            <p>La MIAGE aux Antilles, c&rsquo;est également de nombreuses entreprises du territoire qui</p>
-            <ul>
-                <li>Soutiennent le projet</li>
-                <li>S&rsquo;engagent à recruter des apprentis</li>
-                <li>Interviennent dans les enseignements</li>
-                <li>Conseillent dans le contenu des enseignements</li>
-                <li>Participent à l&rsquo;élaboration des maquettes de formation</li>
-            </ul>
-            <p>&nbsp;</p>
-            <p><img loading="lazy" class="alignleft wp-image-438" src="http://miage-antilles.fr/wp-content/uploads/2016/01/gbh.png" alt="gbh" width="169" height="54" />     <img loading="lazy" class="alignnone wp-image-440 size-full" src="http://miage-antilles.fr/wp-content/uploads/2016/01/orange.png" alt="orange" width="72" height="72" />     <img loading="lazy" class="alignnone wp-image-435" src="http://miage-antilles.fr/wp-content/uploads/2016/01/c2i.png" alt="c2i" width="124" height="73" />     <img loading="lazy" class="alignnone wp-image-436" src="http://miage-antilles.fr/wp-content/uploads/2016/01/cmacgm-300x200.jpg" alt="cmacgm" width="125" height="83" srcset="http://miage-antilles.fr/wp-content/uploads/2016/01/cmacgm-300x200.jpg 300w, http://miage-antilles.fr/wp-content/uploads/2016/01/cmacgm.jpg 320w" sizes="(max-width: 125px) 100vw, 125px" /></p>
-            <p>&nbsp;</p>
-            <p style="text-align: left;"><img loading="lazy" class="alignleft wp-image-443" src="http://miage-antilles.fr/wp-content/uploads/2016/01/114156-300x233.jpg" alt="114156" width="147" height="114" srcset="http://miage-antilles.fr/wp-content/uploads/2016/01/114156-300x233.jpg 300w, http://miage-antilles.fr/wp-content/uploads/2016/01/114156.jpg 450w" sizes="(max-width: 147px) 100vw, 147px" />     <img loading="lazy" class="alignnone wp-image-444" src="http://miage-antilles.fr/wp-content/uploads/2016/01/59a67c2de9545ea538b72805374aff96-251x300.jpg" alt="59a67c2de9545ea538b72805374aff96" width="95" height="114" srcset="http://miage-antilles.fr/wp-content/uploads/2016/01/59a67c2de9545ea538b72805374aff96-251x300.jpg 251w, http://miage-antilles.fr/wp-content/uploads/2016/01/59a67c2de9545ea538b72805374aff96.jpg 402w" sizes="(max-width: 95px) 100vw, 95px" />     <img loading="lazy" class="alignnone wp-image-241" src="http://miage-antilles.fr/wp-content/uploads/2014/09/gardel.png" alt="gardel" width="136" height="102" /><img loading="lazy" class="alignnone wp-image-441" src="http://miage-antilles.fr/wp-content/uploads/2016/01/regionGuadeloupe.png" alt="regionGuadeloupe" width="97" height="96" srcset="http://miage-antilles.fr/wp-content/uploads/2016/01/regionGuadeloupe.png 184w, http://miage-antilles.fr/wp-content/uploads/2016/01/regionGuadeloupe-150x150.png 150w" sizes="(max-width: 97px) 100vw, 97px" /></p>
-            <p style="text-align: left;">     <img loading="lazy" class="alignnone wp-image-442 size-full" src="http://miage-antilles.fr/wp-content/uploads/2016/01/atos_logo.jpg" alt="atos_logo" width="165" height="54" />     <img loading="lazy" class="alignnone wp-image-437 size-full" src="http://miage-antilles.fr/wp-content/uploads/2016/01/exelcia.jpg" alt="exelcia" width="116" height="42" /></p>
-        </div><!-- .entry-content -->
-        <footer class="entry-meta">
-        </footer><!-- .entry-meta -->
-    </article><!-- #post --
-    
-    
-  </div>
-</main>
-<!-Main layout-->
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" value="<?php echo $emailCandidat; ?>" readonly>
+    </form>
 </body>
 </html>
 
-
-
-
-
-
-
-
-
+<?php
+// Fermer la déclaration, la connexion à la base de données et la session
+$stmt->close();
+$conn->close();
+?>
 
 

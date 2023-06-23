@@ -1,17 +1,12 @@
-<?php
-if (!isset($_SESSION)) {
-    session_start();
-}
-?>
-
 <!doctype html>
 <html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulaire de connexion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" href="test.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Qui êtes-vous ?</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="./favicon/faviconmiage.png" />
     <style>
         body {
             background-color: #fbfbfb;
@@ -30,7 +25,13 @@ if (!isset($_SESSION)) {
             z-index: -1;
         }
 
-        .B {
+        .Align {
+            text-align: center;
+            color: white;
+            /*font-family: Arial, Helvetica, sans-serif;*/
+        }
+
+        B {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,6 +40,7 @@ if (!isset($_SESSION)) {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            border-radius: 30px; 
         }
 
         .C {
@@ -51,37 +53,60 @@ if (!isset($_SESSION)) {
             justify-content: center;
             align-items: center;
             flex: 1;
+            border-radius: 30px; 
         }
 
-        .Align {
-            text-align: center;
+        /* Style pour décaler le contenu */
+        .offset-content {
+            margin-top: 100px; /* Ajustez cette valeur selon vos besoins */
+            padding-top: 35px; /* Ajout du padding pour éviter le chevauchement */
+            position: relative;
+            z-index: 1; /* Positionne le contenu au-dessus de l'image de fond */
         }
     </style>
 </head>
 
 <body>
-    <div class="text-center" style="margin-bottom: 20px;">
-        <img src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo.png" style="width: 150px;" alt="logo">
-        <img src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png" style="width: 300px;" alt="logo">
-    </div>
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <!-- Container wrapper -->
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="http://miage-antilles.fr/wp-content/uploads/2015/04/logo-300x245.png" style="margin-right: 20px;" height="80" alt="" loading="lazy" />
+                <img src="http://miage-antilles.fr/wp-content/uploads/2014/09/UA_logoCMJN_Corporate.jpg" style="margin-right: 20px;" height="80" alt="" loading="lazy">
+                <img src="http://miage-antilles.fr/wp-content/uploads/2021/11/GRETA-CFA-Gpe-Ptt.png" style="margin-right: 20px;" height="80" alt="" loading="lazy">
+            </a>
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
 
-    <div class="img">
-    </div>
-    <div class="Align">
-        <h4>Qui êtes-vous ?</h4>
-    </div>
-
-        <div class="B">
-            <div class="C">
-                <h2>Etudiant</h2>
-                <a href="index.php" class="btn btn-primary btn-lg active">connexion</a>
-            </div>
-            <div class="C">
-                <h2>Professeur</h2>
-                <a href="index.php" class="btn btn-primary btn-lg active">connexion</a>
-            </div>
+    <div class="img"></div>
+    <div class="offset-content">
+        <div class="Align">
+            <h4>Nous vous souhaitons la bienvenue !</h4>
         </div>
 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="C">
+                        <h2>Etudiant</h2>
+                        <a href="index.php" class="btn btn-primary btn-lg active">Connexion</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="C">
+                        <h2>Professeur</h2>
+                        <a href="index.php" class="btn btn-primary btn-lg active">Connexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

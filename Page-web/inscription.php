@@ -18,10 +18,11 @@ $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $email = $_POST['email'];
 $Pass = $_POST['Pass'];
+$role = 'etudiant';
 
 // Requête SQL pour insérer un nouvel utilisateur dans la base de données
-$sql = "INSERT INTO utilisateur (login,nom, prenom, email, Pass) VALUES ('" . $login . "','" . $Pass . "')";
-$sql2 = "INSERT INTO candidats (login,nom, prenom, email) VALUES ('" . $login . "','" . $nom . "', '" . $prenom . "', '" . $email . "')";
+$sql = "INSERT INTO utilisateur (login_utilisateur,passe_utilisateur, role_utilisateur) VALUES ('" . $login . "','" . $Pass . "','".$role."')";
+$sql2 = "INSERT INTO candidat (login_candidat,nom_candidat, prenom_candidat, email_candidat) VALUES ('" . $login . "','" . $nom . "', '" . $prenom . "', '" . $email . "')";
 
 if ($conn->query($sql) === TRUE && $conn->query($sql2) === TRUE) {
   echo "Nouvel utilisateur créé avec succès";
