@@ -224,8 +224,13 @@
             </div>
             </b>
           </div>
+
           <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
             id="" onclick="">Generer PDF</button>
+
+        <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+        id="suivantButton" onclick="suivant()">Precedent</button>
+
         </form>
         </div>
       </div>
@@ -234,6 +239,13 @@
     
   </div>
 </main>
+
+<script>
+    function suivant() {
+      window.location.href = "viepro.html"; // Remplacez l'URL par celle de la page suivante
+    }
+    </script>
+
 <!--Main layout-->
     <!-- Custom scripts -->
 <script src="js/fonction.js"></script>
