@@ -97,7 +97,7 @@ $stmt->fetch();
             ><span>Filière Miage</span>
         </a>
         <a
-           href="#"
+           href="licence.html"
            class="list-group-item list-group-item-action py-2 ripple"
            ><i class="fas fa-graduation-cap fa-fw me-3"></i><span>Licence</span></a
           >
