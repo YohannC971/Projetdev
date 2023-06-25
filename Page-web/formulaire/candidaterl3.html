@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="verrouille_formulaire.css"/>
 
 </head>
 <body>
@@ -174,7 +175,7 @@
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="viepro.html">Vie professionnelle</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div> 
         </div>
-        <form action="controleur-candidater.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action="controleur-information-candidat.php" method="post" target="_blank" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Information du candidat</h3></div>
@@ -261,7 +262,6 @@
   function suivant() {
     window.location.href = "responsable_legal.html"; // Remplacez l'URL par celle de la page suivante
   }
-  </script>
-  
+  </script>  
 </body>
 </html>
