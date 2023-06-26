@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+include('config.php');
 
 // Connexion à la base de données
 $conn = mysqli_connect($HOST, $LOGINBDD, $PASSBDD, $BDD);
@@ -38,15 +38,15 @@ if (!$conn) {
   
       // Création du dossier du candidat sur le serveur local
       $idCandidat = $conn->insert_id;
-      $dossierCandidat = "EnvoiDossier/Dossier - " . $idCandidat . "-" . $nom . "-" . $prenom;
+      $dossierCandidat = "EnvoiDossier/Dossier-" . $idCandidat . "-" . $nom . "-" . $prenom;
   
       if (!is_dir($dossierCandidat)) {
           if (mkdir($dossierCandidat, 0777, true)) {
               echo "Dossier du candidat créé avec succès";
   
               // Mise à jour du lien du dossier dans la table "candidat"
-              $lienDossier = $dossierCandidat;
-              $updateQuery = "UPDATE Candidat SET dossiervalidation_candidat = '$lienDossier' WHERE idcandidat_candidat = $idCandidat";
+              $updateQuery = "UPDATE candidat SET dossiervalidation_candidat = '$dossierCandidat' WHERE idcandidat_candidat = $idCandidat";
+
   
               if ($conn->query($updateQuery) === TRUE) {
                   echo "Lien du dossier mis à jour dans la table 'Candidat'";
