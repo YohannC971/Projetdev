@@ -300,7 +300,7 @@ $stmt->fetch();
 
     <script>
         function suivant() {
-        window.location.href = "questionnaire.html"; // Remplacez l'URL par celle de la page suivante
+        window.location.href = "recap.html"; // Remplacez l'URL par celle de la page suivante
         }
 
         //zone de dessin signature
