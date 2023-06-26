@@ -14,7 +14,7 @@ if (!isset($_SESSION['login'])) {
 $login = $_SESSION['login'];
 
 // Effectuer la connexion à la base de données (à adapter selon votre configuration)
-include("config.php");
+include("../config.php");
 
 $conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
 
@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 
 // Préparer la requête SQL avec un paramètre pour éviter les injections SQL
-$sql = "SELECT c.nom_candidat, c.prenom_candidat,
+$sql = "SELECT c.nom_candidat, c.prenom_candidat
         FROM utilisateur AS u
         INNER JOIN candidat AS c ON u.id_utilisateur = c.id_utilisateur
         INNER JOIN formulaire AS f ON c.idcandidat_candidat = f.candidat_idcandidat_candidat
@@ -45,7 +45,7 @@ $stmt->bind_param("s", $login);
 $stmt->execute();
 
 // Récupérer les résultats de la requête
-$stmt->bind_result($nomCandidat, $prenomCandidat, $emailCandidat);
+$stmt->bind_result($nomCandidat, $prenomCandidat);
 
 // Récupérer le premier et unique résultat
 $stmt->fetch();
@@ -244,7 +244,7 @@ $stmt->fetch();
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Questionnaire</h3></div>
               
     <form>
-        <label for="prenom">Nom :</label>
+        <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
 
         <label for="prenom">Prénom :</label>
