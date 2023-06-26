@@ -1,13 +1,11 @@
--- Suppression des tables existantes
-DROP TABLE IF EXISTS `Utilisateur`;
-DROP TABLE IF EXISTS `S'inscrit`;
+-- Suppression de la table `Sinscrit` si elle existe
+DROP TABLE IF EXISTS `Sinscrit`;
 DROP TABLE IF EXISTS `Accede`;
 DROP TABLE IF EXISTS `Formulaire`;
 DROP TABLE IF EXISTS `Candidat`;
 DROP TABLE IF EXISTS `Responsables`;
 DROP TABLE IF EXISTS `Formation`;
-
-
+DROP TABLE IF EXISTS `Utilisateur`;
 
 -- Création de la table `Utilisateur`
 CREATE TABLE `Utilisateur` (
@@ -17,6 +15,19 @@ CREATE TABLE `Utilisateur` (
   `role_utilisateur` VARCHAR(255),
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB;
+
+-- Création de la table `Formation`
+CREATE TABLE `Formation` (
+  `idformation_formation` INT AUTO_INCREMENT NOT NULL,
+  `intitule_formation` VARCHAR(255) UNIQUE,
+  `annee_formation` INT,
+  `nbplaces_formation` INT,
+  PRIMARY KEY (`idformation_formation`)
+) ENGINE=InnoDB;
+
+-- Insertion de données dans la table `Formation`
+INSERT INTO `Formation` (`intitule_formation`)
+VALUES ('L3'), ('M1');
 
 -- Création de la table `Candidat`
 CREATE TABLE `Candidat` (
@@ -33,11 +44,13 @@ CREATE TABLE `Candidat` (
   `justificatifpro_candidat` VARCHAR(255),
   `dossiervalidation_candidat` VARCHAR(255),
   `Age_candidat` INT,
-  `Etat_admission` BOOL,
-  `Etat_document_candidat`BOOL,
+  `Etat_admission` TINYINT(1),
+  `Etat_document_candidat` TINYINT(1),
   `formulaire_idformulaire_formulaire` INT,
+  `intitule_formation` VARCHAR(255),
   PRIMARY KEY (`idcandidat_candidat`),
-  FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`)
+  FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`),
+  FOREIGN KEY (`intitule_formation`) REFERENCES `Formation` (`intitule_formation`)
 ) ENGINE=InnoDB;
 
 -- Création de la table `Responsables`
@@ -47,17 +60,8 @@ CREATE TABLE `Responsables` (
   `nomres_responsables` VARCHAR(50),
   `prenomres_responsables` VARCHAR(50),
   `adressemail_responsables` VARCHAR(255),
-   PRIMARY KEY (`idres_responsables`),
+  PRIMARY KEY (`idres_responsables`),
   FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB;
-
--- Création de la table `Formation`
-CREATE TABLE `Formation` (
-  `idformation_formation` INT AUTO_INCREMENT NOT NULL,
-  `intitule_formation` VARCHAR(255),
-  `annee_formation` INT,
-  `nbplaces_formation` INT,
-  PRIMARY KEY (`idformation_formation`)
 ) ENGINE=InnoDB;
 
 -- Création de la table `Formulaire`
@@ -69,9 +73,9 @@ CREATE TABLE `Formulaire` (
   `anneebac_formulaire` YEAR,
   `intituleannee1_formulaire` VARCHAR(255),
   `intituleannee2_formulaire` VARCHAR(255),
-  `autreformation_formulaire` BOOL,
-  `stage_formulaire` BOOL,
-  `contrat_formulaire` BOOL,
+  `autreformation_formulaire` TINYINT(1),
+  `stage_formulaire` TINYINT(1),
+  `contrat_formulaire` TINYINT(1),
   `AdressePrincipal_formulaire` VARCHAR(100),
   `candidat_idcandidat_candidat` INT,
   `idformation_formation` INT,
@@ -84,11 +88,15 @@ CREATE TABLE `Formulaire` (
   `nom_responsable_legale` VARCHAR(255),
   `prenom_responsable_legale` VARCHAR(255),
   `numero_responsable_legale` INT,
+  `questionnaire` VARCHAR(255),
+  `ville` VARCHAR(255),
+  `codepostal` INT,
+  `telephone` INT,
+  `mobile` INT,
   PRIMARY KEY (`idformulaire_formulaire`),
   FOREIGN KEY (`candidat_idcandidat_candidat`) REFERENCES `Candidat` (`idcandidat_candidat`),
   FOREIGN KEY (`idformation_formation`) REFERENCES `Formation` (`idformation_formation`)
 ) ENGINE=InnoDB;
-
 
 -- Création de la table `Accede`
 CREATE TABLE `Accede` (
@@ -99,8 +107,8 @@ CREATE TABLE `Accede` (
   FOREIGN KEY (`idres_responsables`) REFERENCES `Responsables` (`idres_responsables`)
 ) ENGINE=InnoDB;
 
--- Création de la table `S'inscrit`
-CREATE TABLE `S'inscrit` (
+-- Création de la table `Sinscrit`
+CREATE TABLE `Sinscrit` (
   `idcandidat_candidat` INT AUTO_INCREMENT NOT NULL,
   `id_utilisateur` BIGINT NOT NULL,
   `idres_responsables` INT NOT NULL,
@@ -109,8 +117,3 @@ CREATE TABLE `S'inscrit` (
   FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`),
   FOREIGN KEY (`idres_responsables`) REFERENCES `Responsables` (`idres_responsables`)
 ) ENGINE=InnoDB;
-
--- Ajout des contraintes de clé étrangère manquantes
-ALTER TABLE `Candidat` ADD CONSTRAINT `FK_candidat_formulaire_idformulaire_formulaire` FOREIGN KEY (`formulaire_idformulaire_formulaire`) REFERENCES `Formulaire` (`idformulaire_formulaire`);
-ALTER TABLE `Responsables` ADD CONSTRAINT `FK_responsables_utilisateur_id_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
-ALTER TABLE `S'inscrit` ADD CONSTRAINT `FK_S'inscrit_id_utilisateur_utilisateur` FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`);
