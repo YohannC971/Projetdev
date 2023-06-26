@@ -244,6 +244,7 @@ $stmt->fetch();
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Questionnaire</h3></div>
               
     <form>
+        <label for="prenom">Nom :</label>
         <input type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
 
         <label for="prenom">Prénom :</label>
