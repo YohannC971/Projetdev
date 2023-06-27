@@ -31,7 +31,7 @@ $resultatVerification = $requeteVerification->get_result()->fetch_assoc();
 if ($resultatVerification && $resultatVerification['email_formulaire'] === $email) {
     // L'e-mail correspond à celui enregistré dans la table `Formulaire`, effectuer l'insertion
     $requeteInsertion = $conn->prepare("UPDATE Formulaire SET nom_formulaire = ?, prenom_formulaire = ?, nom_jeune_fille_formulaire = ?, datenaissance_formulaire = ?, lieu_naissance_formulaire = ?, AdressePrincipal_formulaire = ?, ville_formulaire = ?, code_postal_formulaire = ?, telephone_formulaire = ?, mobile_formulaire = ? WHERE email_formulaire = ?");
-$requeteInsertion->bind_param("sssssssssss", $nom, $prenom, $nomJeuneFille, $dateNaissance, $lieuNaissance, $adresse, $ville, $codePostal, $telephone, $mobile, $email);
+    $requeteInsertion->bind_param("sssssssssss", $nom, $prenom, $nomJeuneFille, $dateNaissance, $lieuNaissance, $adresse, $ville, $codePostal, $telephone, $mobile, $email);
 
     
     if (!$requeteInsertion) {
