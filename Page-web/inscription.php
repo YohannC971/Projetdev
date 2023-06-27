@@ -36,30 +36,6 @@ if (!$conn) {
     if ($conn->multi_query($sql) === TRUE) {
       echo "Nouvel utilisateur créé avec succès";
   
-      // Création du dossier du candidat sur le serveur local
-      $idCandidat = $conn->insert_id;
-      $dossierCandidat = "EnvoiDossier/Dossier-" . $idCandidat . "-" . $nom . "-" . $prenom;
-  
-      if (!is_dir($dossierCandidat)) {
-          if (mkdir($dossierCandidat, 0777, true)) {
-              echo "Dossier du candidat créé avec succès";
-  
-              // Mise à jour du lien du dossier dans la table "candidat"
-              $updateQuery = "UPDATE candidat SET dossiervalidation_candidat = '$dossierCandidat' WHERE idcandidat_candidat = $idCandidat";
-
-  
-              if ($conn->query($updateQuery) === TRUE) {
-                  echo "Lien du dossier mis à jour dans la table 'Candidat'";
-              } else {
-                  echo "Échec de la mise à jour du lien du dossier dans la table 'Candidat': " . $conn->error;
-              }
-          } else {
-              echo "Échec de la création du dossier du candidat";
-          }
-      } else {
-          echo "Le dossier du candidat existe déjà";
-      }
-  
       header('Location: inscription_reussi.html');
   } else {
       echo "Erreur: " . $sql . "<br>" . $conn->error;
