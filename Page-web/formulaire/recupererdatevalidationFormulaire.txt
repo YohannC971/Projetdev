@@ -1,0 +1,6 @@
+ //reucperer la date de validion du formulaire
+      
+ /* dateValidation = date('Y-m-d');
+ 
+$query = "INSERT INTO table_candidatures (date_validation) VALUES ('$dateValidation')";
+$result = $db->query($query);*/
