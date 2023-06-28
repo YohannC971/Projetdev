@@ -22,6 +22,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $id_utilisateur = $row['id_utilisateur'];
 
+        // Récupérer les valeurs des champs de formulaire
         $nomparent1 = $_POST['nomparent1'];
         $prenomparent1 = $_POST['prenomparent1'];
         $numeroparent1 = $_POST['numeroparent1'];
@@ -39,17 +40,35 @@ if ($result->num_rows > 0) {
             $row_candidat_id = $result_candidat_id->fetch_assoc();
             $candidat_id = $row_candidat_id['idcandidat_candidat'];
 
-            $sql_update_formulaire_id = "UPDATE Candidat SET formulaire_id_formulaire=(SELECT id_formulaire FROM Formulaire WHERE candidat_idcandidat_candidat=$candidat_id) WHERE id_utilisateur=$id_utilisateur";
+           // Mettre à jour les informations dans la table Formulaire
+            $sql_update_formulaire_id = "UPDATE Formulaire SET 
+            nom_parent1='$nomparent1',
+            prennom_parent1='$prenomparent1',
+            numero_parent1=$numeroparent1,
+            nom_parent2='$nomparent2',
+            prennom_parent2='$prenomparent2',
+            numero_parent2=$numeroparent2,
+            nom_responsable_legale='$nomresponsablelegal',
+            prenom_responsable_legale='$prenomresponsablelegal',
+            numero_responsable_legale=$numerorespnsablelegal
+            WHERE candidat_idcandidat_candidat=$candidat_id";
+
             if ($conn->query($sql_update_formulaire_id) !== TRUE) {
                 echo "Erreur lors de la mise à jour de formulaire_id_formulaire dans la table Candidat : " . $conn->error;
                 exit;
             }
+            // Récupérer l'ID du formulaire mis à jour
+            $id_formulaire = $conn->insert_id;
 
-            $sql_update_formulaire = "UPDATE Formulaire SET nom_parent1='$nomparent1', prennom_parent1='$prenomparent1', numero_parent1=$numeroparent1, nom_parent2=$nomparent2, prennom_parent2=$prenomparent2, 
-            numero_parent2=$numeroparent2, nom_responsable_legale=$nomresponsablelegal, prenom_responsable_legale=$prenomresponsablelegal, numero_responsable_legale=$numerorespnsablelegal  WHERE candidat_idcandidat_candidat=$candidat_id";
-            if ($conn->query($sql_update_formulaire) !== TRUE) {
-                echo "Erreur lors de la mise à jour des informations dans le formulaire : " . $conn->error;
-                exit;
+// Mettre à jour la colonne formulaire_id_formulaire dans la table Candidat
+            $sql_update_candidat = "UPDATE Candidat
+            SET formulaire_idformulaire_formulaire = (SELECT idformulaire_formulaire FROM Formulaire WHERE candidat_idcandidat_candidat = $candidat_id)
+            WHERE idcandidat_candidat = $candidat_id";
+
+
+            if ($conn->query($sql_update_candidat) !== TRUE) {
+            echo "Erreur lors de la mise à jour de formulaire_idformulaire_formulaire : " . $conn->error;
+            exit;
             }
 
             header("Location: responsable_legal.html");
