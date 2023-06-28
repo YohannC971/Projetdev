@@ -95,6 +95,7 @@ CREATE TABLE `Formulaire` (
   `codepostal` INT,
   `telephone` INT,
   `mobile` INT,
+  `datevalidation` DATE,
   PRIMARY KEY (`idformulaire_formulaire`),
   FOREIGN KEY (`candidat_idcandidat_candidat`) REFERENCES `Candidat` (`idcandidat_candidat`),
   FOREIGN KEY (`idformation_formation`) REFERENCES `Formation` (`idformation_formation`)
