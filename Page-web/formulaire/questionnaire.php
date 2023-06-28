@@ -244,59 +244,60 @@ $stmt->fetch();
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Questionnaire</h3></div>
               
     <form>
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
+        <label style = "margin-left: 10px; margin-top: 20px; margin-bottom: 20px" for="nom">Nom :</label>
+        <input style = "margin-left: 10px" type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
 
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" value="<?php echo $prenomCandidat; ?>" readonly>
+        <label style = "margin-left: 10px" for="prenom">Prénom :</label>
+        <input style = "margin-left: 10px" type="text" id="prenom" name="prenom" value="<?php echo $prenomCandidat; ?>" readonly>
 
-        <label for="loisir">Quand vous disposez d’un moment de loisir, comment l'occupez-vous ?</label><br>
-        <textarea id="loisir" name="loisir" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="loisir">Quand vous disposez d’un moment de loisir, comment l'occupez-vous ?</label><br>
+        <textarea style = "margin-left: 10px" id="loisir" name="loisir" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="autres-activites">Dans quelle(s) autre(s) activité(s) aimeriez-vous vous investir ?</label><br>
-        <textarea id="autres-activites" name="autres-activites" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="autres-activites">Dans quelle(s) autre(s) activité(s) aimeriez-vous vous investir ?</label><br>
+        <textarea style = "margin-left: 10px" id="autres-activites" name="autres-activites" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="activites-encadrement">Avez-vous pratiqué des activités d’encadrement dans le contexte précédent ou d’autres ? Si oui, lesquelles ?</label><br>
-        <textarea id="activites-encadrement" name="activites-encadrement" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="activites-encadrement">Avez-vous pratiqué des activités d’encadrement dans le contexte précédent ou d’autres ? Si oui, lesquelles ?</label><br>
+        <textarea style = "margin-left: 10px" id="activites-encadrement" name="activites-encadrement" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="attentes-miage">Qu’attendez-vous de la MIAGE ?</label><br>
-        <textarea id="attentes-miage" name="attentes-miage" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="attentes-miage">Qu’attendez-vous de la MIAGE ?</label><br>
+        <textarea style = "margin-left: 10px" id="attentes-miage" name="attentes-miage" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="pourquoi-miage">Pourquoi la MIAGE des ANTILLES ?</label><br>
-        <textarea id="pourquoi-miage" name="pourquoi-miage" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="pourquoi-miage">Pourquoi la MIAGE des ANTILLES ?</label><br>
+        <textarea style = "margin-left: 10px" id="pourquoi-miage" name="pourquoi-miage" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="influence-choix">L’exemple d’une personne de votre entourage a-t-il pesé sur votre choix ? Si oui dans quelle mesure ?</label><br>
-        <textarea id="influence-choix" name="influence-choix" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="influence-choix">L’exemple d’une personne de votre entourage a-t-il pesé sur votre choix ? Si oui dans quelle mesure ?</label><br>
+        <textarea style = "margin-left: 10px" id="influence-choix" name="influence-choix" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="metiers">Citez au moins 3 métiers que vous pourriez exercer dès l’obtention de la Licence MIAGE (Classez-les par ordre de préférence)</label><br>
-        <textarea id="metiers" name="metiers" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="metiers">Citez au moins 3 métiers que vous pourriez exercer dès l’obtention de la Licence MIAGE (Classez-les par ordre de préférence)</label><br>
+        <textarea style = "margin-left: 10px" id="metiers" name="metiers" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="aptitudes">A votre avis, quelles aptitudes personnelles faut-il développer pour exercer ces métiers ?</label><br>
-        <textarea id="aptitudes" name="aptitudes" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="aptitudes">A votre avis, quelles aptitudes personnelles faut-il développer pour exercer ces métiers ?</label><br>
+        <textarea style = "margin-left: 10px" id="aptitudes" name="aptitudes" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="apprehensions">Y aura-t-il dans ce type de professions des aspects que vous appréhendez ? Si oui, pourquoi ?</label><br>
-        <textarea id="apprehensions" name="apprehensions" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="apprehensions">Y aura-t-il dans ce type de professions des aspects que vous appréhendez ? Si oui, pourquoi ?</label><br>
+        <textarea style = "margin-left: 10px" id="apprehensions" name="apprehensions" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="decouvertes">Avez-vous eu l’occasion de découvrir des secteurs d’activités et des métiers cibles de la MIAGE par des visites ou des stages en entreprises ?</label><br>
-        <textarea id="decouvertes" name="decouvertes" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="decouvertes">Avez-vous eu l’occasion de découvrir des secteurs d’activités et des métiers cibles de la MIAGE par des visites ou des stages en entreprises ?</label><br>
+        <textarea style = "margin-left: 10px" id="decouvertes" name="decouvertes" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="secteurs">Dans quel(s) secteur(s) d’activités aimeriez-vous travailler ou ne pas travailler ?</label><br>
-        <textarea id="secteurs" name="secteurs" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="secteurs">Dans quel(s) secteur(s) d’activités aimeriez-vous travailler ou ne pas travailler ?</label><br>
+        <textarea style = "margin-left: 10px" id="secteurs" name="secteurs" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="autres-questions">Vous pouvez maintenant évoquer tout sujet ou toute question qui vous tient à cœur. (Ne négligez pas ce paragraphe)</label><br>
-        <textarea id="autres-questions" name="autres-questions" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="autres-questions">Vous pouvez maintenant évoquer tout sujet ou toute question qui vous tient à cœur. (Ne négligez pas ce paragraphe)</label><br>
+        <textarea style = "margin-left: 10px" id="autres-questions" name="autres-questions" rows="4" cols="50" required></textarea><br><br>
 
-        <label for="date">Date :</label>
-	<input type="date" id="date" name="date" required><br><br>
+        <label style = "margin-left: 10px" for="date">Date :</label>
+	<input type="date" style = "margin-left: 10px" id="date" name="date" required><br><br>
 
-	<h3>Signature :</h3>
+	<h3 style = "margin-left: 10px">Signature :</h3>
         <canvas id="signatureCanvas" width="400" height="200"></canvas><br><br>
 
-        <input type="button" value="Effacer" onclick="clearSignature()">
+        <input type="button" style = "margin-left: 10px" value="Effacer" onclick="clearSignature()">
         <input type="hidden" id="signatureData" name="signatureData">
 
         <br><br>
-        <input type="submit" value="Envoyer">
+        <button class="btn btn-primary btn-sm mb-3" type="submit" style="background-color: rgb(52 , 201 , 36); margin-left: 10px;" 
+            id="" onclick="">Enregistrer</button>
     </form>
 
     <script>
