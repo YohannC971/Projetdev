@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
             seriebac_formulaire='$serie',
             mentionbac_formulaire='$mention',
             anneebac_formulaire=$annee,
-            lieubac_formulaire='$lieu',
+            lieubac_formulaire='$lieu'
             WHERE candidat_idcandidat_candidat=$candidat_id";
 
             if ($conn->query($sql_update_bacform) !== TRUE) {
