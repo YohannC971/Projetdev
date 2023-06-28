@@ -56,7 +56,6 @@ if ($result->num_rows > 0) {
             exit;
         }
 
-
     } else {
         echo "Formation non trouvée.";
         exit;
