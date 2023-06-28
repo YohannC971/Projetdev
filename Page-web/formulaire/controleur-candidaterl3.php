@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
             exit;
         }
 
-        echo "Mise à jour réussie.";
+
     } else {
         echo "Formation non trouvée.";
         exit;
