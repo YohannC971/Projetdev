@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
 
         // Mettre à jour les informations dans la table Formulaire
         $sql_update_formulaire = "UPDATE Formulaire SET datenaissance_formulaire='$date_naissance', ville='$ville', codepostal=$codePostal, telephone=$telephone, mobile=$mobile WHERE candidat_idcandidat_candidat=(SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur)";
-        if ($conn->query($sql_update_formulaire && $sql_update_candidat2) !== TRUE) {
+        if ($conn->query($sql_update_formulaire ) !== TRUE) {
             echo "Erreur lors de la mise à jour des informations dans le formulaire : " . $conn->error;
             exit;
         }
