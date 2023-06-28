@@ -70,6 +70,7 @@ CREATE TABLE `Formulaire` (
   `idformulaire_formulaire` INT AUTO_INCREMENT NOT NULL,
   `datenaissance_formulaire` DATE,
   `email_formulaire` VARCHAR(255),
+  `lieu_naissance_formulaire` VARCHAR(255),
   `seriebac_formulaire` VARCHAR(255),
   `anneebac_formulaire` YEAR,
   `intituleannee1_formulaire` VARCHAR(255),
