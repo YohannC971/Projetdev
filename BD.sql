@@ -35,6 +35,7 @@ CREATE TABLE `Candidat` (
   `id_utilisateur` BIGINT,
   `nom_candidat` VARCHAR(50),
   `prenom_candidat` VARCHAR(50),
+  `nom_jeune_fille_candidat` VARCHAR(50),
   `genre_candidat` TINYINT,
   `photo_candidat` VARCHAR(255),
   `cv_candidat` VARCHAR(255),
