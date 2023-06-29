@@ -157,10 +157,14 @@ if ($result->num_rows > 0) {
             // Fermer la connexion à la base de données
             mysqli_close($connexion);
         }
+        header("Location : responsable_legal.html");
 
         
+
         $lienDossier = creerDossier($idcandidat_candidat, $nom_candidat, $prenom_candidat);
         mettreAJourLienDossier($idcandidat_candidat, $nom_candidat, $prenom_candidat, $lienDossier);
+
+        
     }
 }
 
