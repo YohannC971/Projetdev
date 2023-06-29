@@ -238,12 +238,11 @@ $stmt->fetch();
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div>           
           </div>
 
-        <form action=" generatepdf.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action=" genererpdfquestionnaire.php" method="post" target="_blank" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Questionnaire</h3></div>
               
-    <form>
         <label style = "margin-left: 10px; margin-top: 20px; margin-bottom: 20px" for="nom">Nom :</label>
         <input style = "margin-left: 10px" type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
 
@@ -253,20 +252,20 @@ $stmt->fetch();
         <label style = "margin-left: 10px" for="loisir">Quand vous disposez d’un moment de loisir, comment l'occupez-vous ?</label><br>
         <textarea style = "margin-left: 10px" id="loisir" name="loisir" rows="4" cols="50" required></textarea><br><br>
 
-        <label style = "margin-left: 10px" for="autres-activites">Dans quelle(s) autre(s) activité(s) aimeriez-vous vous investir ?</label><br>
-        <textarea style = "margin-left: 10px" id="autres-activites" name="autres-activites" rows="4" cols="50" required></textarea><br><br>
+        <label for="autres_activites" style = "margin-left: 10px" >Dans quelle(s) autre(s) activité(s) aimeriez-vous vous investir ?</label><br>
+        <textarea style = "margin-left: 10px" id="autres_activites" name="autres_activites" rows="4" cols="50" required></textarea><br><br>
 
-        <label style = "margin-left: 10px" for="activites-encadrement">Avez-vous pratiqué des activités d’encadrement dans le contexte précédent ou d’autres ? Si oui, lesquelles ?</label><br>
-        <textarea style = "margin-left: 10px" id="activites-encadrement" name="activites-encadrement" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="activites_encadrement">Avez-vous pratiqué des activités d’encadrement dans le contexte précédent ou d’autres ? Si oui, lesquelles ?</label><br>
+        <textarea style = "margin-left: 10px" id="activites_encadrement" name="activites_encadrement" rows="4" cols="50" required></textarea><br><br>
 
-        <label style = "margin-left: 10px" for="attentes-miage">Qu’attendez-vous de la MIAGE ?</label><br>
-        <textarea style = "margin-left: 10px" id="attentes-miage" name="attentes-miage" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="attentes_miage">Qu’attendez-vous de la MIAGE ?</label><br>
+        <textarea style = "margin-left: 10px" id="attentes_miage" name="attentes_miage" rows="4" cols="50" required></textarea><br><br>
 
-        <label style = "margin-left: 10px" for="pourquoi-miage">Pourquoi la MIAGE des ANTILLES ?</label><br>
-        <textarea style = "margin-left: 10px" id="pourquoi-miage" name="pourquoi-miage" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="pourquoi_miage">Pourquoi la MIAGE des ANTILLES ?</label><br>
+        <textarea style = "margin-left: 10px" id="pourquoi_miage" name="pourquoi_miage" rows="4" cols="50" required></textarea><br><br>
 
-        <label style = "margin-left: 10px" for="influence-choix">L’exemple d’une personne de votre entourage a-t-il pesé sur votre choix ? Si oui dans quelle mesure ?</label><br>
-        <textarea style = "margin-left: 10px" id="influence-choix" name="influence-choix" rows="4" cols="50" required></textarea><br><br>
+        <label for="influence_choix" style = "margin-left: 10px">L’exemple d’une personne de votre entourage a-t-il pesé sur votre choix ? Si oui dans quelle mesure ?</label><br>
+        <textarea  id="influence_choix" name="influence_choix" style = "margin-left: 10px" rows="4" cols="50" required></textarea><br><br>
 
         <label style = "margin-left: 10px" for="metiers">Citez au moins 3 métiers que vous pourriez exercer dès l’obtention de la Licence MIAGE (Classez-les par ordre de préférence)</label><br>
         <textarea style = "margin-left: 10px" id="metiers" name="metiers" rows="4" cols="50" required></textarea><br><br>
@@ -283,8 +282,8 @@ $stmt->fetch();
         <label style = "margin-left: 10px" for="secteurs">Dans quel(s) secteur(s) d’activités aimeriez-vous travailler ou ne pas travailler ?</label><br>
         <textarea style = "margin-left: 10px" id="secteurs" name="secteurs" rows="4" cols="50" required></textarea><br><br>
 
-        <label style = "margin-left: 10px" for="autres-questions">Vous pouvez maintenant évoquer tout sujet ou toute question qui vous tient à cœur. (Ne négligez pas ce paragraphe)</label><br>
-        <textarea style = "margin-left: 10px" id="autres-questions" name="autres-questions" rows="4" cols="50" required></textarea><br><br>
+        <label style = "margin-left: 10px" for="autres_questions">Vous pouvez maintenant évoquer tout sujet ou toute question qui vous tient à cœur. (Ne négligez pas ce paragraphe)</label><br>
+        <textarea style = "margin-left: 10px" id="autres_questions" name="autres_questions" rows="4" cols="50" required></textarea><br><br>
 
         <label style = "margin-left: 10px" for="date">Date :</label>
 	<input type="date" style = "margin-left: 10px" id="date" name="date" required><br><br>
@@ -292,8 +291,8 @@ $stmt->fetch();
 	<h3 style = "margin-left: 10px">Signature :</h3>
         <canvas id="signatureCanvas" width="400" height="200"></canvas><br><br>
 
-        <input type="button" style = "margin-left: 10px" value="Effacer" onclick="clearSignature()">
-        <input type="hidden" id="signatureData" name="signatureData">
+        <input  type="button" style = "margin-left: 10px" value="Effacer" onclick="clearSignature()">
+        <input  type="hidden" id="signatureData" name="signatureData">
 
         <br><br>
         <button class="btn btn-primary btn-sm mb-3" type="submit" style="background-color: rgb(52 , 201 , 36); margin-left: 10px;" 
