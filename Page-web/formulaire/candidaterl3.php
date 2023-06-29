@@ -1,4 +1,7 @@
 <?php
+
+include("../config.php");
+
 // Vérifier si l'utilisateur est connecté
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -6,7 +9,7 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-include("../config.php");
+
 
 $conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
 if ($conn->connect_error) {
@@ -36,7 +39,7 @@ if ($result->num_rows > 0) {
     
     if ($result1->num_rows > 0) {
         // Récupérer la première ligne de résultat
-        $row = $result->fetch_assoc();
+        $row = $result1->fetch_assoc();
     
         // Accéder à la valeur de la colonne "nom_jeune_fille_candidat"
         $nom_jeune_fille = $row["nom_jeune_fille_candidat"];
@@ -55,7 +58,7 @@ if ($result->num_rows > 0) {
     
     if ($result2->num_rows > 0) {
         // Récupérer la première ligne de résultat
-        $row = $result->fetch_assoc();
+        $row = $result2->fetch_assoc();
     
         // Accéder aux valeurs des colonnes du formulaire
         $date_naissance = $row["datenaissance_formulaire"];
@@ -259,34 +262,34 @@ if ($result->num_rows > 0) {
 
               <div class="p-2">
                 <label for="nom_jeune_fille">Nom de Jeune Fille :</label>
-                <input type="text" id="nom_jeune_fille" name="nom_jeune_fille" maxlength="50" />
+                <input type="text" id="nom_jeune_fille" name="nom_jeune_fille" maxlength="50" value="<?php echo $nom_jeune_fille; ?>" oninput="checkFields()"/>
               </div>
             </div>
             <!----------------------------------------------------------------------------------------------------------->
             <div class="d-flex justify-content-evenly">
               <div class="p-2">
                 <label for="date_naissance">Né(e) le :</label>
-                <input type="date" id="date_naissance" name="date_naissance" />
+                <input type="date" id="date_naissance" name="date_naissance" value="<?php echo $date_naissance; ?>" oninput="checkFields()"/>
               </div>
 
               <div class="p-2">
                 <label for="lieu_naissance">à :</label>
-                <input type="text" id="lieu_naissance" name="lieu_naissance">
+                <input type="text" id="lieu_naissance" name="lieu_naissance" value="<?php echo $lieu_naissance; ?>" oninput="checkFields()">
               </div>
             </div><br> <br>
             <!----------------------------------------------------------------------------------------------------------->
             <div class="d-flex">
               <div class="p-2 flex-grow-1">
                 <label for="adresse">Adresse de l'étudiant :</label>
-                  <input type="text" id="adresse" name="adresse" placeholder="Adresse">
+                  <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="<?php echo $adresse; ?>" oninput="checkFields()">
               </div>
               <div class="p-2">
                   <label for="ville">Ville :</label>
-                  <input type="text" id="ville" name="ville" placeholder="Ville">
+                  <input type="text" id="ville" name="ville" placeholder="Ville" value="<?php echo $ville; ?>" oninput="checkFields()">
               </div>
               <div class="p-2">
                 <label for="codePostal">Code Postal :</label>
-                <input type="text" id="codePostal" name="codePostal" placeholder="Code Postal"><br><br>
+                <input  type="text" id="codePostal" name="codePostal" placeholder="Code Postal" value="<?php echo $codePostal; ?>" oninput="checkFields()"><br><br>
               </div>
             </div><br> <br>
 
@@ -296,24 +299,29 @@ if ($result->num_rows > 0) {
 
               <div class="p-2">
                 <label for="telephone">Téléphone :</label>
-                <input type="text" id="telephone" name="telephone" placeholder="Téléphone"><br><br>
+                <input  type="text" id="telephone" name="telephone" placeholder="Téléphone" value="<?php echo $telephone; ?>" oninput="checkFields()"><br><br>
               </div>
 
               <div class="p-2">
                 <label for="mobile">Mobile :</label>
-                <input type="text" id="mobile" name="mobile" placeholder="Mobile"><br><br>
+                <input  type="text" id="mobile" name="mobile" placeholder="Mobile" value="<?php echo $mobile; ?>" oninput="checkFields()"><br><br>
               </div>
             </div>
             </b>
           </div>         
          
-          <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
-          id="suivantButton" onclick="suivant()">Suivant</button>
+
 
           <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
           id="" onclick="">Enregistrer</button>
 
+          <form action="creation_dossier.php" enctype="multipart/form-data">
+              <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+          id="suivantButton" onclick="suivant()">Suivant</button>
+        </form>
+
       </form>
+
         </div>
       </div>
 
@@ -326,30 +334,6 @@ if ($result->num_rows > 0) {
     window.location.href = "responsable_legal.html"; // Remplacez l'URL par celle de la page suivante
   }
   </script>  
-/*
-<script>
-  function checkFields() {
-    // Récupérer les valeurs des champs
-    var dateNaissance = document.getElementById("date_naissance").value;
-    var lieuNaissance = document.getElementById("lieu_naissance").value;
-    var ville = document.getElementById("ville").value;
-    var adresse = document.getElementById("adresse").value;
-    var codePostal = document.getElementById("code_postal").value;
-    var telephone = document.getElementById("telephone").value;
-    var mobile = document.getElementById("mobile").value;
-  
-    // Vérifier si tous les champs sont remplis
-    if (dateNaissance !== "" && lieuNaissance !== "" && ville !== "" && adresse !== "" && codePostal !== "" && telephone !== "" && mobile !== "") {
-      // Changer l'attribut "readonly" des champs en lecture seule
-      document.getElementById("date_naissance").readOnly = true;
-      document.getElementById("lieu_naissance").readOnly = true;
-      document.getElementById("ville").readOnly = true;
-      document.getElementById("adresse").readOnly = true;
-      document.getElementById("code_postal").readOnly = true;
-      document.getElementById("telephone").readOnly = true;
-      document.getElementById("mobile").readOnly = true;
-    }
-  }
-  </script>*/
+
 </body>
 </html>
