@@ -30,16 +30,17 @@ if ($result->num_rows > 0) {
 
 
     //information du candidat
-    $req_candidat = "SELECT nom_jeune_fille_candidat,nom_candidat,prenom_candidat FROM Candidat WHERE id_utilisateur='$login'";
-    $rescandidat = $conn->query($req_candidat);
-    if($rescandidat->num_rows>0){
-        $row = $rescandidat->fetch_assoc();
+    //information du candidat
+    $req_nomjeunefille = "SELECT nom_candidat, prenom_candidat, nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
+    $result2 = $conn->query($req_nomjeunefille);
+    if($result2->num_rows>0){
+        $row = $result2->fetch_assoc();
+        $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
+        $nom_candidat = $row['nom_candidat']; 
+        $prenom_candidat = $row['prenom_candidat']; 
 
-        $nom_jeune_fille_candidat = $row['nom_jeune_fille_candidat']; 
-        $nom_candidat = $row['nom_candidat'];
-        $prenom_candidat = $row['prenom_candidat'];
-        
     }
+
     //
     $req_form = "SELECT lieu_naissance_formulaire, seriebac_formulaire, mentionbac_formulaire, datenaissance_formulaire, anneebac_formulaire,lieubac_formulaire, intituleannee1_formulaire, anneeobtention1_formulaire,
     lieuobtention1_formulaire, moyenneannee1_formulaire, intituleannee2_formulaire, anneeobtention2_formulaire, lieuobtention2_formulaire,moyenneannee2_formulaire,
@@ -96,9 +97,7 @@ if ($result->num_rows > 0) {
         $stagesEntreprise = $row['stagesEntreprise_formulaire'];
         $input_quelle_entreprise = $row['input_quelle_entreprise_formulaire'];
         $theme_entreprise = $row['theme_entreprise_formulaire'];
-        //questionnaire
-        $nom_candidat= $row['nom_candidat']; 
-        $prenom_candidat = $row['prenom_candidat']; 
+        
         //$genre_candidat = $row['genre_candidat'];         
     }
 
@@ -141,7 +140,7 @@ $pdf->Ln(30); // Ajoute un saut de ligne de 10 unités
 $pdf->Cell(0, 10, utf8_decode('Récapitulatif inscription'), 0, 1, 'C');
 
 $pdf->SetFont('Arial', 'I', 12); // définit la police en italique
-$pdf->Cell(0, 10, utf8_decode('Cher(e) :  ' . $nom . ' ' . $prenom), 0, 1,'C');
+//$pdf->Cell(0, 10, utf8_decode('Cher(e) :  ' . $nom . ' ' . $prenom), 0, 1,'C');
 $pdf->Cell(0, 10, utf8_decode('Nous sommes ravis de vous confirmer votre inscription via notre plateforme en ligne.'), 0, 1,'C');
 $pdf->Cell(0, 1, utf8_decode('Veuillez trouver ci-dessous un récapitulatif de votre inscription :'), 0, 1,'C');
 $pdf->Ln(10);
@@ -154,7 +153,7 @@ $pdf->Cell(0, 10, utf8_decode('Prénom : '. $prenom_candidat), 0, 1);
 $pdf->Ln(10);
 
 $pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille_candidat, 0, 1);
-$pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $date_naissance), 0, 1);
+$pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $datenaissance), 0, 1);
 $pdf->Cell(0, 10, utf8_decode('à : '. $lieu_naissance), 0, 1);
 $pdf->Cell(0, 10, 'Adresse : '. $adressePrincipal, 0, 1);
 $pdf->Cell(0, 10, 'Ville : '. $ville, 0, 1);
