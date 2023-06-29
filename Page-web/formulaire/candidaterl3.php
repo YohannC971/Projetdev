@@ -310,13 +310,18 @@ if ($result->num_rows > 0) {
             </b>
           </div>         
          
-          <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
-          id="suivantButton" onclick="suivant()">Suivant</button>
+
 
           <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
           id="" onclick="">Enregistrer</button>
 
+          <form action="creation_dossier.php" enctype="multipart/form-data">
+              <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+          id="suivantButton" onclick="suivant()">Suivant</button>
+        </form>
+
       </form>
+
         </div>
       </div>
 
