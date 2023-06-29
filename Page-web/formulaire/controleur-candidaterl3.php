@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
             exit;
         }
 
-        header("Location: responsable_legal.html");
+        header("Location: responsable_legal.php");
     } else {
         echo "Formation non trouvée.";
         exit;
@@ -157,7 +157,7 @@ if ($result->num_rows > 0) {
             // Fermer la connexion à la base de données
             mysqli_close($connexion);
         }
-        header("Location : responsable_legal.html");
+        header("Location : responsable_legal.php");
 
         
 

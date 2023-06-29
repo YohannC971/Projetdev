@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
                 echo "Erreur lors de la mise à jour de formulaire_id_formulaire dans la table Candidat : " . $conn->error;
                 exit;
             }
-            header("Location: 1ercycle.html");
+            header("Location: 1ercycle.php");
         } else {
             echo "Identifiant du candidat non trouvé.";
             exit;
