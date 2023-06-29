@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
         $autres_diplome_obtenu = $_POST['autres_diplome_obtenu'];
         $annee_autres_diplome = $_POST['annee_autres_diplome'];
         $moyenne_autres_diplome = $_POST['moyenne_autres_diplome'];
-        $lieu_autre_diplome = $_POST['moyenne_1ere_annee'];
+        $lieu_autre_diplome = $_POST['lieu_autre_diplome'];
         $etablissement_autre_diplome = $_POST['etablissement_autre_diplome'];
 
      
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
             annee_autres_diplome_formulaire='$annee_autres_diplome',
             moyenne_autres_diplome_formulaire='$moyenne_autres_diplome',
             lieu_autre_diplome_formulaire='$lieu_autre_diplome',
-            etablissement_autre_diplome_formulaire='$etablissement_autre_diplome',
+            etablissement_autre_diplome_formulaire='$etablissement_autre_diplome'
             WHERE candidat_idcandidat_candidat=$candidat_id";
 
             if ($conn->query($sql_update_1ercycle) !== TRUE) {
