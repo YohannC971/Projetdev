@@ -246,7 +246,7 @@ if ($result->num_rows > 0) {
       <div class="d-flex" style="border: 2px solid black;">
         <div class="d-flex align-items-start flex-column mb-3" >
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.php">Information du candidat</a> </h5></div>
-          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="responsable_legal.html">Responsable Legal</a> </h5></div>
+          <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="responsable_legal.php">Responsable Legal</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="bacform.html">Baccalauréat</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="1ercycle.html">Ier CYCLE</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="diplome.html">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
@@ -331,7 +331,7 @@ if ($result->num_rows > 0) {
 </main>
 <script>
   function suivant() {
-    window.location.href = "responsable_legal.html"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "responsable_legal.php"; // Remplacez l'URL par celle de la page suivante
   }
   </script>  
 
