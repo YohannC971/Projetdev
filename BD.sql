@@ -1,3 +1,6 @@
+-- Désactiver les contraintes de clé étrangère
+SET FOREIGN_KEY_CHECKS = 0;
+
 -- Suppression de la table `Sinscrit` si elle existe
 DROP TABLE IF EXISTS `Sinscrit`;
 DROP TABLE IF EXISTS `Accede`;
@@ -6,6 +9,9 @@ DROP TABLE IF EXISTS `Candidat`;
 DROP TABLE IF EXISTS `Responsables`;
 DROP TABLE IF EXISTS `Formation`;
 DROP TABLE IF EXISTS `Utilisateur`;
+
+-- Réactiver les contraintes de clé étrangère
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- Création de la table `Utilisateur`
 CREATE TABLE `Utilisateur` (
