@@ -1,59 +1,66 @@
 <?php
-// Démarrer la session
-session_start();
+
+include("../config.php");
 
 // Vérifier si l'utilisateur est connecté
+session_start();
 if (!isset($_SESSION['login'])) {
-    // Rediriger vers la page de connexion ou afficher un message d'erreur
-    header('Location: ../index.php');
-    exit();
+    header("Location: ../index.php");
+    exit;
 }
 
 
-// Récupérer le login de l'utilisateur depuis la session
-$login = $_SESSION['login'];
-
-// Effectuer la connexion à la base de données (à adapter selon votre configuration)
-include("../config.php");
 
 $conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
-
-// Vérifier si la connexion a échoué
 if ($conn->connect_error) {
     die("Erreur de connexion à la base de données : " . $conn->connect_error);
 }
 
-// Préparer la requête SQL avec un paramètre pour éviter les injections SQL
-$sql = "SELECT c.nom_candidat, c.prenom_candidat
-        FROM utilisateur AS u
-        INNER JOIN candidat AS c ON u.id_utilisateur = c.id_utilisateur
-        INNER JOIN formulaire AS f ON c.idcandidat_candidat = f.candidat_idcandidat_candidat
-        WHERE u.login_utilisateur = ?";
+// Récupérer le login de l'utilisateur en session
+$login = $_SESSION['login'];
 
-// Préparer la déclaration
-$stmt = $conn->prepare($sql);
 
-// Vérifier si la préparation a échoué
-if (!$stmt) {
-    die("Erreur de préparation de la requête : " . $conn->error);
-}
+// Requête SELECT pour récupérer l'ID de l'utilisateur
+$sql_select = "SELECT id_utilisateur FROM Utilisateur WHERE login_utilisateur='$login'";
+$result = $conn->query($sql_select);
 
-// Binder le paramètre à la valeur du login
-$stmt->bind_param("s", $login);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $id_utilisateur = $row['id_utilisateur'];
 
-// Exécuter la requête
-$stmt->execute();
+  
+    $sql_select_formulaire = "SELECT choix_candidate_a_autres_formations_formulaire, input_autres_formation_formulaire, stagesEntreprise_formulaire, input_quelle_entreprise_formulaire,
+    theme_entreprise_formulaire FROM Formulaire 
+    WHERE candidat_idcandidat_candidat=(SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur)";
 
-// Récupérer les résultats de la requête
-$stmt->bind_result($nomCandidat, $prenomCandidat);
+    $result2 = $conn->query($sql_select_formulaire);
+    
+    if ($result2 === FALSE) {
+        echo "Erreur lors de la récupération des informations du formulaire : " . $conn->error;
+        exit;
+    }
+    
+    if ($result2->num_rows > 0) {
+        // Récupérer la première ligne de résultat
+        $row = $result2->fetch_assoc();
+    
+        // Accéder aux valeurs des colonnes du formulaire
+        $choix_candidate_a_autres_formations_formulaire = $row["choix_candidate_a_autres_formations_formulaire"];
+        $input_autres_formation_formulaire = $row["input_autres_formation_formulaire"];
+        $stagesEntreprise_formulaire = $row["stagesEntreprise_formulaire"];
+        $input_quelle_entreprise_formulaire = $row["input_quelle_entreprise_formulaire"];
+        $theme_entreprise_formulaire = $row["theme_entreprise_formulaire"];
 
-// Récupérer le premier et unique résultat
-$stmt->fetch();
-
-?>
+  
+    }
+  }
+  $result->close();
+  $result2->close();
+  $conn->close();
+  ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -67,12 +74,8 @@ $stmt->fetch();
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
-    <title>Questionnaire</title>
-    <style>
-        #signatureCanvas {
-            border: 1px solid #1100ff;
-        }
-    </style>
+    
+
 </head>
 <body>
     <!--Main Navigation-->
@@ -238,115 +241,103 @@ $stmt->fetch();
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div>           
           </div>
 
-        <form action=" genererpdfquestionnaire.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action="controleur-viepro.php" method="post" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
-            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Questionnaire</h3></div>
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Vie professionnelle</h3></div>
+              <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                <div class="p-2">
+                  Avez vous candidaté à d’autres formations?             
+                    <select id="choix_candidate_a_autres_formations" name="choix_candidate_a_autres_formations" onchange="afficherChamp_autres_formations()" value="<?php echo $choix_candidate_a_autres_formations_formulaire; ?>">
+                      <option value="non">NON</option>
+                      <option value="oui">OUI</option>
+                    </select>
+                </div> 
+                <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                  <div class="p-2">
+                    <div id="champ_autres_formation" style="display: none;">
+                      <label>Lesquelles :</label>
+                      <input type="text" id="input_autres_formation" name="input_autres_formation" value="<?php echo $input_autres_formation_formulaire; ?>">
+                    </div>
+                  </div>
+                </div>
               
-        <label style = "margin-left: 10px; margin-top: 20px; margin-bottom: 20px" for="nom">Nom :</label>
-        <input style = "margin-left: 10px" type="text" id="nom" name="nom" value="<?php echo $nomCandidat; ?>" readonly>
+                <div class="p-2">
+                  Avez vous effectué des stages en entreprise?
+                  <select id="choix_stages_entreprise" name="choix_stages_entreprise" onchange="afficherChamp_stages_entreprise()" value="<?php echo $stagesEntreprise_formulaire; ?>">
+                      <option value="non">NON</option>
+                      <option value="oui">OUI</option>
+                  </select>
+                </div>
+                <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                  <div class="p-2">
+                    <div id="champ_quelle_entreprise" style="display: none;">
+                      <div class="p-2">
+                        <label na>Si oui, quelle(s) entreprise(s) : </label>
+                        <input type="text" id="input_quelle_entreprise" name="input_quelle_entreprise" value="<?php echo $input_quelle_entreprise_formulaire; ?>">
+                      </div>
+                      <div class="p-2">
+                        <label>Sur quel(s) thème(s) : </label>
+                        <input type="text" id="theme_entreprise" name="theme_entreprise" value="<?php echo $theme_entreprise_formulaire; ?>">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            </b>
+          </div>
+          <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+          id="suivantButton" onclick="suivant()">Suivant</button>
 
-        <label style = "margin-left: 10px" for="prenom">Prénom :</label>
-        <input style = "margin-left: 10px" type="text" id="prenom" name="prenom" value="<?php echo $prenomCandidat; ?>" readonly>
+          <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
+          id="" onclick="">Enregistrer</button>
+        </form>
+        </div>
+      </div>
 
-        <label style = "margin-left: 10px" for="loisir">Quand vous disposez d’un moment de loisir, comment l'occupez-vous ?</label><br>
-        <textarea style = "margin-left: 10px" id="loisir" name="loisir" rows="4" cols="50" required></textarea><br><br>
-
-        <label for="autres_activites" style = "margin-left: 10px" >Dans quelle(s) autre(s) activité(s) aimeriez-vous vous investir ?</label><br>
-        <textarea style = "margin-left: 10px" id="autres_activites" name="autres_activites" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="activites_encadrement">Avez-vous pratiqué des activités d’encadrement dans le contexte précédent ou d’autres ? Si oui, lesquelles ?</label><br>
-        <textarea style = "margin-left: 10px" id="activites_encadrement" name="activites_encadrement" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="attentes_miage">Qu’attendez-vous de la MIAGE ?</label><br>
-        <textarea style = "margin-left: 10px" id="attentes_miage" name="attentes_miage" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="pourquoi_miage">Pourquoi la MIAGE des ANTILLES ?</label><br>
-        <textarea style = "margin-left: 10px" id="pourquoi_miage" name="pourquoi_miage" rows="4" cols="50" required></textarea><br><br>
-
-        <label for="influence_choix" style = "margin-left: 10px">L’exemple d’une personne de votre entourage a-t-il pesé sur votre choix ? Si oui dans quelle mesure ?</label><br>
-        <textarea  id="influence_choix" name="influence_choix" style = "margin-left: 10px" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="metiers">Citez au moins 3 métiers que vous pourriez exercer dès l’obtention de la Licence MIAGE (Classez-les par ordre de préférence)</label><br>
-        <textarea style = "margin-left: 10px" id="metiers" name="metiers" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="aptitudes">A votre avis, quelles aptitudes personnelles faut-il développer pour exercer ces métiers ?</label><br>
-        <textarea style = "margin-left: 10px" id="aptitudes" name="aptitudes" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="apprehensions">Y aura-t-il dans ce type de professions des aspects que vous appréhendez ? Si oui, pourquoi ?</label><br>
-        <textarea style = "margin-left: 10px" id="apprehensions" name="apprehensions" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="decouvertes">Avez-vous eu l’occasion de découvrir des secteurs d’activités et des métiers cibles de la MIAGE par des visites ou des stages en entreprises ?</label><br>
-        <textarea style = "margin-left: 10px" id="decouvertes" name="decouvertes" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="secteurs">Dans quel(s) secteur(s) d’activités aimeriez-vous travailler ou ne pas travailler ?</label><br>
-        <textarea style = "margin-left: 10px" id="secteurs" name="secteurs" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="autres_questions">Vous pouvez maintenant évoquer tout sujet ou toute question qui vous tient à cœur. (Ne négligez pas ce paragraphe)</label><br>
-        <textarea style = "margin-left: 10px" id="autres_questions" name="autres_questions" rows="4" cols="50" required></textarea><br><br>
-
-        <label style = "margin-left: 10px" for="date">Date :</label>
-	<input type="date" style = "margin-left: 10px" id="date" name="date" required><br><br>
-
-	<h3 style = "margin-left: 10px">Signature :</h3>
-        <canvas id="signatureCanvas" width="400" height="200"></canvas><br><br>
-
-        <input  type="button" style = "margin-left: 10px" value="Effacer" onclick="clearSignature()">
-        <input  type="hidden" id="signatureData" name="signatureData">
-
-        <br><br>
-        <button class="btn btn-primary btn-sm mb-3" type="submit" style="background-color: rgb(52 , 201 , 36); margin-left: 10px;" 
-            id="" onclick="">Enregistrer</button>
-    </form>
-
-    <script>
-        function suivant() {
-        window.location.href = "recap.html"; // Remplacez l'URL par celle de la page suivante
-        };
-
-        //zone de dessin signature
-        var canvas = document.getElementById("signatureCanvas");
-        var ctx = canvas.getContext("2d");
-        var isDrawing = false;
-        var signatureDataInput = document.getElementById("signatureData");
-
-        canvas.addEventListener("mousedown", startDrawing);
-        canvas.addEventListener("mousemove", draw);
-        canvas.addEventListener("mouseup", stopDrawing);
-        canvas.addEventListener("mouseout", stopDrawing);
-
-        function startDrawing(e) {
-            isDrawing = true;
-            ctx.beginPath();
-            ctx.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            ctx.lineTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
-            ctx.stroke();
-        }
-
-        function stopDrawing() {
-            isDrawing = false;
-            saveSignature();
-        }
-
-        function saveSignature() {
-            var dataURL = canvas.toDataURL();
-            signatureDataInput.value = dataURL;
-        }
-
-        function clearSignature() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            signatureDataInput.value = "";
-        }
-
-        document.querySelector('form').addEventListener('submit', function(event) {
-            var signatureData = canvas.toDataURL(); // Récupérer les données du canvas au format base64
-            signatureDataInput.value = canvasData; // Stocker les données du canvas dans le champ de formulaire caché
-        });
+    </div>
     
-    </script>
+  </div>
+</main>
+
+<script>
+  function suivant() {
+    window.location.href = "questionnaire.php"; // Remplacez l'URL par celle de la page suivante
+  }
+  </script>
+
+<!--Main layout-->
+    <!-- Custom scripts -->
+<script>
+
+    function afficherChamp_autres_formations() {
+      var choix_autres_formation = document.getElementById("choix_candidate_a_autres_formations");
+      var champ_autres_formation= document.getElementById("champ_autres_formation");
+      var input_autres_formation= document.getElementById("input_autres_formation");
+  
+      if (choix_autres_formation.value === "oui") {
+        champ_autres_formation.style.display = "block";
+        input_autres_formation.required = true;
+      } else {
+        champ_autres_formation.style.display = "none";
+        input_autres_formation.required = false;
+      }
+    }
+
+    function afficherChamp_stages_entreprise() {
+      var choix_stages_entreprise = document.getElementById("choix_stages_entreprise");
+      var champ_quelle_entreprise = document.getElementById("champ_quelle_entreprise");
+      var inputSuinput_quelle_entreprisepplementaire = document.getElementById("input_quelle_entreprise");
+  
+      if (choix_stages_entreprise.value === "oui") {
+        champ_quelle_entreprise.style.display = "block";
+        input_quelle_entreprise.required = true;
+      } else {
+        champ_quelle_entreprise.style.display = "none";
+        input_quelle_entreprise.required = false;
+      }
+    }
+</script>
+<script src="js/fonction.js"></script>
 </body>
 </html>
