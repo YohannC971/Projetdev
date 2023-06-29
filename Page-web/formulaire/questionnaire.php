@@ -302,7 +302,7 @@ $stmt->fetch();
     <script>
         function suivant() {
         window.location.href = "recap.html"; // Remplacez l'URL par celle de la page suivante
-        }
+        };
 
         //zone de dessin signature
         var canvas = document.getElementById("signatureCanvas");
@@ -341,6 +341,12 @@ $stmt->fetch();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             signatureDataInput.value = "";
         }
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            var signatureData = canvas.toDataURL(); // Récupérer les données du canvas au format base64
+            signatureDataInput.value = canvasData; // Stocker les données du canvas dans le champ de formulaire caché
+        });
+    
     </script>
 </body>
 </html>
