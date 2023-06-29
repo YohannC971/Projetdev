@@ -60,61 +60,63 @@ $pdf->Cell(0, 10, utf8_decode('Récapitulatif questionnaire'), 0, 1, 'C');
 $pdf->SetFont('Arial', '', 13); // réinitialise la police à la valeur par défaut
 $pdf->Cell(0, 10, 'Nom : ' . $nom, 0, 1);
 $pdf->Cell(0, 10, utf8_decode('Prénom : ' . $prenom), 0, 1);
-$pdf->Cell(0, 10, 'Loisir : ' . $loisir, 0, 1);
+$pdf->Cell(0, 10, 'Loisir : ' . utf8_decode($loisir), 0, 1);
 $pdf->MultiCell(0, 10, utf8_decode('Autres activités : '), 0, 'L');
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
-$pdf->MultiCell(0, 10, $autres_activites, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($autres_activites) , 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($autres_activites), 0, 'L');
+$pdf->MultiCell(0, 10,utf8_decode($autres_activites) , 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, utf8_decode('Activités d\'encadrement : '), 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $activites_encadrement, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($activites_encadrement), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Attentes MIAGE : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $attentes_miage, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($attentes_miage), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Pourquoi MIAGE : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $pourquoi_miage, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($pourquoi_miage), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Influence du choix : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $influence_choix, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($influence_choix), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, utf8_decode('Métiers : '), 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $metiers, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($metiers), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Aptitudes : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $aptitudes, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($aptitudes), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, utf8_decode('Appréhensions : '), 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $apprehensions, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($apprehensions), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, utf8_decode('Découvertes : '), 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $decouvertes, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($decouvertes), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Secteurs : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $secteurs, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($secteurs), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Autres questions : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
 $pdf->SetX($pdf->GetX() + 10); // Décaler le texte des réponses vers la droite
-$pdf->MultiCell(0, 10, $autres_questions, 0, 'L');
+$pdf->MultiCell(0, 10, utf8_decode($autres_questions), 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Date : ', 0, 1);
 $pdf->SetFont('Arial', '', 13); // Réinitialiser la police pour les réponses
