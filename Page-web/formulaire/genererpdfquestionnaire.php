@@ -1,6 +1,8 @@
 <?php
 include("../config.php");
 
+// Vérifier si l'utilisateur est connecté
+session_start();
 if (!isset($_SESSION['login'])) {
     header("Location: ../index.php");
     exit;
@@ -11,24 +13,37 @@ if ($conn->connect_error) {
     die("Erreur de connexion à la base de données : " . $conn->connect_error);
 }
 
+// Récupérer le login de l'utilisateur en session
 $login = $_SESSION['login'];
 
+// Requête SELECT pour récupérer l'ID de l'utilisateur
 $sql_select = "SELECT id_utilisateur FROM Utilisateur WHERE login_utilisateur='$login'";
 $result = $conn->query($sql_select);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $id_utilisateur = $row['id_utilisateur'];
-     
-        $sql_select_candidat_id = "SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
-        $result_candidat_id = $conn->query($sql_select_candidat_id);
 
-        if ($result_candidat_id->num_rows > 0) {
-            $row_candidat_id = $result_candidat_id->fetch_assoc();
-            $candidat_id = $row_candidat_id['idcandidat_candidat'];
-        }
+    $sql_select_candidat = "SELECT idcandidat_candidat, nom_candidat, prenom_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
+    $result = $conn->query($sql_select_candidat);
+
+    if ($result === FALSE) {
+        echo "Erreur lors de la récupération des informations du formulaire : " . $conn->error;
+        exit;
     }
-    $conn->close();
+
+    if ($result->num_rows > 0) {
+        // Récupérer la première ligne de résultat
+        $row = $result->fetch_assoc();
+
+        // Accéder aux valeurs des colonnes du formulaire
+        $idcandidat_candidat = $row["idcandidat_candidat"];
+        $nom_candidat = $row["nom_candidat"];
+        $prenom_candidat = $row["prenom_candidat"];
+    }
+}
+$result->close();
+
 
 header('Content-Type: text/html; charset=utf-8');
 require('../fpdf/fpdf.php'); // Inclure la bibliothèque FPDF
@@ -160,12 +175,29 @@ $pdf->Cell(0, 10, 'Signature : ', 0, 1);
 $pdf->Image($imagePath, 10, $pdf->GetY() + 10, 30, 30);
 
 //chemin vers dossier etudiant
-$cheminPath = '../EnvoiDosier/Dossier' . $id_candidat. '_' .$nom. '_' .$prenom;
+$nomDossier = 'Dossier' . $idcandidat_candidat . '_' . $nom . '_' . $prenom; // Nom du dossier
+$cheminDossier = '../EnvoiDossier/' . $nomDossier . '/';
+$nomFichier = 'formulaire.pdf'; // Nom du fichier PDF
+$cheminComplet = $cheminDossier . $nomFichier;
+
 
 // Enregistrer le PDF dans un fichier
-$pdf->Output('formulaire.pdf' .$id_candidat. '_' .$nom. '_' .$prenom, 'F');
+$pdf->Output($cheminComplet, 'F');
+
+// Mettre à jour le cheminComplet dans la base de données
+
+$sql_update_questionnaire = "UPDATE Formulaire SET questionnaire='$cheminComplet' WHERE candidat_idcandidat_candidat=$idcandidat_candidat";
+
+if ($conn->query($sql_update_questionnaire) === TRUE) {
+    echo "CheminComplet mis à jour avec succès dans la base de données.";
+} else {
+    echo "Erreur lors de la mise à jour du CheminComplet : " . $conn->error;
+}
+
+// Fermer la connexion à la base de données
+$conn->close();
 
 // Redirection vers le fichier PDF généré
-header('Location:  formulaire.pdf' . $id_candidat. '_' .$nom. '_' .$prenom);
+header('Location:' .$cheminComplet);
 exit();
 ?>
