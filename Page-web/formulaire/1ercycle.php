@@ -228,7 +228,7 @@ if ($result->num_rows > 0) {
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="responsable_legal.php">Responsable Legal</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="bacform.php">Baccalauréat</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="1ercycle.php">Ier CYCLE</a> </h5></div>
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="diplome.html">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="diplome.php">Autre(s) diplôme(s) obtenue(s)</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="viepro.html">Vie professionnelle</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="questionnaire.php">Questionnaire</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div>          
@@ -301,7 +301,7 @@ if ($result->num_rows > 0) {
 
 <script>
   function suivant() {
-    window.location.href = "diplome.html"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "diplome.php"; // Remplacez l'URL par celle de la page suivante
   }
   </script>
 
