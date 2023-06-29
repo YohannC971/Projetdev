@@ -241,7 +241,7 @@ if ($result->num_rows > 0) {
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div>           
           </div>
 
-        <form action="controleur-diplome.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action="controleur-diplome.php" method="post" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>AUTRE(S) DIPLÔME(S) OBTENU(S) :</h3></div>
