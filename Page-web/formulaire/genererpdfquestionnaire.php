@@ -1,4 +1,35 @@
 <?php
+include("../config.php");
+
+if (!isset($_SESSION['login'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+$conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
+if ($conn->connect_error) {
+    die("Erreur de connexion à la base de données : " . $conn->connect_error);
+}
+
+$login = $_SESSION['login'];
+
+$sql_select = "SELECT id_utilisateur FROM Utilisateur WHERE login_utilisateur='$login'";
+$result = $conn->query($sql_select);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $id_utilisateur = $row['id_utilisateur'];
+     
+        $sql_select_candidat_id = "SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
+        $result_candidat_id = $conn->query($sql_select_candidat_id);
+
+        if ($result_candidat_id->num_rows > 0) {
+            $row_candidat_id = $result_candidat_id->fetch_assoc();
+            $candidat_id = $row_candidat_id['idcandidat_candidat'];
+        }
+    }
+    $conn->close();
+
 header('Content-Type: text/html; charset=utf-8');
 require('../fpdf/fpdf.php'); // Inclure la bibliothèque FPDF
 
@@ -128,10 +159,13 @@ $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 $pdf->Cell(0, 10, 'Signature : ', 0, 1);
 $pdf->Image($imagePath, 10, $pdf->GetY() + 10, 30, 30);
 
+//chemin vers dossier etudiant
+$cheminPath = '../EnvoiDosier/Dossier' . $id_candidat. '_' .$nom. '_' .$prenom;
+
 // Enregistrer le PDF dans un fichier
-$pdf->Output('formulaire.pdf', 'F');
+$pdf->Output('formulaire.pdf' .$id_candidat. '_' .$nom. '_' .$prenom, 'F');
 
 // Redirection vers le fichier PDF généré
-header('Location: formulaire.pdf');
+header('Location:  formulaire.pdf' . $id_candidat. '_' .$nom. '_' .$prenom);
 exit();
 ?>
