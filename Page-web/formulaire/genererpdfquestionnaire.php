@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 require('../fpdf/fpdf.php'); // Inclure la bibliothèque FPDF
 
 // Récupérer les valeurs des champs du formulaire
@@ -122,6 +123,7 @@ $pdf->MultiCell(0, 10, $date, 0, 'L');
 $pdf->SetFont('Arial', 'B', 13); // Appliquer le style en gras aux questions
 
 // Afficher l'image de la signature en dernier
+$pdf->Cell(0, 10, 'Signature : ', 0, 1);
 $pdf->Image($imagePath, 10, $pdf->GetY() + 10, 30, 30);
 
 // Enregistrer le PDF dans un fichier
