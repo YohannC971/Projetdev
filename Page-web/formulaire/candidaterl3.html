@@ -326,5 +326,30 @@ if ($result->num_rows > 0) {
     window.location.href = "responsable_legal.html"; // Remplacez l'URL par celle de la page suivante
   }
   </script>  
+/*
+<script>
+  function checkFields() {
+    // Récupérer les valeurs des champs
+    var dateNaissance = document.getElementById("date_naissance").value;
+    var lieuNaissance = document.getElementById("lieu_naissance").value;
+    var ville = document.getElementById("ville").value;
+    var adresse = document.getElementById("adresse").value;
+    var codePostal = document.getElementById("code_postal").value;
+    var telephone = document.getElementById("telephone").value;
+    var mobile = document.getElementById("mobile").value;
+  
+    // Vérifier si tous les champs sont remplis
+    if (dateNaissance !== "" && lieuNaissance !== "" && ville !== "" && adresse !== "" && codePostal !== "" && telephone !== "" && mobile !== "") {
+      // Changer l'attribut "readonly" des champs en lecture seule
+      document.getElementById("date_naissance").readOnly = true;
+      document.getElementById("lieu_naissance").readOnly = true;
+      document.getElementById("ville").readOnly = true;
+      document.getElementById("adresse").readOnly = true;
+      document.getElementById("code_postal").readOnly = true;
+      document.getElementById("telephone").readOnly = true;
+      document.getElementById("mobile").readOnly = true;
+    }
+  }
+  </script>*/
 </body>
 </html>

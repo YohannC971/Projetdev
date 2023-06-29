@@ -125,7 +125,7 @@ $stmt->fetch();
                 <span>Candidater</span>
                 <select class="form-select" onchange="location = this.value;">
                   <option selected disabled hidden>Sélectionnez une page</option>
-                  <option value="candidaterl3.html">Licence 3</option>
+                  <option value="candidaterl3.php">Licence 3</option>
                   <option value="page2.html">Master 1</option>
                   <option value="page3.html">Master 2</option>
                 </select>
@@ -228,7 +228,7 @@ $stmt->fetch();
       <div class="p-2" style="background-color: rgb(79, 79, 255);"><h1>Candidature à la L3 MIAGE</h1></div>
       <div class="d-flex" style="border: 2px solid black;">
         <div class="d-flex align-items-start flex-column mb-3" >
-            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.html">Information du candidat</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="candidaterl3.php">Information du candidat</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="responsable_legal.html">Responsable Legal</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="bacform.html">Baccalauréat</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="1ercycle.html">Ier CYCLE</a> </h5></div>

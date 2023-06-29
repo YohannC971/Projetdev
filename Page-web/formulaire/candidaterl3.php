@@ -1,3 +1,82 @@
+<?php
+
+include("../config.php");
+
+// Vérifier si l'utilisateur est connecté
+session_start();
+if (!isset($_SESSION['login'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+
+
+$conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
+if ($conn->connect_error) {
+    die("Erreur de connexion à la base de données : " . $conn->connect_error);
+}
+
+// Récupérer le login de l'utilisateur en session
+$login = $_SESSION['login'];
+
+
+// Requête SELECT pour récupérer l'ID de l'utilisateur
+$sql_select = "SELECT id_utilisateur FROM Utilisateur WHERE login_utilisateur='$login'";
+$result = $conn->query($sql_select);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $id_utilisateur = $row['id_utilisateur'];
+
+    
+    $sql_select_candidat = "SELECT nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
+    $result1 = $conn->query($sql_select_candidat);
+    
+    if ($result1 === FALSE) {
+        echo "Erreur lors de la récupération du nom de Jeune Fille : " . $conn->error;
+        exit;
+    }
+    
+    if ($result1->num_rows > 0) {
+        // Récupérer la première ligne de résultat
+        $row = $result1->fetch_assoc();
+    
+        // Accéder à la valeur de la colonne "nom_jeune_fille_candidat"
+        $nom_jeune_fille = $row["nom_jeune_fille_candidat"];
+    }
+    /***********************************/
+
+    $sql_select_formulaire = "SELECT datenaissance_formulaire, lieu_naissance_formulaire, ville, AdressePrincipal_formulaire, 
+    codepostal, telephone, mobile FROM Formulaire WHERE candidat_idcandidat_candidat=(SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur)";
+
+    $result2 = $conn->query($sql_select_formulaire);
+    
+    if ($result2 === FALSE) {
+        echo "Erreur lors de la récupération des informations du formulaire : " . $conn->error;
+        exit;
+    }
+    
+    if ($result2->num_rows > 0) {
+        // Récupérer la première ligne de résultat
+        $row = $result2->fetch_assoc();
+    
+        // Accéder aux valeurs des colonnes du formulaire
+        $date_naissance = $row["datenaissance_formulaire"];
+        $lieu_naissance = $row["lieu_naissance_formulaire"];
+        $ville = $row["ville"];
+        $adresse = $row["AdressePrincipal_formulaire"];
+        $codePostal = $row["codepostal"];
+        $telephone = $row["telephone"];
+        $mobile = $row["mobile"];
+    }
+  }
+  $result->close();
+  $result1->close();
+  $result2->close();
+  $conn->close();
+  ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +84,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title></title>
-    <!-- Font Awesome -->
+    <!-- Font Awesome  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
@@ -175,79 +254,69 @@
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="questionnaire.php">Questionnaire</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div> 
         </div>
-        <form action="controleur-responsable-legal.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action="controleur-candidaterl3.php" method="post" target="_blank" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
-            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Responsable legal</h3></div>
-            <div>
-              <p>
-                <I>
-                  Bien que vous soyez majeur, ces informations nous permettent de savoir qui contacter en cas d'incident lorsque vous etes en entreprise.
-                </I>
-              </p>
-            </div>
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Information du candidat</h3></div>
             <div class="d-flex justify-content-evenly">
-              <div class="p-2">
-                <label for="nom">Nom du parent 1 :</label>
-                <input type="text" id="nomparent1" name="nomparent1" maxlength="50" />
-              </div>
 
               <div class="p-2">
-                <label for="prenom">Prénom du parent 1 :</label>
-                <input type="text" id="prenomparent1" name="prenomparent1" maxlength="50" />
-              </div>
-
-              <div class="p-2">
-                <label for="nom_jeune_fille">Numero du parent 1 :</label>
-                <input type="number" id="numeroparent1" name="numeroparent1" maxlength="50" />
+                <label for="nom_jeune_fille">Nom de Jeune Fille :</label>
+                <input readonly="false" type="text" id="nom_jeune_fille" name="nom_jeune_fille" maxlength="50" value="<?php echo $nom_jeune_fille; ?>" oninput="checkFields()"/>
               </div>
             </div>
             <!----------------------------------------------------------------------------------------------------------->
             <div class="d-flex justify-content-evenly">
               <div class="p-2">
-                <label for="nom">Nom du parent 2 :</label>
-                <input type="text" id="nomparent2" name="nomparent2" maxlength="50" />
+                <label for="date_naissance">Né(e) le :</label>
+                <input readonly="false" type="date" id="date_naissance" name="date_naissance" value="<?php echo $date_naissance; ?>" oninput="checkFields()"/>
               </div>
 
               <div class="p-2">
-                <label for="prenom">Prénom du parent 2 :</label>
-                <input type="text" id="prenomparent2" name="prenomparent2" maxlength="50" />
+                <label for="lieu_naissance">à :</label>
+                <input readonly="false" type="text" id="lieu_naissance" name="lieu_naissance" value="<?php echo $lieu_naissance; ?>" oninput="checkFields()">
               </div>
-
-              <div class="p-2">
-                <label for="nom_jeune_fille">Numero du parent 2 :</label>
-                <input type="number" id="numeroparent2" name="numeroparent2" maxlength="50" />
-              </div>
-            </div>
+            </div><br> <br>
             <!----------------------------------------------------------------------------------------------------------->
-            <div class="d-flex justify-content-evenly">
+            <div class="d-flex">
+              <div class="p-2 flex-grow-1">
+                <label for="adresse">Adresse de l'étudiant :</label>
+                  <input readonly="false" type="text" id="adresse" name="adresse" placeholder="Adresse" value="<?php echo $adresse; ?>" oninput="checkFields()">
+              </div>
               <div class="p-2">
-                <label for="nom">Nom du responsable légal :</label>
-                <input type="text" id="nomresponsablelegal" name="nomresponsablelegal" maxlength="50" />
+                  <label for="ville">Ville :</label>
+                  <input  readonly="false" type="text" id="ville" name="ville" placeholder="Ville" value="<?php echo $ville; ?>" oninput="checkFields()">
+              </div>
+              <div class="p-2">
+                <label for="codePostal">Code Postal :</label>
+                <input readonly="false" type="text" id="codePostal" name="codePostal" placeholder="Code Postal" value="<?php echo $codePostal; ?>" oninput="checkFields()"><br><br>
+              </div>
+            </div><br> <br>
+
+              <!----------------------------------------------------------------------------------------------------------->
+            
+              <div class="d-flex">
+
+              <div class="p-2">
+                <label for="telephone">Téléphone :</label>
+                <input readonly="false" type="text" id="telephone" name="telephone" placeholder="Téléphone" value="<?php echo $telephone; ?>" oninput="checkFields()"><br><br>
               </div>
 
               <div class="p-2">
-                <label for="prenom">Prénom du responable légal :</label>
-                <input type="text" id="prenomresponsablelegal" name="prenomresponsablelegal" maxlength="50" />
+                <label for="mobile">Mobile :</label>
+                <input readonly="false" type="text" id="mobile" name="mobile" placeholder="Mobile" value="<?php echo $mobile; ?>" oninput="checkFields()"><br><br>
               </div>
-
-              <div class="p-2">
-                <label for="nom_jeune_fille">Numero du responsable légal :</label>
-                <input type="number" id="numerorespnsablelegal" name="numerorespnsablelegal" maxlength="50" />
-              </div>
-            </div>
-            <!----------------------------------------------------------------------------------------------------------->
             </div>
             </b>
-            <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
-            id="suivantButton" onclick="suivant()">Suivant</button>
-  
-            <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
-            id="" onclick="">Enregistrer</button>
-   
-          </div>
-          
-        </form>
+          </div>         
+         
+          <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+          id="suivantButton" onclick="suivant()">Suivant</button>
+
+          <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
+          id="" onclick="">Enregistrer</button>
+
+      </form>
         </div>
       </div>
 
@@ -255,15 +324,35 @@
     
   </div>
 </main>
-
 <script>
   function suivant() {
-    window.location.href = "bacform.html"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "responsable_legal.html"; // Remplacez l'URL par celle de la page suivante
+  }
+  </script>  
+
+<script>
+  function checkFields() {
+    // Récupérer les valeurs des champs
+    var dateNaissance = document.getElementById("date_naissance").value;
+    var lieuNaissance = document.getElementById("lieu_naissance").value;
+    var ville = document.getElementById("ville").value;
+    var adresse = document.getElementById("adresse").value;
+    var codePostal = document.getElementById("code_postal").value;
+    var telephone = document.getElementById("telephone").value;
+    var mobile = document.getElementById("mobile").value;
+  
+    // Vérifier si tous les champs sont remplis
+    if (dateNaissance !== "" && lieuNaissance !== "" && ville !== "" && adresse !== "" && codePostal !== "" && telephone !== "" && mobile !== "") {
+      // Changer l'attribut "readonly" des champs en lecture seule
+      document.getElementById("date_naissance").readOnly = true;
+      document.getElementById("lieu_naissance").readOnly = true;
+      document.getElementById("ville").readOnly = true;
+      document.getElementById("adresse").readOnly = true;
+      document.getElementById("code_postal").readOnly = true;
+      document.getElementById("telephone").readOnly = true;
+      document.getElementById("mobile").readOnly = true;
+    }
   }
   </script>
-
-<!--Main layout-->
-    <!-- Custom scripts -->
-<script src="js/fonction.js"></script>
 </body>
 </html>
