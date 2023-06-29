@@ -245,16 +245,16 @@ if ($result->num_rows > 0) {
                     <input type="text" id="mention" name="mention" placeholder="Mention" value="<?php echo $mentionbac_formulaire; ?>">
                 </div>  
             </div>
-            <div class="d-flex justify-content-evenly" style="align-items: center;" value="<?php echo $anneebac_formulaire; ?>">
+            <div class="d-flex justify-content-evenly" style="align-items: center;" >
                 <div class="p-2">
                     <label>Année :</label>
-                    <input type="number" id="annee" name="annee" placeholder="Année" value="<?php echo $lieubac_formulaire; ?>">
+                    <input type="number" id="annee" name="annee" placeholder="Année" value="<?php echo $anneebac_formulaire; ?>">
                 </div>
                 
 
                 <div class="p-2">
                     <label>Lieu :</label>
-                    <input type="text" id="lieu" name="lieu" placeholder="Lieu">
+                    <input type="text" id="lieu" name="lieu" placeholder="Lieu"value="<?php echo $lieubac_formulaire; ?>">
                 </div>
             </div> 
             </div>
