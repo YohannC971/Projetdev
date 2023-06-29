@@ -30,16 +30,18 @@ if ($result->num_rows > 0) {
 
 
     //information du candidat
-    $req_candidat = "SELECT nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur='$login'";
+    $req_candidat = "SELECT nom_jeune_fille_candidat,nom_candidat,prenom_candidat FROM Candidat WHERE id_utilisateur='$login'";
     $rescandidat = $conn->query($req_candidat);
     if($rescandidat->num_rows>0){
         $row = $rescandidat->fetch_assoc();
 
-        $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
+        $nom_jeune_fille_candidat = $row['nom_jeune_fille_candidat']; 
+        $nom_candidat = $row['nom_candidat'];
+        $prenom_candidat = $row['prenom_candidat'];
         
     }
     //
-    $req_form = "SELECT lieu_naissance_formulaire, seriebac_formulaire, mentionbac_formulaire, anneebac_formulaire,lieubac_formulaire, intituleannee1_formulaire, anneeobtention1_formulaire,
+    $req_form = "SELECT lieu_naissance_formulaire, seriebac_formulaire, mentionbac_formulaire, datenaissance_formulaire, anneebac_formulaire,lieubac_formulaire, intituleannee1_formulaire, anneeobtention1_formulaire,
     lieuobtention1_formulaire, moyenneannee1_formulaire, intituleannee2_formulaire, anneeobtention2_formulaire, lieuobtention2_formulaire,moyenneannee2_formulaire,
     autre_diplome_obtenu_formulaire, autre_diplome_obtenu_formulaire2,autre_diplome_obtenu_formulaire3, autre_diplome_obtenu_formulaire4,annee_autres_diplome_formulaire,
     annee_autres_diplome_formulaire2, annee_autres_diplome_formulaire3, annee_autres_diplome_formulaire4, moyenne_autres_diplome_formulaire, moyenne_autres_diplome_formulaire2,moyenne_autres_diplome_formulaire3, moyenne_autres_diplome_formulaire4, lieu_autre_diplome_formulaire, lieu_autre_diplome_formulaire2, lieu_autre_diplome_formulaire3,
@@ -95,9 +97,9 @@ if ($result->num_rows > 0) {
         $input_quelle_entreprise = $row['input_quelle_entreprise_formulaire'];
         $theme_entreprise = $row['theme_entreprise_formulaire'];
         //questionnaire
-        $nom = $row['nom_candidat']; 
-        $prenom = $row['prenom_candidat']; 
-        $genre_candidat = $row['genre_candidat'];         
+        $nom_candidat= $row['nom_candidat']; 
+        $prenom_candidat = $row['prenom_candidat']; 
+        //$genre_candidat = $row['genre_candidat'];         
     }
 
 }
@@ -146,12 +148,12 @@ $pdf->Ln(10);
 
 $pdf->SetFont('Arial', '', 13); // réinitialise la police à la valeur par défaut
 
-$pdf->Cell(0, 10, 'Nom : ' . $nom, 0, 1);
-$pdf->Cell(0, 10, utf8_decode('Prénom : '. $prenom), 0, 1);
+$pdf->Cell(0, 10, 'Nom : ' . $nom_candidat, 0, 1);
+$pdf->Cell(0, 10, utf8_decode('Prénom : '. $prenom_candidat), 0, 1);
 
 $pdf->Ln(10);
 
-$pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille, 0, 1);
+$pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille_candidat, 0, 1);
 $pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $date_naissance), 0, 1);
 $pdf->Cell(0, 10, utf8_decode('à : '. $lieu_naissance), 0, 1);
 $pdf->Cell(0, 10, 'Adresse : '. $adressePrincipal, 0, 1);
