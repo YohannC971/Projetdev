@@ -187,7 +187,7 @@
               <div class="d-flex justify-content-evenly" style="align-items: center;"> 
                 <div class="p-2">
                   Avez vous candidaté à d’autres formations?             
-                    <select id="choix_candidate_a_autres_formations" onchange="afficherChamp_autres_formations()">
+                    <select id="choix_candidate_a_autres_formations" name="choix_candidate_a_autres_formations" onchange="afficherChamp_autres_formations()">
                       <option value="non">NON</option>
                       <option value="oui">OUI</option>
                     </select>
@@ -196,14 +196,14 @@
                   <div class="p-2">
                     <div id="champ_autres_formation" style="display: none;">
                       <label>Lesquelles :</label>
-                      <input type="text" id="input_autres_formation">
+                      <input type="text" id="input_autres_formation" name="input_autres_formation">
                     </div>
                   </div>
                 </div>
               
                 <div class="p-2">
                   Avez vous effectué des stages en entreprise?
-                  <select id="choix_stages_entreprise" onchange="afficherChamp_stages_entreprise()">
+                  <select id="choix_stages_entreprise" name="choix_stages_entreprise" onchange="afficherChamp_stages_entreprise()">
                       <option value="non">NON</option>
                       <option value="oui">OUI</option>
                   </select>
@@ -212,8 +212,8 @@
                   <div class="p-2">
                     <div id="champ_quelle_entreprise" style="display: none;">
                       <div class="p-2">
-                        <label>Si oui, quelle(s) entreprise(s) : </label>
-                        <input type="text" id="input_quelle_entreprise">
+                        <label na>Si oui, quelle(s) entreprise(s) : </label>
+                        <input type="text" id="input_quelle_entreprise" name="input_quelle_entreprise">
                       </div>
                       <div class="p-2">
                         <label>Sur quel(s) thème(s) : </label>
