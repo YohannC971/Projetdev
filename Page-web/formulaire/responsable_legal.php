@@ -49,8 +49,8 @@ if ($result->num_rows > 0) {
         $numero_parent1 = $row["numero_parent1"];
 
         $nom_parent2 = $row["nom_parent2"];
-        $prennom_parent2 = $row["codepostal"];
-        $numero_parent2 = $row["telephone"];
+        $prennom_parent2 = $row["prennom_parent2"];
+        $numero_parent2 = $row["numero_parent2"];
 
         $nom_responsable_legale = $row["nom_responsable_legale"];
         $prenom_responsable_legale = $row["prenom_responsable_legale"];
@@ -59,7 +59,6 @@ if ($result->num_rows > 0) {
     }
   }
   $result->close();
-  $result1->close();
   $result2->close();
   $conn->close();
   ?>
@@ -241,7 +240,7 @@ if ($result->num_rows > 0) {
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="questionnaire.php">Questionnaire</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div> 
         </div>
-        <form action="controleur-responsable-legal.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action="controleur-responsable-legal.php" method="post" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Responsable legal</h3></div>
