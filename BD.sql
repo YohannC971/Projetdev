@@ -49,7 +49,7 @@ CREATE TABLE `Candidat` (
   `releve_candidat` VARCHAR(255),
   `diplome_candidat` VARCHAR(255),
   `justificatifpro_candidat` VARCHAR(255),
-  `dossiervalidation_candidat` VARCHAR(255),
+  `dossiervalidation_candidat` VARCHAR(255)
   `Age_candidat` INT,
   `Etat_admission` TINYINT(1),
   `Etat_document_candidat` TINYINT(1),
