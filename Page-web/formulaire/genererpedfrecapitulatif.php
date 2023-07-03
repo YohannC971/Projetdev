@@ -54,7 +54,7 @@ if ($result->num_rows > 0) {
     if($resform->num_rows>0){
         $row = $resform->fetch_assoc();
         
-        $datenaissance = $row['datenaissance_formulaire'];
+        $datenaissance_formulaire = $row['datenaissance_formulaire'];
         $lieu_naissance = $row['lieu_naissance_formulaire'];
         $adressePrincipal = $row['AdressePrincipal_formulaire'];
         $ville = $row['ville'];
@@ -153,7 +153,7 @@ $pdf->Cell(0, 10, utf8_decode('Prénom : '. $prenom_candidat), 0, 1);
 $pdf->Ln(10);
 
 $pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille_candidat, 0, 1);
-$pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $datenaissance), 0, 1);
+$pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $datenaissance_formulaire), 0, 1);
 $pdf->Cell(0, 10, utf8_decode('à : '. $lieu_naissance), 0, 1);
 $pdf->Cell(0, 10, 'Adresse : '. $adressePrincipal, 0, 1);
 $pdf->Cell(0, 10, 'Ville : '. $ville, 0, 1);
@@ -220,4 +220,3 @@ $pdf->Output('formulaire.pdf', 'F');
 header('Location: formulaire.pdf');
 exit();
 ?>
-s
