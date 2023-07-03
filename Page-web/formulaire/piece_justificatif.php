@@ -143,7 +143,7 @@ if ($result->num_rows > 0) {
          <select class="form-select" onchange="location = this.value;">
            <option selected disabled hidden>Sélectionnez une page</option>
            <option value="candidaterl3.php">Licence 3</option>
-           <option value="../master1/candidaterm1.php">Master 1</option>
+           <option value="page2.html">Master 1</option>
            <option value="page3.html">Master 2</option>
          </select>
        </div>
@@ -255,64 +255,39 @@ if ($result->num_rows > 0) {
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="questionnaire.php">Questionnaire</a> </h5></div>
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div> 
         </div>
-        <form action="controleur-candidaterl3.php" method="post" enctype="multipart/form-data">
+        <form action="controleur-upload.php" method="post" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
-            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Information du candidat</h3></div>
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Pièces Justificatif</h3></div>
             <div class="d-flex justify-content-evenly">
 
-              <div class="p-2">
-                <label for="nom_jeune_fille">Nom de Jeune Fille :</label>
-                <input type="text" id="nom_jeune_fille" name="nom_jeune_fille" maxlength="50" value="<?php echo $nom_jeune_fille; ?>"/>
-              </div>
+                <div class="d-flex">
+                    <div class="p-2 flex-grow-1">
+                        <label>Ajouter votre Photo :</label>
+                        <input type="file" name="file1"><br><br>
+
+                        <label>Ajouter votre CV :</label>
+                        <input type="file" name="file2"><br><br>
+
+
+                        <label>Ajouter votre Lettre de motivation :</label>
+                        <input type="file" name="file3"><br><br>
+
+                        <label>Ajouter vos Relevé de notes dans un seul fichier :</label>                      
+                        <input type="file" name="file4"><br><br>
+                        
+                        <label>Ajouter vos diplomes dans un seul fichier :</label>                
+                        <input type="file" name="file5"><br><br>
+
+                        <label>Ajouter votre justificatif professionel si vous avez une activité professionnel :</label>             
+                        <input type="file" name="file6"><br><br>
+
+                        
+                    </div>
+
             </div>
-            <!----------------------------------------------------------------------------------------------------------->
-            <div class="d-flex justify-content-evenly">
-              <div class="p-2">
-                <label for="date_naissance">Né(e) le :</label>
-                <input type="date" id="date_naissance" name="date_naissance" value="<?php echo $date_naissance; ?>" />
-              </div>
-
-              <div class="p-2">
-                <label for="lieu_naissance">à :</label>
-                <input type="text" id="lieu_naissance" name="lieu_naissance" value="<?php echo $lieu_naissance; ?>" >
-              </div>
-            </div><br> <br>
-            <!----------------------------------------------------------------------------------------------------------->
-            <div class="d-flex">
-              <div class="p-2 flex-grow-1">
-                <label for="adresse">Adresse de l'étudiant :</label>
-                  <input type="text" id="adresse" name="adresse" placeholder="Adresse" value="<?php echo $adresse; ?>" >
-              </div>
-              <div class="p-2">
-                  <label for="ville">Ville :</label>
-                  <input type="text" id="ville" name="ville" placeholder="Ville" value="<?php echo $ville; ?>" >
-              </div>
-              <div class="p-2">
-                <label for="codePostal">Code Postal :</label>
-                <input  type="text" id="codePostal" name="codePostal" placeholder="Code Postal" value="<?php echo $codePostal; ?>" ><br><br>
-              </div>
-            </div><br> <br>
-
-              <!----------------------------------------------------------------------------------------------------------->
+            </div>
             
-              <div class="d-flex">
-
-              <div class="p-2">
-                <label for="telephone">Téléphone :</label>
-                <input  type="text" id="telephone" name="telephone" placeholder="Téléphone" value="<?php echo $telephone; ?>"><br><br>
-              </div>
-
-              <div class="p-2">
-                <label for="mobile">Mobile :</label>
-                <input  type="text" id="mobile" name="mobile" placeholder="Mobile" value="<?php echo $mobile; ?>"><br><br>
-              </div>
-            </div>
-            </b>
-          </div>         
-         
-
-
           <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
           id="" onclick="">Enregistrer</button>
 
@@ -332,7 +307,7 @@ if ($result->num_rows > 0) {
 </main>
 <script>
   function suivant() {
-    window.location.href = "responsable_legal.php"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "questionnaire.php"; // Remplacez l'URL par celle de la page suivante
   }
   </script>  
 

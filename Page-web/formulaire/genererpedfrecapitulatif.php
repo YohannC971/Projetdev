@@ -126,7 +126,7 @@ $logo_greta ='../logo/logo-greta.png';
 $pdf-> Image($logo_greta, 110, 8, 80);
 
 
-// Ajouter un trait de séparation
+// Ajouteun trait de séparation
 $lineY = $pdf->GetY() + 30; // Coordonnée Y de la ligne
 $lineXStart = 10; // Coordonnée X de début de la ligne
 $lineXEnd = $pdf->GetPageWidth() - 10; // Coordonnée X de fin de la ligne

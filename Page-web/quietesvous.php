@@ -99,7 +99,8 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="C">
                         <h2>Professeur</h2>
-                        <a href="index.php" class="btn btn-primary btn-lg active">Connexion</a>
+                        <a href="index.php" class="btn btn-primary btn-lg active">Connexion</a><br>
+                        <button  type="button" class="btn btn-primary btn-lg active" data-toggle="modal" data-target="#exampleModalCenter">Inscription</button>
                     </div>
                 </div>
             </div>
@@ -109,4 +110,61 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="shortcut icon" type="image/png" href="./logo/faviconmiage.png"/>
+  <title>Clé d'inscription</title>
+  <style>
+    .modal-lg {
+      max-width: 800px !important;
+    }
+
+    .input-lg {
+      width: 100% !important;
+      padding: .5rem 1rem !important;
+      font-size: 1.25rem !important;
+      line-height: 1.5 !important;
+      border-radius: .3rem !important;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <!-- Modal -->
+  <form action="controleur-cle-inscription.php" method="POST">
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Clé d'inscription</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span style="font-size: 22px;">Veuillez entrer la clé d'inscription pour pouvoir avoir accès à la page d'inscription.</span><br><br>
+          <input type="password" id="cle_inscription" placeholder="Clé d'inscription" name="cle_inscription" class="form-control input-lg"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
 </html>
