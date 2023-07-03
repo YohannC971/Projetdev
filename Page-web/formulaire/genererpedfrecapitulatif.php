@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
     $id_utilisateur = $row['id_utilisateur'];
 
 
-    //information du candidat
+    //informations du candidat
     //information du candidat
     $req_nomjeunefille = "SELECT nom_candidat, prenom_candidat, nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
     $result2 = $conn->query($req_nomjeunefille);
@@ -126,7 +126,7 @@ $logo_greta ='../logo/logo-greta.png';
 $pdf-> Image($logo_greta, 110, 8, 80);
 
 
-// Ajouter un trait de séparation
+// Ajouteun trait de séparation
 $lineY = $pdf->GetY() + 30; // Coordonnée Y de la ligne
 $lineXStart = 10; // Coordonnée X de début de la ligne
 $lineXEnd = $pdf->GetPageWidth() - 10; // Coordonnée X de fin de la ligne
