@@ -39,7 +39,7 @@ if (isset($_POST['Login']) && isset($_POST['Pass'])) {
     //Si l'utilisateur est un responsable, connexion à professeur/affichercandi.php
     elseif ($result == 1 && $role == "responsable") {
         // Connexion réussie
-        header("Location: professeur/accueil-professeur.html"); // Rediriger vers la page de gestion des candidatures
+        header("Location: professeur/accueil-responsable.html"); // Rediriger vers la page de gestion des candidatures
         exit();
     } 
     // Si l'utilisateur est un administrateur, connexion à admin.php
