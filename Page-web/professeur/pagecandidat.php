@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="../logo/faviconmiage.png"/>
+    <link rel="shortcut icon" type="image/png" href="./logo/testfavicon.png"/>
 </head>
 <body>
     <!--Main Navigation-->
@@ -153,7 +153,8 @@
                       <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_5" class="datatable-sort-icon fas fa-arrow-up"></i> Refuser Candidature</th>
                       <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_5" class="datatable-sort-icon fas fa-arrow-up"></i> Confirmation</th>
                       </tr></thead>
-                  <tbody class="datatable-body"><tr scope="row" data-mdb-index="0">
+                  <tbody class="datatable-body" id="tableau"><tr scope="row" data-mdb-index="0">
+                    
                   </tbody>
                   </div>
               </div>
