@@ -146,7 +146,11 @@ CREATE TABLE `Sinscrit` (
 
 -- Création de la table `cle-inscription`
 CREATE TABLE `cle-inscription` (
-  `id_cle` INT AUTO_INCREMENT NOT NULL,
-  `cle` VARCHAR(255) DEFAULT 'miage',
-  PRIMARY KEY (`id_cle`)
+`id_cle` INT AUTO_INCREMENT NOT NULL,
+`cle` VARCHAR(50),
+PRIMARY KEY (`id_cle`)
 ) ENGINE=InnoDB;
+
+-- Insertion de données dans la table `Formation`
+INSERT INTO `cle-inscription` (`cle`)
+VALUES ('miage');
