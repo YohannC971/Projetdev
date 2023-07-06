@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS `Candidat`;
 DROP TABLE IF EXISTS `Responsables`;
 DROP TABLE IF EXISTS `Formation`;
 DROP TABLE IF EXISTS `Utilisateur`;
+DROP TABLE IF EXISTS `cle-inscription`;
 
 -- Réactiver les contraintes de clé étrangère
 SET FOREIGN_KEY_CHECKS = 1;
@@ -141,4 +142,11 @@ CREATE TABLE `Sinscrit` (
   FOREIGN KEY (`idcandidat_candidat`) REFERENCES `Candidat` (`idcandidat_candidat`),
   FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`),
   FOREIGN KEY (`idres_responsables`) REFERENCES `Responsables` (`idres_responsables`)
+) ENGINE=InnoDB;
+
+-- Création de la table `cle-inscription`
+CREATE TABLE `cle-inscription` (
+  `id_cle` INT AUTO_INCREMENT NOT NULL,
+  `cle` VARCHAR(255) DEFAULT 'miage',
+  PRIMARY KEY (`id_cle`)
 ) ENGINE=InnoDB;
