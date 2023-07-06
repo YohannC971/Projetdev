@@ -180,7 +180,7 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
     if (move_uploaded_file($fileTmpName7, $targetFilePath7)) {
 
         // Mettre à jour le cheminComplet dans la base de données
-        $sql_update_fichier7 = "UPDATE Candidat SET dossierval_candidat='$targetFilePath7' WHERE idcandidat_candidat=$idcandidat_candidat";
+        $sql_update_fichier7 = "UPDATE Candidat SET dossiervalidation_candidat='$targetFilePath7' WHERE idcandidat_candidat=$idcandidat_candidat";
 
         if ($conn->query($sql_update_fichier7) === TRUE) {
             echo "CheminComplet mis à jour avec succès dans la base de données.";
