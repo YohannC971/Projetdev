@@ -30,6 +30,7 @@ function affcandidat_tous(){
             $nom= $donnees['nom_candidat'];
             $prenom= $donnees['prenom_candidat'];
             $etat= $donnees['Etat_admission'];
+
             echo'
             <form action="controleurupdatecandidat.php" method="POST" enctype="multipart/form-data">
                 <td style="" class="" data-mdb-field="field_0" false="" name="id_candidat" id="id_candidat">'.$id.'</td>
