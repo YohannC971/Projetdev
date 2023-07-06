@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 $result->close();
 
 // Vérifiez si des fichiers ont été soumis
-if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']) && isset($_FILES['file4']) && isset($_FILES['file5']) && isset($_FILES['file6']) && isset($_FILES['file7'])) {
+if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']) && isset($_FILES['file4']) && isset($_FILES['file5']) && isset($_FILES['file6'])) {
 
     // Chemin vers le dossier de l'étudiant
     $nomDossier = 'Dossier' . $idcandidat_candidat . '_' . $nom_candidat . '_' . $prenom_candidat; // Nom du dossier
