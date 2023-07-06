@@ -139,7 +139,26 @@
 <!--Main layout-->
 <main style="margin-top: 70px">
   <div class="container pt-4">
-    
+    <div class="bg-white border rounded-5" style="margin-left:300px; margin-top:90px; margin-right: 20px">
+          <section class="w-100 p-4">
+              <div class="datatable">
+                  <div class="datatable-inner table-responsive ps ps--active-y" style="overflow: auto; position: relative;">
+                  <table class="table datatable-table">
+                      <thead class="datatable-header"><tr>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_0" class="datatable-sort-icon fas fa-arrow-up"></i> ID Candidat</th>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_1" class="datatable-sort-icon fas fa-arrow-up"></i> Nom</th>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_2" class="datatable-sort-icon fas fa-arrow-up"></i> Prenom</th>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_3" class="datatable-sort-icon fas fa-arrow-up"></i> Etat</th>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_4" class="datatable-sort-icon fas fa-arrow-up"></i> Valider Candidature</th>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_5" class="datatable-sort-icon fas fa-arrow-up"></i> Refuser Candidature</th>
+                      <th style="cursor: pointer;" scope="col"><i data-mdb-sort="field_5" class="datatable-sort-icon fas fa-arrow-up"></i> Confirmation</th>
+                      </tr></thead>
+                  <tbody class="datatable-body"><tr scope="row" data-mdb-index="0">
+                  </tbody>
+                  </div>
+              </div>
+          </section>
+    </div>  
     <form action="controleurcandidat.php" method="POST" enctype="multipart/form-data">
         <div class="d-flex justify-content-evenly">        
         <div><!-- bouton1 -->
