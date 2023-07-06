@@ -145,8 +145,8 @@ if ($result->num_rows > 0) {
          <select class="form-select" onchange="location = this.value;">
            <option selected disabled hidden>Sélectionnez une page</option>
            <option value="candidaterl3.php">Licence 3</option>
-           <option value="page2.html">Master 1</option>
-           <option value="page3.html">Master 2</option>
+           <option value="../master1/candidaterm1.php">Master 1</option>
+           
          </select>
        </div>
    <a
