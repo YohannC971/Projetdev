@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 $result->close();
 
 // Vérifiez si des fichiers ont été soumis
-if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']) && isset($_FILES['file4']) && isset($_FILES['file5']) && isset($_FILES['file6']) && isset($_FILES['file7'])) {
+if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']) && isset($_FILES['file4']) && isset($_FILES['file5']) && isset($_FILES['file6'])) {
 
     // Chemin vers le dossier de l'étudiant
     $nomDossier = 'Dossier' . $idcandidat_candidat . '_' . $nom_candidat . '_' . $prenom_candidat; // Nom du dossier
@@ -164,25 +164,6 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
         $sql_update_fichier6 = "UPDATE Candidat SET justificatifpro_candidat='$targetFilePath6' WHERE idcandidat_candidat=$idcandidat_candidat";
 
         if ($conn->query($sql_update_fichier6) === TRUE) {
-            echo "CheminComplet mis à jour avec succès dans la base de données.";
-        } else {
-            echo "Erreur lors de la mise à jour du CheminComplet : " . $conn->error;
-        }
-    }
-
-    // Traitement du 7ème fichier
-    $file7 = $_FILES['file7'];
-    $fileName7 = $file7['name'];
-    $fileTmpName7 = $file7['tmp_name'];
-    $targetFilePath7 = $cheminDossier . $fileName7;
-
-    // Déplacez le fichier temporaire vers le répertoire de destination
-    if (move_uploaded_file($fileTmpName7, $targetFilePath7)) {
-
-        // Mettre à jour le cheminComplet dans la base de données
-        $sql_update_fichier7 = "UPDATE Candidat SET dossierval_candidat='$targetFilePath7' WHERE idcandidat_candidat=$idcandidat_candidat";
-
-        if ($conn->query($sql_update_fichier7) === TRUE) {
             echo "CheminComplet mis à jour avec succès dans la base de données.";
         } else {
             echo "Erreur lors de la mise à jour du CheminComplet : " . $conn->error;
