@@ -41,6 +41,12 @@ if (isset($_POST['Login']) && isset($_POST['Pass'])) {
         // Connexion réussie
         header("Location: professeur/affichercandi.php"); // Rediriger vers la page de gestion des candidatures
         exit();
+    } 
+    // Si l'utilisateur est un administrateur, connexion à admin.php
+    elseif ($result == 1 && $role == "admin") {
+        // Connexion réussie
+        header("Location: admin/accueil-admin.html"); // Rediriger vers la page d'administration
+        exit();
     } else {
         // Connexion échouée
         $_SESSION['error'] = "Identifiant ou mot de passe incorrect";

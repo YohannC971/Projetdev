@@ -23,6 +23,11 @@ CREATE TABLE `Utilisateur` (
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB;
 
+
+-- Insertion de données dans la table `Utilisateur`
+INSERT INTO `Utilisateur` (`login_utilisateur`,`passe_utilisateur`,`role_utilisateur`)
+VALUES ('administrateur','root','admin');
+
 -- Création de la table `Formation`
 CREATE TABLE `Formation` (
   `idformation_formation` INT AUTO_INCREMENT NOT NULL,
