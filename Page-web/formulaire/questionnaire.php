@@ -291,9 +291,9 @@ $stmt->fetch();
         <textarea style = "margin-left: 10px" id="autres_questions" name="autres_questions" rows="4" cols="50" required></textarea><br><br>
 
         <label style = "margin-left: 10px" for="date">Date :</label>
-	<input type="date" style = "margin-left: 10px" id="date" name="date" required><br><br>
+	      <input type="date" style = "margin-left: 10px" id="date" name="date" required><br><br>
 
-	<h3 style = "margin-left: 10px">Signature :</h3>
+      	<h3 style = "margin-left: 10px">Signature :</h3>
         <canvas id="signatureCanvas" width="400" height="200"></canvas><br><br>
 
         <input  type="button" style = "margin-left: 10px" value="Effacer" onclick="clearSignature()">
