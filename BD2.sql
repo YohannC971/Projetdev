@@ -106,6 +106,8 @@ CREATE TABLE `Formulaire` (
   `stagesEntreprise_formulaire` VARCHAR(5),
   `input_quelle_entreprise_formulaire` VARCHAR(255),
   `theme_entreprise_formulaire` VARCHAR(255),
+  `choix_contacts_entreprise_formulaire` VARCHAR(5),
+  `input_contacts_entreprise_formulaire` VARCHAR(255),
   `AdressePrincipal_formulaire` VARCHAR(100),
   `candidat_idcandidat_candidat` INT,
   `idformation_formation` INT,

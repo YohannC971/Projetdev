@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Liste des candidats</title>
+    <link rel="shortcut icon" type="image/png" href="../logo/faviconmiage.png"/>
 </head>
 <body>
     <h1>Liste des candidats</h1>
