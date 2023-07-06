@@ -35,8 +35,8 @@
     
                       <div class="form-outline mb-4">
                         <input type="text" id="form2Example11" class="form-control"
-                          placeholder="Nom d'utilisateur" name="Login" required/>
-                        <label class="form-label" for="form2Example11">Nom d'utilisateur</label>
+                          placeholder="Login" name="Login" required/>
+                        <label class="form-label" for="form2Example11">Login</label>
                       </div>
     
                       <div class="form-outline mb-4">
