@@ -170,25 +170,6 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
         }
     }
 
-    // Traitement du 7ème fichier
-    $file7 = $_FILES['file7'];
-    $fileName7 = $file7['name'];
-    $fileTmpName7 = $file7['tmp_name'];
-    $targetFilePath7 = $cheminDossier . $fileName7;
-
-    // Déplacez le fichier temporaire vers le répertoire de destination
-    if (move_uploaded_file($fileTmpName7, $targetFilePath7)) {
-
-        // Mettre à jour le cheminComplet dans la base de données
-        $sql_update_fichier7 = "UPDATE Candidat SET dossiervalidation_candidat='$targetFilePath7' WHERE idcandidat_candidat=$idcandidat_candidat";
-
-        if ($conn->query($sql_update_fichier7) === TRUE) {
-            echo "CheminComplet mis à jour avec succès dans la base de données.";
-        } else {
-            echo "Erreur lors de la mise à jour du CheminComplet : " . $conn->error;
-        }
-    }
-
     $conn->close();
 
     header("Location: questionnaire.php");
