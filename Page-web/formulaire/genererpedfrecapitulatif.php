@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
 
 
     //informations du candidat
-    //information du candidat
+    //informations du candidat
     $req_nomjeunefille = "SELECT nom_candidat, prenom_candidat, nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
     $result2 = $conn->query($req_nomjeunefille);
     if($result2->num_rows>0){
