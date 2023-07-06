@@ -11,6 +11,9 @@ if (!$conn) {
 } else {
     // Récupération des données du formulaire d'inscription
     $login = $_POST['login'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
     $Pass = $_POST['Pass'];
     $role = 'responsable';
 
@@ -19,6 +22,10 @@ if (!$conn) {
         INSERT INTO utilisateur (login_utilisateur, passe_utilisateur, role_utilisateur)
         VALUES ('" . $login . "','" . $Pass . "','" . $role . "');
 
+        SET @id_utilisateur = LAST_INSERT_ID();
+
+        INSERT INTO responsables (id_utilisateur, nomres_responsables, prenomres_responsables,adressemail_responsables)
+        VALUES (@id_utilisateur, '" . $nom . "', '" . $prenom . "', '" . $email . "');
 
     ";
 
