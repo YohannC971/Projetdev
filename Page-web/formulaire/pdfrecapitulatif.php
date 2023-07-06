@@ -35,20 +35,53 @@ if ($result->num_rows > 0) {
     $result2 = $conn->query($req_nomjeunefille);
     if($result2->num_rows>0){
         $row = $result2->fetch_assoc();
-        $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
         $nom_candidat = $row['nom_candidat']; 
         $prenom_candidat = $row['prenom_candidat']; 
+        $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
 
     }
 
     //
-    $req_form = "SELECT lieu_naissance_formulaire, seriebac_formulaire, mentionbac_formulaire, datenaissance_formulaire, anneebac_formulaire,lieubac_formulaire, intituleannee1_formulaire, anneeobtention1_formulaire,
-    lieuobtention1_formulaire, moyenneannee1_formulaire, intituleannee2_formulaire, anneeobtention2_formulaire, lieuobtention2_formulaire,moyenneannee2_formulaire,
-    autre_diplome_obtenu_formulaire, autre_diplome_obtenu_formulaire2,autre_diplome_obtenu_formulaire3, autre_diplome_obtenu_formulaire4,annee_autres_diplome_formulaire,
-    annee_autres_diplome_formulaire2, annee_autres_diplome_formulaire3, annee_autres_diplome_formulaire4, moyenne_autres_diplome_formulaire, moyenne_autres_diplome_formulaire2,moyenne_autres_diplome_formulaire3, moyenne_autres_diplome_formulaire4, lieu_autre_diplome_formulaire, lieu_autre_diplome_formulaire2, lieu_autre_diplome_formulaire3,
-    lieu_autre_diplome_formulaire4, etablissement_autre_diplome_formulaire, etablissement_autre_diplome_formulaire2, etablissement_autre_diplome_formulaire3, etablissement_autre_diplome_formulaire4, choix_candidate_a_autres_formations_formulaire, input_autres_formation_formulaire,
-    stagesEntreprise_formulaire, input_quelle_entreprise_formulaire, theme_entreprise_formulaire, AdressePrincipal_formulaire, candidat_idcandidat_candidat, idformation_formation, nom_parent1, prennom_parent1, numero_parent1, nom_parent2,
-    prennom_parent2, numero_parent2, nom_responsable_legale, prenom_responsable_legale, numero_responsable_legale, ville, codepostal, telephone, mobile 
+    $req_form = "SELECT datenaissance_formulaire,
+    lieu_naissance_formulaire,
+    AdressePrincipal_formulaire,
+    ville,
+    codepostal,
+    telephone,
+    mobile,
+    nom_parent1,
+    prennom_parent1,
+    numero_parent1,
+    nom_parent2,
+    prennom_parent2,
+    numero_parent2,
+    nom_responsable_legale,
+    prenom_responsable_legale,
+    numero_responsable_legale,
+    seriebac_formulaire,
+    mentionbac_formulaire,
+    lieubac_formulaire,
+    anneebac_formulaire,
+    intituleannee1_formulaire,
+    anneeobtention1_formulaire,
+    lieuobtention1_formulaire,
+    moyenneannee1_formulaire,
+    intituleannee2_formulaire,
+    anneeobtention2_formulaire,
+    lieuobtention2_formulaire,
+    moyenneannee2_formulaire,
+    autre_diplome_obtenu_formulaire,
+    annee_autres_diplome_formulaire,
+    moyenne_autres_diplome_formulaire,
+    lieu_autre_diplome_formulaire,
+    etablissement_autre_diplome_formulaire,
+    choix_candidate_a_autres_formations_formulaire,
+    input_autres_formation_formulaire,
+    stagesEntreprise_formulaire,
+    input_quelle_entreprise_formulaire,
+    theme_entreprise_formulaire,
+    choix_contacts_entreprise_formulaire,
+    input_contacts_entreprise_formulaire
     FROM Formulaire WHERE candidat_idcandidat_candidat=(SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur)";
     $resform = $conn->query($req_form);
     if($resform->num_rows>0){
@@ -97,7 +130,8 @@ if ($result->num_rows > 0) {
         $stagesEntreprise = $row['stagesEntreprise_formulaire'];
         $input_quelle_entreprise = $row['input_quelle_entreprise_formulaire'];
         $theme_entreprise = $row['theme_entreprise_formulaire'];
-        
+        $choix_contacts_entreprise = $row['choix_contacts_entreprise_formulaire'];
+        $input_contacts_entreprise = $row['input_contacts_entreprise_formulaire'];        
         //$genre_candidat = $row['genre_candidat'];         
     }
 
@@ -152,8 +186,8 @@ $pdf->Cell(0, 10, utf8_decode('Prénom : '. $prenom_candidat), 0, 1);
 
 $pdf->Ln(10);
 
-$pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille_candidat, 0, 1);
-$pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $datenaissance_formulaire), 0, 1);
+$pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille, 0, 1);
+$pdf->Cell(0, 10, utf8_decode('Né(e) le : '.  $datenaissance_formulaire), 0, 1);
 $pdf->Cell(0, 10, utf8_decode('à : '. $lieu_naissance), 0, 1);
 $pdf->Cell(0, 10, 'Adresse : '. $adressePrincipal, 0, 1);
 $pdf->Cell(0, 10, 'Ville : '. $ville, 0, 1);
@@ -208,15 +242,13 @@ $pdf->Cell(0, 10, utf8_decode("Lesquelles : ". $input_autres_formation), 0, 1);
 $pdf->Cell(0, 10, utf8_decode("Avez vous effectué des stages en entreprise? : ". $stagesEntreprise), 0, 1);
 $pdf->Cell(0, 10, utf8_decode("Si oui, quelle(s) entreprise(s) : ". $input_quelle_entreprise), 0, 1);
 $pdf->Cell(0, 10, utf8_decode("Sur quel(s) thème(s) : ". $theme_entreprise), 0, 1);
-
-
-
-
+$pdf->Cell(0, 10, utf8_decode("Avez vous déjà des contacts en entreprise? : ". $choix_contacts_entreprise), 0, 1);
+$pdf->Cell(0, 10, utf8_decode("Si oui, quels sont vos contacts: ". $input_contacts_entreprise), 0, 1);
 
 // Enregistrer le PDF dans un fichier
-$pdf->Output('formulaire.pdf', 'F');
+$pdf->Output('recap.pdf', 'F');
 
 // Redirection vers le fichier PDF généré
-header('Location: formulaire.pdf');
+header('Location: recap.pdf');
 exit();
 ?>

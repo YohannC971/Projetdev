@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS `Candidat`;
 DROP TABLE IF EXISTS `Responsables`;
 DROP TABLE IF EXISTS `Formation`;
 DROP TABLE IF EXISTS `Utilisateur`;
+DROP TABLE IF EXISTS `cle-inscription`;
 
 -- Réactiver les contraintes de clé étrangère
 SET FOREIGN_KEY_CHECKS = 1;
@@ -21,6 +22,11 @@ CREATE TABLE `Utilisateur` (
   `role_utilisateur` VARCHAR(255),
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB;
+
+
+-- Insertion de données dans la table `Utilisateur`
+INSERT INTO `Utilisateur` (`login_utilisateur`,`passe_utilisateur`,`role_utilisateur`)
+VALUES ('administrateur','root','admin');
 
 -- Création de la table `Formation`
 CREATE TABLE `Formation` (
@@ -50,6 +56,7 @@ CREATE TABLE `Candidat` (
   `diplome_candidat` VARCHAR(255),
   `justificatifpro_candidat` VARCHAR(255),
   `dossiervalidation_candidat` VARCHAR(255),
+  `dossier_candidat` VARCHAR(255),
   `Age_candidat` INT,
   `Etat_admission` TINYINT(1),
   `Etat_document_candidat` TINYINT(1),
@@ -99,6 +106,8 @@ CREATE TABLE `Formulaire` (
   `stagesEntreprise_formulaire` VARCHAR(5),
   `input_quelle_entreprise_formulaire` VARCHAR(255),
   `theme_entreprise_formulaire` VARCHAR(255),
+  `choix_contacts_entreprise_formulaire` VARCHAR(5),
+  `input_contacts_entreprise_formulaire` VARCHAR(255),
   `AdressePrincipal_formulaire` VARCHAR(100),
   `candidat_idcandidat_candidat` INT,
   `idformation_formation` INT,
@@ -141,3 +150,14 @@ CREATE TABLE `Sinscrit` (
   FOREIGN KEY (`id_utilisateur`) REFERENCES `Utilisateur` (`id_utilisateur`),
   FOREIGN KEY (`idres_responsables`) REFERENCES `Responsables` (`idres_responsables`)
 ) ENGINE=InnoDB;
+
+-- Création de la table `cle-inscription`
+CREATE TABLE `cle-inscription` (
+`id_cle` INT AUTO_INCREMENT NOT NULL,
+`cle` VARCHAR(50),
+PRIMARY KEY (`id_cle`)
+) ENGINE=InnoDB;
+
+-- Insertion de données dans la table `Formation`
+INSERT INTO `cle-inscription` (`cle`)
+VALUES ('miage');

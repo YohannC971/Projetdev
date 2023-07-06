@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Accueil</title>
+    <title>Liste responsables</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="../logo/faviconmiage.png"/>
+    <link rel="shortcut icon" type="image/png" href=".././logo/faviconmiage.png"/>
 </head>
 <body>
     <!--Main Navigation-->
@@ -27,34 +27,23 @@
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
-           href="accueil.html"
-           class="list-group-item list-group-item-action py-2 ripple active"
+           href="accueil-admin.html"
+           class="list-group-item list-group-item-action py-2 ripple "
            aria-current="true"
            >
-           <i class="fas fa-home fa-fw me-3"></i><span>Accueil</span></a
+           <i class="fas fa-home fa-fw me-3"></i><span>Accueil</span>
+        </a>
+        <a
+           href="liste-responsable.php"
+           class="list-group-item list-group-item-action py-2 active "
            >
+          <i class="fas fa-globe-americas fa-fw me-3 "></i
+            ><span>Liste des responsables</span>
+        </a>
         <a
-           href="pagecandidat.php"
+           href="modifie-cle-inscription.php"
            class="list-group-item list-group-item-action py-2 ripple"
-           >
-        <i class="fas fa-pen fa-fw me-3"></i><span>Candidats</span></a
-            >
-        <a
-           href="apprentissage.html"
-           class="list-group-item list-group-item-action py-2 ripple"
-           ><i class="fas fa-book-open fa-fw me-3 "></i><span>Apprentissage</span></a
-          >
-        <a
-           href="contacts.html"
-           class="list-group-item list-group-item-action py-2 ripple"
-           ><i class="fas fa-address-book fa-fw me-3"></i
-          ><span>Contacts</span></a
-          >
-        
-        <a
-           href="mon-profil.php"
-           class="list-group-item list-group-item-action py-2 ripple"
-           ><i class="fas fa-user fa-fw me-3"></i><span>Mon profil</span></a
+           ><i class="fas fa-graduation-cap fa-fw me-3"></i><span>Modifié la clé d'inscription</span></a
           >
           <a
            href="../controleur_deco.php"
@@ -123,9 +112,58 @@
 <!--Main layout-->
 <main style="margin-top: 58px">
   <div class="container pt-4">
+  <?php
+
+
+include("../config.php");
+
+// Vérifier si l'utilisateur est connecté
+session_start();
+if (!isset($_SESSION['login'])) {
+    header("Location: ../index.php");
+    exit;
+}
+
+
+$conn = new mysqli($HOST, $LOGINBDD, $PASSBDD, $BDD);
+if ($conn->connect_error) {
+    die("Erreur de connexion à la base de données : " . $conn->connect_error);
+}
+
+// Récupérer tous les responsables
+$sql = "SELECT * FROM responsables";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
     
+echo "<table class='table table-striped'>";
+echo "<tr><th>ID Responsables</th><th>ID Utilisateur</th><th>Nom Responsable</th><th>Prénom Responsable</th><th>E-mail Responsable</th><th>Supprimer</th></tr>";
+// Afficher les responsables et le bouton supprimer pour chaque responsable
+while ($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>" . $row["idres_responsables"] . "</td>";
+    echo "<td>" . $row["id_utilisateur"] . "</td>";
+    echo "<td>" . $row["nomres_responsables"] . "</td>";
+    echo "<td>" . $row["prenomres_responsables"] . "</td>"; 
+    echo "<td>" . $row["adressemail_responsables"] . "</td>";     
+
+    
+    echo "<td><button class='btn btn-danger' style='color:white'><a href='supprimer-responsable.php?idres=" . $row["idres_responsables"] . "&idutilisateur=" . $row["id_utilisateur"] . "'style='color: white;'>Supprimer</a></button></td>";
+    echo "</tr>";
+}
+echo "</table>";
+echo "</div>";
+} else {
+    echo "Aucun responsable trouvé dans la base de données.";
+}
+
+$conn->close();
+?>
+
   </div>
 </main>
 </body>
 </html>
+
+
 

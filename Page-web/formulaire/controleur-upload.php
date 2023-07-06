@@ -153,9 +153,9 @@ if (isset($_FILES['file1']) && isset($_FILES['file2']) && isset($_FILES['file3']
 
     // Traitement du sixième fichier
     $file6 = $_FILES['file6'];
-    $fileName6 = $file6['name'];
+    $fileName7 = $file6['name'];
     $fileTmpName6 = $file6['tmp_name'];
-    $targetFilePath6 = $cheminDossier . $fileName6;
+    $targetFilePath6 = $cheminDossier . $fileName7;
 
     // Déplacez le fichier temporaire vers le répertoire de destination
     if (move_uploaded_file($fileTmpName6, $targetFilePath6)) {

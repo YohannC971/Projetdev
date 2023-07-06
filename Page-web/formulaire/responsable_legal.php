@@ -78,6 +78,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="../logo/faviconmiage.png"/>
 
 </head>
 <body>

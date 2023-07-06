@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title></title>
+    <title>Candidater en L3</title>
     <!-- Font Awesome  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -92,6 +92,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="../logo/faviconmiage.png"/>
 
 </head>
 <body>
