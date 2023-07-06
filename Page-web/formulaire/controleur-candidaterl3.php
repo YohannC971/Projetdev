@@ -146,7 +146,7 @@ if ($result->num_rows > 0) {
             $lienDossier = mysqli_real_escape_string($connexion, $lienDossier);
 
             // Requête SQL pour mettre à jour le lien du dossier
-            $updateQuery = "UPDATE candidat SET dossiervalidation_candidat = '$lienDossier' WHERE idcandidat_candidat = $idcandidat";
+            $updateQuery = "UPDATE candidat SET dossier_candidat = '$lienDossier' WHERE idcandidat_candidat = $idcandidat";
 
             if (mysqli_query($connexion, $updateQuery)) {
                 echo "Lien du dossier mis à jour avec succès.";
