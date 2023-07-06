@@ -44,7 +44,7 @@ if (isset($_POST['Login']) && isset($_POST['Pass'])) {
     } else {
         // Connexion échouée
         $_SESSION['error'] = "Identifiant ou mot de passe incorrect";
-        header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreu
+        header("Location: index.php"); // Rediriger vers la page de connexion avec un message d'erreur
         exit();
     }
 }
