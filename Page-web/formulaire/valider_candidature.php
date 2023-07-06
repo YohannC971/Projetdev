@@ -158,7 +158,7 @@
     </div>
     <!-- Container wrapper -->
   </nav>
-  <!-- Navbar; -->
+  <!-- Navbar -->
 </header>
 <!--Main Navigation-->
 
@@ -181,17 +181,17 @@
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div>           
           </div>
 
-        <form action="pdfrecapitulatif.php" method="post" enctype="multipart/form-data">
+        <form action="controleur-valider-candidature.php" method="post" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
-            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Recapitulatif</h3></div>
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Valider ma Candidature</h3></div>
               <div class="d-flex justify-content-evenly" style="align-items: center;"> 
                 <div class="p-2">
                   <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
-                  id="" onclick="">Generer PDF</button>
+                  id="" onclick="">Valider</button>
       
               <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
-              id="suivantButton" onclick="suivant()">Precedent</button>
+              id="suivantButton" onclick="suivant()">suivant</button>
                 </div> 
                 <div class="d-flex justify-content-evenly" style="align-items: center;">
 
@@ -210,7 +210,7 @@
 
 <script>
     function suivant() {
-      window.location.href = "questionnaire.php"; // Remplacez l'URL par celle de la page suivante
+      window.location.href = "recap.html"; // Remplacez l'URL par celle de la page suivante
     }
     </script>
 
