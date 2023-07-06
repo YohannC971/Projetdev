@@ -35,9 +35,9 @@ if ($result->num_rows > 0) {
     $result2 = $conn->query($req_nomjeunefille);
     if($result2->num_rows>0){
         $row = $result2->fetch_assoc();
-        $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
         $nom_candidat = $row['nom_candidat']; 
         $prenom_candidat = $row['prenom_candidat']; 
+        $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
 
     }
 
@@ -152,8 +152,8 @@ $pdf->Cell(0, 10, utf8_decode('Prénom : '. $prenom_candidat), 0, 1);
 
 $pdf->Ln(10);
 
-$pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille_candidat, 0, 1);
-$pdf->Cell(0, 10, utf8_decode('Né(e) le : '. $datenaissance_formulaire), 0, 1);
+$pdf->Cell(0, 10, 'Nom de jeune fille : ' . $nom_jeune_fille, 0, 1);
+$pdf->Cell(0, 10, utf8_decode('Né(e) le : '.  $datenaissance_formulaire), 0, 1);
 $pdf->Cell(0, 10, utf8_decode('à : '. $lieu_naissance), 0, 1);
 $pdf->Cell(0, 10, 'Adresse : '. $adressePrincipal, 0, 1);
 $pdf->Cell(0, 10, 'Ville : '. $ville, 0, 1);
