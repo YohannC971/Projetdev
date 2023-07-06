@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
 
   
     $sql_select_formulaire = "SELECT choix_candidate_a_autres_formations_formulaire, input_autres_formation_formulaire, stagesEntreprise_formulaire, input_quelle_entreprise_formulaire,
-    theme_entreprise_formulaire FROM Formulaire 
+    theme_entreprise_formulaire, choix_contacts_entreprise_formulaire, input_contacts_entreprise_formulaire FROM Formulaire 
     WHERE candidat_idcandidat_candidat=(SELECT idcandidat_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur)";
 
     $result2 = $conn->query($sql_select_formulaire);
@@ -50,8 +50,9 @@ if ($result->num_rows > 0) {
         $stagesEntreprise_formulaire = $row["stagesEntreprise_formulaire"];
         $input_quelle_entreprise_formulaire = $row["input_quelle_entreprise_formulaire"];
         $theme_entreprise_formulaire = $row["theme_entreprise_formulaire"];
-
-  
+        $choix_contacts_entreprise_formulaire = $row["choix_contacts_entreprise_formulaire"];
+        $input_contacts_entreprise_formulaire = $row["input_contacts_entreprise_formulaire"];
+ 
     }
   }
   $result->close();
@@ -286,7 +287,25 @@ if ($result->num_rows > 0) {
                     </div>
                   </div>
               </div>
-            </div>
+              <div class="p-2">
+                  Avez vous déjà des contacts en entreprise?             
+                    <select id="choix_contacts_entreprise" name="choix_contacts_entreprise" onchange="afficherChamp_contacts_entreprise()" value="<?php echo $choix_contacts_entreprise_formulaire; ?>">
+                      <option value="non">NON</option>
+                      <option value="oui">OUI</option>
+                    </select>
+                    <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                  <div class="p-2">
+                    <div id="champ_contacts_entreprise" style="display: none;">
+                      <div class="p-2">
+                        <label na>Si oui, quels sont vos contacts: </label>
+                        <input type="text" id="input_contacts_entreprise" name="input_contacts_entreprise" value="<?php echo $input_contacts_entreprise_formulaire; ?>">
+                      </div>
+                      <div>
+                      <p> Lorsque vous avez une proposition ferme, veuillez télécharger le dossier de validation à remplir</p>
+                      <a href="./telecharger/3_DossierValidationSujet2023-2024_Licence.pdf" download class="btn btn-primary btn-lg active">Télécharger</a>                    
+                      </div>                      
+                    </div>
+                  </div>
             </b>
           </div>
           <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
@@ -340,6 +359,22 @@ if ($result->num_rows > 0) {
         input_quelle_entreprise.required = false;
       }
     }
+
+    function afficherChamp_contacts_entreprise() {
+      var choix_contacts_entreprise = document.getElementById("choix_contacts_entreprise");
+      var champ_contacts_entreprise= document.getElementById("champ_contacts_entreprise");
+      var input_contacts_entreprise= document.getElementById("input_contacts_entreprise");
+  
+      if (choix_contacts_entreprise.value === "oui") {
+        champ_contacts_entreprise.style.display = "block";
+        input_contacts_entreprise.required = true;
+      } else {
+        champ_contacts_entreprise.style.display = "none";
+        input_contacts_entreprise.required = false;
+      }
+    }
+
+
 </script>
 <script src="js/fonction.js"></script>
 </body>
