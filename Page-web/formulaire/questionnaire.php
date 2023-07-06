@@ -67,6 +67,8 @@ $stmt->fetch();
     <link rel="stylesheet" href="../css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="../logo/faviconmiage.png"/>
+
     <title>Questionnaire</title>
     <style>
         #signatureCanvas {

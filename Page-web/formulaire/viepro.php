@@ -302,6 +302,7 @@ if ($result->num_rows > 0) {
                       </div>
                       <div>
                       <p> Lorsque vous avez une proposition ferme, veuillez télécharger le dossier de validation à remplir</p>
+                      <p> Lorsque votre candidature est validée, vous pourrez déposer ce dossier dans une autre page</p>
                       <a href="./telecharger/3_DossierValidationSujet2023-2024_Licence.pdf" download class="btn btn-primary btn-lg active">Télécharger</a>                    
                       </div>                      
                     </div>
