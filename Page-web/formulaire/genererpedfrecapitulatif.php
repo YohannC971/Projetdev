@@ -211,10 +211,14 @@ $pdf->Cell(0, 10, utf8_decode("Sur quel(s) thème(s) : ". $theme_entreprise), 0,
 
 
 
-
+//chemin vers dossier etudiant
+$nomDossier = 'Dossier' . $idcandidat_candidat . '_' . $nom . '_' . $prenom; // Nom du dossier
+$cheminDossier = '../EnvoiDossier/' . $nomDossier . '/';
+$nomFichier = 'recapitulatif.pdf'; // Nom du fichier PDF
+$cheminComplet = $cheminDossier . $nomFichier;
 
 // Enregistrer le PDF dans un fichier
-$pdf->Output('formulaire.pdf', 'F');
+$pdf->Output($cheminComplet, 'F');
 
 // Redirection vers le fichier PDF généré
 header('Location: formulaire.pdf');
