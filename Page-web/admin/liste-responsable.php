@@ -147,7 +147,8 @@ while ($row = $result->fetch_assoc()) {
     echo "<td>" . $row["prenomres_responsables"] . "</td>"; 
     echo "<td>" . $row["adressemail_responsables"] . "</td>";     
 
-    echo "<td><button class='btn btn-danger' style='color:white'><a href='supprimer-responsable.php?id=" . $row["idres_responsables"] . "'style='color: white;'>Supprimer</a></button></td>";
+    
+    echo "<td><button class='btn btn-danger' style='color:white'><a href='supprimer-responsable.php?idres=" . $row["idres_responsables"] . "&idutilisateur=" . $row["id_utilisateur"] . "'style='color: white;'>Supprimer</a></button></td>";
     echo "</tr>";
 }
 echo "</table>";
