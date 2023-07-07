@@ -242,7 +242,7 @@ $stmt->fetch();
           <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recapm1.html">Recapitulatif</a> </h5></div>         
           </div>
 
-        <form action=" genererpdfquestionnaire.php" method="post" target="_blank" enctype="multipart/form-data">
+        <form action=" genererpdfquestionnairem1.php" method="post" target="_blank" enctype="multipart/form-data">
           <div class="d-flex flex-column mb-3" class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
             <b>
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Questionnaire</h3></div>
