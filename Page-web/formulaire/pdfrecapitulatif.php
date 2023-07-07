@@ -171,7 +171,7 @@ $pdf->Line($lineXStart, $lineY, $lineXEnd, $lineY);
 $pdf->Ln(30); // Ajoute un saut de ligne de 10 unités 
 
 
-$pdf->Cell(0, 10, utf8_decode('Récapitulatif inscription'), 0, 1, 'C');
+$pdf->Cell(0, 10, utf8_decode('Récapitulatif inscription en L3'), 0, 1, 'C');
 
 $pdf->SetFont('Arial', 'I', 12); // définit la police en italique
 //$pdf->Cell(0, 10, utf8_decode('Cher(e) :  ' . $nom . ' ' . $prenom), 0, 1,'C');
