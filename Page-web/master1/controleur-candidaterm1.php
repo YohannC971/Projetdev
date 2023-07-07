@@ -57,7 +57,7 @@ if ($result->num_rows > 0) {
             exit;
         }
 
-        header("Location: responsable_legal.php");
+        header("Location: responsable_legalm1.php");
     } else {
         echo "Formation non trouvée.";
         exit;
