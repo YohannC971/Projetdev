@@ -282,7 +282,7 @@ if ($result->num_rows > 0) {
 
 <script>
   function suivant() {
-    window.location.href = "1ercylem1"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "1ercyclem1.php"; // Remplacez l'URL par celle de la page suivante
   }
   </script>
 
