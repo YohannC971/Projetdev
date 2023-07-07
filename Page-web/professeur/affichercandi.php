@@ -195,7 +195,7 @@ while ($row = $result->fetch_assoc()) {
 
     
     echo "<td>" . $row["Etat_admission"] . "
-  <form action='valider-admission.php' method='post' style='display: inline-block;'>
+  <form action='valider-admission.php' method='post' style='display: inline-block; margin-bottom:10px;'>
     <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
     <button class='btn btn-success btn-sm' type='submit'>Valider</button>
   </form>
@@ -206,7 +206,7 @@ while ($row = $result->fetch_assoc()) {
 </td>";
 
 echo "<td>" . $row["Etat_document_candidat"] . "
-<form action='valider-document.php' method='post' style='display: inline-block;'>
+<form action='valider-document.php' method='post' style='display: inline-block; margin-bottom:10px;'>
   <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
   <button class='btn btn-success btn-sm' type='submit'>Valider</button>
 </form>

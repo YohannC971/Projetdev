@@ -100,7 +100,7 @@ $conn->close();
                     <div class="p-2">
                         <label for="">Clé d'inscription (actuelle) :</label>
                         <input type="text" id="cle" name="cle" value="<?php echo $cle; ?>"/>
-                        <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36);" 
+                        <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(52 , 201 , 36); margin-left:10px;" 
                         id="" onclick="">Modifié</button>
                     </div>
                 </div>
