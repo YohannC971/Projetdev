@@ -328,7 +328,7 @@ if ($result->num_rows > 0) {
 
 <script>
   function suivant() {
-    window.location.href = "bacform.php"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "bacformm1.php"; // Remplacez l'URL par celle de la page suivante
   }
   </script>
 
