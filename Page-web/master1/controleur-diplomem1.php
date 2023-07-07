@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
                 echo "Erreur lors de la mise à jour de formulaire_id_formulaire dans la table Candidat : " . $conn->error;
                 exit;
             }
-            header("Location: viepro.php");
+            header("Location: vieprom1.php");
         } else {
             echo "Identifiant du candidat non trouvé.";
             exit;

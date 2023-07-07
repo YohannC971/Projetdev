@@ -171,7 +171,7 @@ $pdf->Line($lineXStart, $lineY, $lineXEnd, $lineY);
 $pdf->Ln(30); // Ajoute un saut de ligne de 10 unités 
 
 
-$pdf->Cell(0, 10, utf8_decode('Récapitulatif inscription en L3'), 0, 1, 'C');
+$pdf->Cell(0, 10, utf8_decode('Récapitulatif inscription en M1'), 0, 1, 'C');
 
 $pdf->SetFont('Arial', 'I', 12); // définit la police en italique
 //$pdf->Cell(0, 10, utf8_decode('Cher(e) :  ' . $nom . ' ' . $prenom), 0, 1,'C');
@@ -246,9 +246,9 @@ $pdf->Cell(0, 10, utf8_decode("Avez vous déjà des contacts en entreprise? : ".
 $pdf->Cell(0, 10, utf8_decode("Si oui, quels sont vos contacts: ". $input_contacts_entreprise), 0, 1);
 
 // Enregistrer le PDF dans un fichier
-$pdf->Output('recap.pdf', 'F');
+$pdf->Output('recapm1.pdf', 'F');
 
 // Redirection vers le fichier PDF généré
-header('Location: recap.pdf');
+header('Location: recapm1.pdf');
 exit();
 ?>

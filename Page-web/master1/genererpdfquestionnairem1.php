@@ -69,7 +69,7 @@ $signatureData = $_POST['signatureData'];
 // Récupérer les données du canvas
 if (isset($_POST['signatureData'])) {
     $signatureData = $_POST['signatureData'];
-    $imagePath = 'images/canvas.png';
+    $imagePath = '../formulaire/images/canvas.png';
     file_put_contents($imagePath, base64_decode(explode(',', $signatureData)[1]));
 }
 

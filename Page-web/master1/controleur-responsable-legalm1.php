@@ -71,7 +71,7 @@ if ($result->num_rows > 0) {
             exit;
             }
 
-            header("Location: bacform.php");
+            header("Location: bacformm1.php");
         } else {
             echo "Identifiant du candidat non trouvé.";
             exit;
