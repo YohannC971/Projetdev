@@ -246,9 +246,9 @@ $pdf->Cell(0, 10, utf8_decode("Avez vous déjà des contacts en entreprise? : ".
 $pdf->Cell(0, 10, utf8_decode("Si oui, quels sont vos contacts: ". $input_contacts_entreprise), 0, 1);
 
 // Enregistrer le PDF dans un fichier
-$pdf->Output('recap.pdf', 'F');
+$pdf->Output('recapm1.pdf', 'F');
 
 // Redirection vers le fichier PDF généré
-header('Location: recap.pdf');
+header('Location: recapm1.pdf');
 exit();
 ?>
