@@ -302,12 +302,6 @@ if ($result->num_rows > 0) {
   </div>
 </main>
 
-<script>
-  function suivant() {
-    window.location.href = "diplome.php"; // Remplacez l'URL par celle de la page suivante
-  }
-  </script>
-
 <!--Main layout-->
     <!-- Custom scripts -->
 
