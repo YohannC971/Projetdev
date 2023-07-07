@@ -236,7 +236,7 @@ if ($result->num_rows > 0) {
         <div> Après que votre candidature soit validée par les responsables, ou que tout simplement vous avez déjà une proposition ferme d'une entreprise.
           Veuillez déposer votre dossier de validation ici.</div>
         
-      <form action="./formulaire/controleur-upload.php" method="post" enctype="multipart/form-data">
+      <form action="" method="post" enctype="multipart/form-data">
                     
             <div class="d-flex justify-content-evenly">
                 <div class="d-flex">
