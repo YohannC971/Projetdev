@@ -334,7 +334,7 @@ if ($result->num_rows > 0) {
 </main>
 <script>
   function suivant() {
-    window.location.href = "responsable_legalm1.php"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "responsable_legalm1"; // Remplacez l'URL par celle de la page suivante
   }
   </script>  
 
