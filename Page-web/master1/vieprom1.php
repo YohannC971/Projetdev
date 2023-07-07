@@ -325,7 +325,7 @@ if ($result->num_rows > 0) {
 
 <script>
   function suivant() {
-    window.location.href = "piece_justificatif.php"; // Remplacez l'URL par celle de la page suivante
+    window.location.href = "piece_justificatifm1.php"; // Remplacez l'URL par celle de la page suivante
   }
   </script>
 
