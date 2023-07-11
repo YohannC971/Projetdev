@@ -243,7 +243,7 @@ while ($row = $result->fetch_assoc()) {
 echo "</table>";
 echo "</div>";
 } else {
-    echo "Aucun responsable trouvé dans la base de données.";
+    echo "Aucun Candidats trouvé dans la base de données.";
 }
 
 $conn->close();
