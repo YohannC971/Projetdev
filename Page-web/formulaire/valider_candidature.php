@@ -178,6 +178,8 @@
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="viepro.php">Vie professionnelle</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="piece_justificatif.php">Pieces justificatif</a> </h5></div>
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="questionnaire.php">Questionnaire</a> </h5></div>
+            <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="valider_candidature.php">Valider ma Candidature</a> </h5></div>
+
             <div class="p-2" style="border-bottom: 2px solid black; width: 200px;border-right: 2px solid black; width: 200px;"><h5><a href="recap.html">Recapitulatif</a> </h5></div>           
           </div>
 
@@ -189,13 +191,33 @@
                 <div class="p-2">
                   <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
                   id="" onclick="">Valider</button>
-      
-              <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+                  <button class="btn btn-primary btn-sm mb-3 float-end" type="button" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
               id="suivantButton" onclick="suivant()">suivant</button>
+      
+
                 </div> 
                 <div class="d-flex justify-content-evenly" style="align-items: center;">
 
                 </div>
+            </div>
+            </b>
+          </div>
+        </form><br><br><br><br><br><br>
+        <form action="revalider_candidature.php" method="post" enctype="multipart/form-data">
+          <div class="d-flex flex-column mb-3" class="d-flex flex-column mb-3" style="border-right: 2px solid black; border-bottom: 2px solid black;border-left: 2px solid black;">
+            <b>
+            <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Revalider ma Candidature</h3></div>
+              <div class="d-flex justify-content-evenly" style="align-items: center;"> 
+                <div class="p-2">
+                  <b>Si vous avez déjà validé votre candidature auparavant cliquez sur le bouton "Revalider ma candidature"</b><br>
+                  <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
+                  id="" onclick="">Revalider ma candidature</button>
+                </div> 
+                
+                <div class="d-flex justify-content-evenly" style="align-items: center;">
+
+                </div>
+                
             </div>
             </b>
           </div>
