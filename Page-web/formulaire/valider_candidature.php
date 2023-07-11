@@ -209,7 +209,7 @@
             <div class="p-2" style="border-right: 2px solid black;border-bottom: 2px solid black; background-color: #d9d9d9; width: 350px;"><h3>Revalider ma Candidature</h3></div>
               <div class="d-flex justify-content-evenly" style="align-items: center;"> 
                 <div class="p-2">
-                  <b>Si vous avez déjà validé votre candidature auparavant cliquez sur le bouton "Revalider ma candidature"</b><br>
+                  <b>Si vous avez déjà validé votre candidature auparavant et quelle a été refusée cliquez sur le bouton "Revalider ma candidature"</b><br>
                   <button class="btn btn-primary btn-sm mb-3 float-end" type="submit" style="background-color: rgb(79, 79, 255); margin-left: 10px;  margin-right: 10px;" 
                   id="" onclick="">Revalider ma candidature</button>
                 </div> 

@@ -227,20 +227,20 @@ $stmt->fetch();
   
       <div class="entry-content">
       
-    <form>
-          <label for="">Etat de la Candidature :</label>
-          <?php if ($Etat_admission == 0): ?>
-            <button style="background-color: red; color: white;" disabled>Refusé</button>
-          <?php elseif ($Etat_admission == 1): ?>
-            <button style="background-color: green; color: white;" disabled>Accepté</button>
-          <?php endif; ?>
-        <br><br>
+    <form>      
 
           <label for="">Etat des documents :</label>
           <?php if ($Etat_document_candidat == 0): ?>
             <button style="background-color: red; color: white;" disabled>Non complet</button>
           <?php elseif ($Etat_document_candidat == 1): ?>
             <button style="background-color: green; color: white;" disabled>Complet</button>
+          <?php endif; ?><br><br>
+
+          <label for="">Etat de la Candidature :</label>
+          <?php if ($Etat_admission == 0): ?>
+            <button style="background-color: red; color: white;" disabled>Refusé</button>
+          <?php elseif ($Etat_admission == 1): ?>
+            <button style="background-color: green; color: white;" disabled>Accepté</button>
           <?php endif; ?>
     </form>
 </body>

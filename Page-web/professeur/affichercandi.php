@@ -196,7 +196,7 @@ if ($result->num_rows > 0) {
 echo "<table class='table table-striped'>";
 echo "<tr><th>ID Candidat</th><th>Nom Candidat</th><th>Prénom Candidat</th><th>Nom Jeune Fille</th><th>Photo_candidat</th><th>cv_candidat</th>
 <th>Lettre de Motivation</th><th>Releve</th><th>Diplomes</th><th>justificatif pro</th><th>dossiervalidation_candidat</th>
-<th>Etat_admission</th><th>Etat_document_candidat</th><th>intitule_formation</th></tr>";
+<th>Etat_document_candidat</th><th>Etat_admission</th><th>intitule_formation</th></tr>";
 
 while ($row = $result->fetch_assoc()) {
     echo "<tr>";
@@ -212,7 +212,18 @@ while ($row = $result->fetch_assoc()) {
     echo "<td><a href='" . $row["justificatifpro_candidat"] . "' target='_blank'><button class='btn btn-primary btn-sm'>Voir</button></a></td>";
     echo "<td><a href='" . $row["dossiervalidation_candidat"] . "' target='_blank'><button class='btn btn-primary btn-sm'>Voir</button></a></td>";
 
-    
+    echo "<td>" . $row["Etat_document_candidat"] . "
+<form action='valider-document.php' method='post' style='display: inline-block; margin-bottom:10px;'>
+  <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
+  <button class='btn btn-success btn-sm' type='submit'>Valider</button>
+</form>
+<form action='refuser-document.php' method='post' style='display: inline-block;'>
+  <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
+  <button class='btn btn-danger btn-sm' type='submit'>Refuser</button>
+</form>
+</td>";
+
+
     echo "<td>" . $row["Etat_admission"] . "
   <form action='valider-admission.php' method='post' style='display: inline-block; margin-bottom:10px;'>
     <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
@@ -224,16 +235,7 @@ while ($row = $result->fetch_assoc()) {
   </form>
 </td>";
 
-echo "<td>" . $row["Etat_document_candidat"] . "
-<form action='valider-document.php' method='post' style='display: inline-block; margin-bottom:10px;'>
-  <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
-  <button class='btn btn-success btn-sm' type='submit'>Valider</button>
-</form>
-<form action='refuser-document.php' method='post' style='display: inline-block;'>
-  <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
-  <button class='btn btn-danger btn-sm' type='submit'>Refuser</button>
-</form>
-</td>";
+
   
     echo "<td>" . $row["intitule_formation"] . "</td>";     
     echo "</tr>";
