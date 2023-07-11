@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Listes des candidats</title>
+    <title>Listes des candidats refusés</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -35,7 +35,7 @@
         </a>
         <a
            href="affichercandi.php"
-           class="list-group-item list-group-item-action py-2 active "
+           class="list-group-item list-group-item-action py-2"
            >
           <i class="fas fa-pen fa-fw me-3"></i
             ><span>Liste des candidats </span>
@@ -49,7 +49,7 @@
         </a>
         <a
            href="affichercandirefuse.php"
-           class="list-group-item list-group-item-action py-2  "
+           class="list-group-item list-group-item-action py-2 active "
            >
           <i class="fas fa-times-circle fa-fw me-3"></i
             ><span>Liste des candidats refusés</span>
@@ -185,7 +185,7 @@ $sql = "
 SELECT c.*
 FROM candidat AS c
 JOIN Formulaire AS f ON c.idcandidat_candidat = f.candidat_idcandidat_candidat
-WHERE f.datevalidation IS NOT NULL AND Etat_admission IS NULL AND Etat_document_candidat IS NULL;
+WHERE f.datevalidation IS NOT NULL AND c.Etat_admission = 0;
 ";
 
 $result = $conn->query($sql);
@@ -213,7 +213,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<td><a href='" . $row["dossiervalidation_candidat"] . "' target='_blank'><button class='btn btn-primary btn-sm'>Voir</button></a></td>";
 
     
-    echo "<td>" . $row["Etat_admission"] . "
+    /*echo "<td>" . $row["Etat_admission"] . "
   <form action='valider-admission.php' method='post' style='display: inline-block; margin-bottom:10px;'>
     <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
     <button class='btn btn-success btn-sm' type='submit'>Valider</button>
@@ -222,9 +222,27 @@ while ($row = $result->fetch_assoc()) {
     <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
     <button class='btn btn-danger btn-sm' type='submit'>Refuser</button>
   </form>
-</td>";
+</td>";*/
 
-echo "<td>" . $row["Etat_document_candidat"] . "
+if ($row["Etat_admission"] == 1) {
+    echo "<td>" . $row["Etat_admission"] . "
+    <form action='valider-admission.php' method='post' style='display: inline-block; margin-bottom:10px;'>
+        <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
+        <button class='btn btn-success btn-sm' type='submit'>Valider</button>
+    </form>
+    </td>";
+} elseif ($row["Etat_admission"] == 0) {
+    echo "<td>" . $row["Etat_admission"] . "
+    <form action='refuser-admission.php' method='post' style='display: inline-block;'>
+        <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
+        <button class='btn btn-danger btn-sm' type='submit'>Refuser</button>
+    </form>
+    </td>";
+}
+
+
+
+/*echo "<td>" . $row["Etat_document_candidat"] . "
 <form action='valider-document.php' method='post' style='display: inline-block; margin-bottom:10px;'>
   <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
   <button class='btn btn-success btn-sm' type='submit'>Valider</button>
@@ -233,15 +251,36 @@ echo "<td>" . $row["Etat_document_candidat"] . "
   <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
   <button class='btn btn-danger btn-sm' type='submit'>Refuser</button>
 </form>
-</td>";
+</td>";*/
+
+if ($row["Etat_document_candidat"] == 1) {
+    echo "<td>" . $row["Etat_document_candidat"] . "
+    <form action='valider-document.php' method='post' style='display: inline-block; margin-bottom:10px;'>
+        <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
+        <button class='btn btn-success btn-sm' type='submit'>Valider</button>
+    </form>
+    </td>";
+} elseif ($row["Etat_document_candidat"] == 0) {
+    echo "<td>" . $row["Etat_document_candidat"] . "
+    <form action='refuser-document.php' method='post' style='display: inline-block;'>
+        <input type='hidden' name='candidat_id' value='" . $row["idcandidat_candidat"] . "'>
+        <button class='btn btn-danger btn-sm' type='submit'>Refuser</button>
+    </form>
+    </td>";
+}
+
+
   
     echo "<td>" . $row["intitule_formation"] . "</td>";     
+
+    
+    /*echo "<td><button class='btn btn-danger' style='color:white'><a href='supprimer-responsable.php?idres=" . $row["idres_responsables"] . "&idutilisateur=" . $row["id_utilisateur"] . "'style='color: white;'>Supprimer</a></button></td>";*/
     echo "</tr>";
 }
 echo "</table>";
 echo "</div>";
 } else {
-    echo "Aucun responsable trouvé dans la base de données.";
+    echo "Aucun Candidat refusés trouvé dans la base de données.";
 }
 
 $conn->close();
