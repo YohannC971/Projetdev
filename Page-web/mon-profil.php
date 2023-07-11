@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 
 // Préparer la requête SQL avec un paramètre pour éviter les injections SQL
-$sql = "SELECT c.nom_candidat, c.prenom_candidat, f.email_formulaire 
+$sql = "SELECT c.nom_candidat, c.prenom_candidat, c.Etat_admission, c.Etat_document_candidat, f.email_formulaire 
         FROM utilisateur AS u
         INNER JOIN candidat AS c ON u.id_utilisateur = c.id_utilisateur
         INNER JOIN formulaire AS f ON c.idcandidat_candidat = f.candidat_idcandidat_candidat
@@ -45,11 +45,10 @@ $stmt->bind_param("s", $login);
 $stmt->execute();
 
 // Récupérer les résultats de la requête
-$stmt->bind_result($nomCandidat, $prenomCandidat, $emailCandidat);
+$stmt->bind_result($nomCandidat, $prenomCandidat, $Etat_admission, $Etat_document_candidat, $emailCandidat);
 
 // Récupérer le premier et unique résultat
 $stmt->fetch();
-
 
 ?>
 
@@ -208,7 +207,7 @@ $stmt->fetch();
     <article id="post-10" class="post-10 page type-page status-publish hentry">
       <header class="entry-header">
         <div style="margin-top: 20px;"></div>
-        <h1 class="entry-title">Mon profil</h1>
+        <h1 class="entry-title"style="text-align:center">Mon profil</h1>
       </header>
   
       <div class="entry-content">
@@ -222,6 +221,27 @@ $stmt->fetch();
 
         <label for="email">Email :</label>
         <input type="email" id="email" name="email" value="<?php echo $emailCandidat; ?>" readonly>
+    </form><br><br><br><br><br>
+    <h1 class="entry-title" style="text-align:center">Ma candidature</h1><br>
+      </header>
+  
+      <div class="entry-content">
+      
+    <form>
+          <label for="">Etat de la Candidature :</label>
+          <?php if ($Etat_admission == 0): ?>
+            <button style="background-color: red; color: white;" disabled>Refusé</button>
+          <?php elseif ($Etat_admission == 1): ?>
+            <button style="background-color: green; color: white;" disabled>Accepté</button>
+          <?php endif; ?>
+        <br><br>
+
+          <label for="">Etat des documents :</label>
+          <?php if ($Etat_document_candidat == 0): ?>
+            <button style="background-color: red; color: white;" disabled>Non complet</button>
+          <?php elseif ($Etat_document_candidat == 1): ?>
+            <button style="background-color: green; color: white;" disabled>Complet</button>
+          <?php endif; ?>
     </form>
 </body>
 </html>
