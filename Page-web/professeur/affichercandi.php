@@ -185,7 +185,7 @@ $sql = "
 SELECT c.*
 FROM candidat AS c
 JOIN Formulaire AS f ON c.idcandidat_candidat = f.candidat_idcandidat_candidat
-WHERE f.datevalidation IS NOT NULL AND Etat_admission IS NULL AND Etat_document_candidat IS NULL;
+WHERE f.datevalidation IS NOT NULL AND Etat_admission IS NULL ;
 ";
 
 $result = $conn->query($sql);

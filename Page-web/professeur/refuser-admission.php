@@ -12,12 +12,7 @@ if (isset($_POST['candidat_id'])) {
     }
     
     $sql = "UPDATE Candidat SET Etat_admission = 0 WHERE idcandidat_candidat = $candidat_id";
-    $sql = "
-UPDATE Formulaire
-SET datevalidation = 'NULL',
-    Etat_admission = NULL,
-    Etat_document_candidat = NULL
-WHERE candidat_idcandidat_candidat = candidat_id";
+
     if ($conn->query($sql) === TRUE) {
         // Rediriger vers la page affichercandi.php après avoir effectué la mise à jour
         header("Location: affichercandi.php");
