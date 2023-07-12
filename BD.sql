@@ -121,6 +121,7 @@ CREATE TABLE `Formulaire` (
   `prenom_responsable_legale` VARCHAR(255),
   `numero_responsable_legale` INT,
   `questionnaire` VARCHAR(255),
+  `lien_pdf_recap`VARCHAR(255),
   `ville` VARCHAR(255),
   `codepostal` INT,
   `telephone` INT,
