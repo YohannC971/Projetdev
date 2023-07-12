@@ -161,4 +161,4 @@ PRIMARY KEY (`id_cle`)
 
 -- Insertion de données dans la table `Formation`
 INSERT INTO `cle-inscription` (`cle`)
-VALUES ('miage')
+VALUES ('miage');
