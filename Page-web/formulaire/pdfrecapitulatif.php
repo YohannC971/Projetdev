@@ -31,10 +31,11 @@ if ($result->num_rows > 0) {
 
     //informations du candidat
     //informations du candidat
-    $req_nomjeunefille = "SELECT nom_candidat, prenom_candidat, nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
+    $req_nomjeunefille = "SELECT idcandidat_candidat, nom_candidat, prenom_candidat, nom_jeune_fille_candidat FROM Candidat WHERE id_utilisateur=$id_utilisateur";
     $result2 = $conn->query($req_nomjeunefille);
     if($result2->num_rows>0){
         $row = $result2->fetch_assoc();
+        $idcandidat_candidat = $row['idcandidat_candidat']; 
         $nom_candidat = $row['nom_candidat']; 
         $prenom_candidat = $row['prenom_candidat']; 
         $nom_jeune_fille = $row['nom_jeune_fille_candidat']; 
@@ -245,10 +246,33 @@ $pdf->Cell(0, 10, utf8_decode("Sur quel(s) thème(s) : ". $theme_entreprise), 0,
 $pdf->Cell(0, 10, utf8_decode("Avez vous déjà des contacts en entreprise? : ". $choix_contacts_entreprise), 0, 1);
 $pdf->Cell(0, 10, utf8_decode("Si oui, quels sont vos contacts: ". $input_contacts_entreprise), 0, 1);
 
+//chemin vers dossier etudiant
+$nomDossier = 'Dossier' . $idcandidat_candidat . '_' . $nom_candidat . '_' . $prenom_candidat; // Nom du dossier
+$cheminDossier = '../EnvoiDossier/' . $nomDossier . '/';
+$nomFichier = 'recapitulatif-inscription.pdf'; // Nom du fichier PDF
+$cheminComplet = $cheminDossier . $nomFichier;
+
+
 // Enregistrer le PDF dans un fichier
-$pdf->Output('recap.pdf', 'F');
+$pdf->Output($cheminComplet, 'F');
+
+// Mettre à jour le cheminComplet dans la base de données
+
+$sql_update_questionnaire = "UPDATE Formulaire SET lien_pdf_recap='$cheminComplet' WHERE candidat_idcandidat_candidat=$idcandidat_candidat";
+
+if ($conn->query($sql_update_questionnaire) === TRUE) {
+    echo "CheminComplet mis à jour avec succès dans la base de données.";
+} else {
+    echo "Erreur lors de la mise à jour du CheminComplet : " . $conn->error;
+}
+
+// Fermer la connexion à la base de données
+$conn->close();
+
+// Enregistrer le PDF dans un fichier
+$pdf->Output($cheminComplet, 'F');
 
 // Redirection vers le fichier PDF généré
-header('Location: recap.pdf');
+header('Location:' .$cheminComplet);
 exit();
 ?>
